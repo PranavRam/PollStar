@@ -13,7 +13,12 @@ Ext.define('PollStar.view.Main', {
             title: 'PollStar',
             items: [{
               xtype: 'button',
-              iconCls: 'camera'
+              iconCls: 'camera',
+              action: 'activateCamera'
+            }, {
+              xtype: 'button',
+              iconCls: 'photos',
+              action: 'activatePhotoLibrary'
             }, {
               xtype: 'spacer'
             },  {

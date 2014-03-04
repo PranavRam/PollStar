@@ -662,8 +662,10 @@ Ext.ClassManager.addNameAlternateMappings({
   "Ext.viewport.WindowsPhone": [
     "Ext.viewport.WP"
   ],
+  "PollStar.controller.LandingPageController": [],
   "PollStar.model.Poll": [],
   "PollStar.store.Polls": [],
+  "PollStar.view.Camera": [],
   "PollStar.view.Main": [],
   "PollStar.view.PollList": []
 });
@@ -1399,8 +1401,12 @@ Ext.ClassManager.addNameAliasMappings({
   "Ext.viewport.Ios": [],
   "Ext.viewport.Viewport": [],
   "Ext.viewport.WindowsPhone": [],
+  "PollStar.controller.LandingPageController": [],
   "PollStar.model.Poll": [],
   "PollStar.store.Polls": [],
+  "PollStar.view.Camera": [
+    "widget.camera"
+  ],
   "PollStar.view.Main": [
     "widget.main"
   ],

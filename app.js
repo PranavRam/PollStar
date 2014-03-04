@@ -32,6 +32,9 @@ Ext.application({
     views: [
         'Main'
     ],
+    controllers: [
+        'LandingPageController'
+    ],
 
     icon: {
         '57': 'resources/icons/Icon.png',
