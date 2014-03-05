@@ -47,6 +47,7 @@ Ext.define('PollStar.view.AddPoll', {
             items: {
                 xtype: 'fieldset',
                 title: 'Poll Questions',
+                itemId: 'pollQuestionsFieldset',
                 defaults: {
                     labelWrap: true
                 },
@@ -63,11 +64,13 @@ Ext.define('PollStar.view.AddPoll', {
                 }, {
                     xtype: 'textfield',
                     name: 'option1',
-                    label: 'Option 1'
+                    label: 'Option 1',
+                    action: 'optionsSlider'
                 }, {
                     xtype: 'textfield',
                     name: 'option2',
-                    label: 'Option 2'
+                    label: 'Option 2',
+                    action: 'optionsSlider'
                 }]
             }
         }]

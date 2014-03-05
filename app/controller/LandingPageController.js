@@ -1,8 +1,5 @@
 Ext.define('PollStar.controller.LandingPageController', {
     extend: 'Ext.app.Controller',
-    requires: [
-        'Ext.ux.parse.util.File'
-    ],
     config: {
         anims: {
             right: {
@@ -54,15 +51,15 @@ Ext.define('PollStar.controller.LandingPageController', {
                         alert("Failed: " + message);
                     }
 
-                    navigator.camera.getPicture(success, fail, {
+                    /*navigator.camera.getPicture(success, fail, {
                         quality: 75,
                         destinationType: navigator.camera.DestinationType.FILE_URI,
                         sourceType: navigator.camera.PictureSourceType.PHOTOLIBRARY
-                    });
+                    });*/
                     //console.log(Ext.ux.parse.data.ParseConnector.getRequiredHeaders());
                     //console.log(Ext.ux.parse.util.File);
                     console.log('here in cam');
-                    //success('yay')
+                    success('yay')
                 }
             }
         }
@@ -89,7 +86,7 @@ Ext.define('PollStar.controller.LandingPageController', {
         var addPollViewImage = me.getAddPollViewImage();
         Ext.Viewport.add(addPollView);
         //addPollViewImage.setSrc("data:image/jpeg;base64," + image_data);
-        addPollViewImage.setSrc(image_uri);
+        //addPollViewImage.setSrc(image_uri);
         console.log('in switching');
         addPollView.show();
     }

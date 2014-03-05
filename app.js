@@ -35,7 +35,8 @@ Ext.application({
         'AddPoll'
     ],
     controllers: [
-        'LandingPageController'
+        'LandingPageController',
+        'AddPollController'
     ],
 
     icon: {

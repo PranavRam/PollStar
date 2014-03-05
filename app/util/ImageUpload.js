@@ -1,7 +1,8 @@
 Ext.define('PollStar.util.ImageUpload',{
 	singleton: true,
 	requires: [
-	    'Ext.ux.parse.ParseAjax'
+	    'Ext.ux.parse.ParseAjax',
+	    'Ext.ux.parse.util.File'
 	],
 	BASE64PREFIX: "data:image/jpeg;base64,",
 
