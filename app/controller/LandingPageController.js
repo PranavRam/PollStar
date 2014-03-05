@@ -43,23 +43,24 @@ Ext.define('PollStar.controller.LandingPageController', {
                     function success(image_uri) {
                         //me.uploadImageToServer(image_data);
                         //addPollViewImage.setSrc("data:image/jpeg;base64," + imageData);
-                        me.switchToAddPollView(image_uri);
-                        //PollStar.util.ImageUpload.uploadFile(image_data, 'Johnny Cash.jpg');
+                        //me.switchToAddPollView(image_uri);
+                        console.log('Success Image Select 1');
+                        PollStar.util.ImageUpload.uploadFile(image_uri, 'Johnny Cash.jpg');
                     }
 
                     function fail(message) {
                         alert("Failed: " + message);
                     }
 
-                    /*navigator.camera.getPicture(success, fail, {
+                    navigator.camera.getPicture(success, fail, {
                         quality: 75,
                         destinationType: navigator.camera.DestinationType.FILE_URI,
                         sourceType: navigator.camera.PictureSourceType.PHOTOLIBRARY
-                    });*/
+                    });
                     //console.log(Ext.ux.parse.data.ParseConnector.getRequiredHeaders());
                     //console.log(Ext.ux.parse.util.File);
                     console.log('here in cam');
-                    success('yay')
+                    //success('yay')
                 }
             }
         }

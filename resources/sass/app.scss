@@ -18,3 +18,22 @@
 // @include icon('user');
 @include icon('camera');
 @include icon('photos');
+
+.pollList-list-item {
+    background: #ddd;
+    border-bottom: 1px solid #ccc;
+}
+
+.pollList-list-item {
+    //font-weight: bold;
+}
+
+.pollList-list-item-pressed {
+	//background: orange;
+}
+
+.x-list-item img {
+	float: left;
+	margin-right: 1em;
+	height: 24px;
+}

@@ -1,10 +1,14 @@
 Ext.define('PollStar.controller.AddPollController', {
 	extend: 'Ext.app.Controller',
+	requires: [
+		'PollStar.util.PollData'
+	],
 	config: {
 		refs: {
 			addPollView: 'addPollView',
 			cancelAddPollBtn: 'button[action=cancelAddPoll]',
 			addPollBtn: 'button[action=addPoll]',
+			pollForm: 'formpanel[itemId=addPollForm]',
 			pollQuestionsFieldset: 'formpanel #pollQuestionsFieldset',
 			pollQuestionsOptionsCount: 'sliderfield'
 		},
@@ -14,6 +18,16 @@ Ext.define('PollStar.controller.AddPollController', {
 					var me = this;
 					var addPollView = me.getAddPollView();
 					addPollView.hide();
+				}
+			},
+			addPollBtn: {
+				tap: function(self, e, eOpts){
+					var me = this;
+					var pollForm = me.getPollForm();
+					var pollDataHelper = PollStar.util.PollData;
+					var poll_data = pollDataHelper.preparePollData(pollForm.getValues());
+					pollDataHelper.submitPoll(poll_data);
+
 				}
 			},
 			addPollView: {
@@ -32,7 +46,7 @@ Ext.define('PollStar.controller.AddPollController', {
 						for(var i = 0; i < numToAdd; i++){
 							var options = {
 								xtype: 'textfield',
-								name: 'option'+(i+oldValue+1),
+								name: 'options',
 								label: 'Option '+(i+oldValue+1),
 								action: 'optionsSlider'
 							}
