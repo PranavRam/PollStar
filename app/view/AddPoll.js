@@ -43,6 +43,7 @@ Ext.define('PollStar.view.AddPoll', {
             itemId: 'addPollImage'
         }, {
             xtype: 'formpanel',
+            itemId: 'addPollForm',
             flex: 3,
             items: {
                 xtype: 'fieldset',
@@ -63,12 +64,12 @@ Ext.define('PollStar.view.AddPoll', {
                     value: 2
                 }, {
                     xtype: 'textfield',
-                    name: 'option1',
+                    name: 'options',
                     label: 'Option 1',
                     action: 'optionsSlider'
                 }, {
                     xtype: 'textfield',
-                    name: 'option2',
+                    name: 'options',
                     label: 'Option 2',
                     action: 'optionsSlider'
                 }]

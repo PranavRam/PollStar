@@ -662,6 +662,7 @@ Ext.ClassManager.addNameAlternateMappings({
   "Ext.viewport.WindowsPhone": [
     "Ext.viewport.WP"
   ],
+  "PollStar.controller.AddPollController": [],
   "PollStar.controller.LandingPageController": [],
   "PollStar.model.Poll": [],
   "PollStar.store.Polls": [],
@@ -669,7 +670,9 @@ Ext.ClassManager.addNameAlternateMappings({
   "PollStar.view.AddPoll": [],
   "PollStar.view.Camera": [],
   "PollStar.view.Main": [],
-  "PollStar.view.PollList": []
+  "PollStar.view.PollDataItem": [],
+  "PollStar.view.PollList": [],
+  "PollStar.view.PollsList": []
 });
 Ext.ClassManager.addNameAliasMappings({
   "Ext.AbstractComponent": [],
@@ -1403,6 +1406,7 @@ Ext.ClassManager.addNameAliasMappings({
   "Ext.viewport.Ios": [],
   "Ext.viewport.Viewport": [],
   "Ext.viewport.WindowsPhone": [],
+  "PollStar.controller.AddPollController": [],
   "PollStar.controller.LandingPageController": [],
   "PollStar.model.Poll": [],
   "PollStar.store.Polls": [],
@@ -1416,7 +1420,13 @@ Ext.ClassManager.addNameAliasMappings({
   "PollStar.view.Main": [
     "widget.main"
   ],
+  "PollStar.view.PollDataItem": [
+    "widget.polldataitem"
+  ],
   "PollStar.view.PollList": [
     "widget.pollList"
+  ],
+  "PollStar.view.PollsList": [
+    "widget.pollsList"
   ]
 });

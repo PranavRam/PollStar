@@ -14,9 +14,15 @@ Ext.define('PollStar.controller.LandingPageController', {
         refs: {
             cameraButton: 'button[action=activateCamera]',
             photoLibraryButton: 'button[action=activatePhotoLibrary]',
-            addPollViewImage: 'image[itemId=addPollImage]'
+            addPollViewImage: 'image[itemId=addPollImage]',
+            pollList: 'pollsList'
         },
         control: {
+        		pollList: {
+        			select: function(self, index, target, record, e, eOpts){
+        				console.log(index, record, target);
+        			}
+        		},
             cameraButton: {
                 tap: function(self, e, eOpts) {
                     var me = this;
