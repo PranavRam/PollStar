@@ -19,7 +19,8 @@ Ext.application({
 
     requires: [
         'Ext.ux.parse.app.Application',
-        'Ext.MessageBox'
+        'Ext.MessageBox',
+        'PollStar.util.ImageUpload'
     ],
     models: [
         'Poll'
@@ -30,7 +31,8 @@ Ext.application({
     ],
 
     views: [
-        'Main'
+        'Main',
+        'AddPoll'
     ],
     controllers: [
         'LandingPageController'
