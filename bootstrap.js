@@ -665,12 +665,15 @@ Ext.ClassManager.addNameAlternateMappings({
   "PollStar.controller.AddPollController": [],
   "PollStar.controller.LandingPageController": [],
   "PollStar.model.Poll": [],
+  "PollStar.model.User": [],
+  "PollStar.store.Friends": [],
   "PollStar.store.Polls": [],
   "PollStar.util.ImageUpload": [],
   "PollStar.util.PollData": [],
   "PollStar.util.Templates": [],
   "PollStar.view.AddPoll": [],
   "PollStar.view.Camera": [],
+  "PollStar.view.FriendsList": [],
   "PollStar.view.Main": [],
   "PollStar.view.PollList": []
 });
@@ -1409,6 +1412,8 @@ Ext.ClassManager.addNameAliasMappings({
   "PollStar.controller.AddPollController": [],
   "PollStar.controller.LandingPageController": [],
   "PollStar.model.Poll": [],
+  "PollStar.model.User": [],
+  "PollStar.store.Friends": [],
   "PollStar.store.Polls": [],
   "PollStar.util.ImageUpload": [],
   "PollStar.util.PollData": [],
@@ -1418,6 +1423,9 @@ Ext.ClassManager.addNameAliasMappings({
   ],
   "PollStar.view.Camera": [
     "widget.camera"
+  ],
+  "PollStar.view.FriendsList": [
+    "widget.friendsList"
   ],
   "PollStar.view.Main": [
     "widget.main"

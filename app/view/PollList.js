@@ -2,8 +2,6 @@ Ext.define('PollStar.view.PollList', {
     extend: 'Ext.dataview.List',
     xtype: 'pollList',
     config: {
-        /*itemTpl: PollStar.util.Templates.pollList(),
-        store: 'pollsStore',*/
         items: [{
             xtype: 'button',
             scrollDock: 'bottom',

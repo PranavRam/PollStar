@@ -24,16 +24,19 @@ Ext.application({
         //'PollStar.util.Templates'
     ],
     models: [
-        'Poll'
+        'Poll',
+        'User'
     ],
 
     stores: [
-        'Polls'
+        'Polls',
+        'Friends'
     ],
 
     views: [
         'Main',
-        'AddPoll'
+        'AddPoll',
+        'FriendsList'
     ],
     controllers: [
         'LandingPageController',
@@ -66,8 +69,11 @@ Ext.application({
         // Destroy the #appLoadingIndicator element
         Ext.fly('appLoadingIndicator').destroy();
 
+        // Initialize Parse
+        Parse.initialize("TiXE1VVZv2QrUJTyJsXlZQ4MhnoygRXJRIxTjk26", "bkdRkgavzxlC6z2vZUFoxONuSHhJyoisdXzvKvh7");
+
         // Initialize the main view
-        Ext.Viewport.add(Ext.create('PollStar.view.Main'));
+        Ext.Viewport.add(Ext.create('PollStar.view.FriendsList'));
     },
 
     onUpdated: function() {

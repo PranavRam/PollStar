@@ -4,6 +4,7 @@ Ext.define('PollStar.controller.AddPollController', {
 		'PollStar.util.PollData'
 	],
 	config: {
+		//pollDataHelper: PollStar.util.PollData,
 		refs: {
 			addPollView: 'addPollView',
 			cancelAddPollBtn: 'button[action=cancelAddPoll]',

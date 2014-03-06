@@ -14,21 +14,23 @@ Ext.define('PollStar.controller.LandingPageController', {
         refs: {
             cameraButton: 'button[action=activateCamera]',
             photoLibraryButton: 'button[action=activatePhotoLibrary]',
-            addPollViewImage: 'image[itemId=addPollImage]'
+            addPollViewImage: 'image[itemId=addPollImage]',
+            pollList: 'pollsList'
         },
         control: {
+        		pollList: {
+        			select: function(self, index, target, record, e, eOpts){
+        				console.log(index, record, target);
+        			}
+        		},
             cameraButton: {
                 tap: function(self, e, eOpts) {
                     var me = this;
 
-                    function success(image_data) {
-                        me.uploadImageToServer(image_data);
-                    }
-
                     function fail(message) {
                         alert("Failed: " + message);
                     }
-                    navigator.camera.getPicture(success, fail, {
+                    navigator.camera.getPicture(me.imagePicked, fail, {
                         quality: 75,
                         destinationType: navigator.camera.DestinationType.FILE_URI,
                         sourceType: navigator.camera.PictureSourceType.CAMERA
@@ -40,19 +42,11 @@ Ext.define('PollStar.controller.LandingPageController', {
                 tap: function(self, e, eOpts) {
                     var me = this;
 
-                    function success(image_uri) {
-                        //me.uploadImageToServer(image_data);
-                        //addPollViewImage.setSrc("data:image/jpeg;base64," + imageData);
-                        //me.switchToAddPollView(image_uri);
-                        console.log('Success Image Select 1');
-                        PollStar.util.ImageUpload.uploadFile(image_uri, 'Johnny Cash.jpg');
-                    }
-
                     function fail(message) {
                         alert("Failed: " + message);
                     }
 
-                    navigator.camera.getPicture(success, fail, {
+                    navigator.camera.getPicture(me.imagePicked, fail, {
                         quality: 75,
                         destinationType: navigator.camera.DestinationType.FILE_URI,
                         sourceType: navigator.camera.PictureSourceType.PHOTOLIBRARY
@@ -65,22 +59,6 @@ Ext.define('PollStar.controller.LandingPageController', {
             }
         }
     },
-    addPointerToImage: function(data) {
-        Ext.ux.parse.ParseAjax.request({
-            url: '/classes/Image',
-            jsonData: data,
-            success: function(response) {
-                //var jsonUp = Ext.JSON.decode(response);
-                console.log('Success ' + response.responseText);
-                //alert('success');
-            },
-            failure: function(response) {
-                //var jsonUp = Ext.JSON.decode(response);
-                console.log('Failed ' + response.responseText);
-                //alert('failure');
-            }
-        });
-    },
     switchToAddPollView: function(image_uri) {
         var me = this;
         var addPollView = Ext.create("PollStar.view.AddPoll");
@@ -90,5 +68,9 @@ Ext.define('PollStar.controller.LandingPageController', {
         //addPollViewImage.setSrc(image_uri);
         console.log('in switching');
         addPollView.show();
+    },
+    imagePicked: function(image_uri){
+        console.log('Success Image Select 1');
+        PollStar.util.ImageUpload.uploadFile(image_uri, 'Johnny Cash.jpg');
     }
 });
