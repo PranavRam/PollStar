@@ -32,8 +32,16 @@
 	//background: orange;
 }
 
+.pollList-div {
+	display: table-cell;
+	vertical-align: middle;
+	> div {
+		display: inline-block;
+	}
+}
+
 .x-list-item img {
-	float: left;
-	margin-right: 1em;
+	display: inline-block;
 	height: 24px;
+	margin-bottom: 3px;
 }

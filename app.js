@@ -21,6 +21,7 @@ Ext.application({
         'Ext.ux.parse.app.Application',
         'Ext.MessageBox',
         'PollStar.util.ImageUpload'
+        //'PollStar.util.Templates'
     ],
     models: [
         'Poll'
