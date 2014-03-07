@@ -30,13 +30,14 @@ Ext.application({
 
     stores: [
         'Polls',
-        'Friends'
+        'Friends',
+        'Users'
     ],
 
     views: [
         'Main',
         'AddPoll',
-        'FriendsList'
+        'FriendsMain'
     ],
     controllers: [
         'LandingPageController',
@@ -68,12 +69,12 @@ Ext.application({
     launch: function() {
         // Destroy the #appLoadingIndicator element
         Ext.fly('appLoadingIndicator').destroy();
-
+        //console.log(Ext.app.parseConfig().applicationId);
         // Initialize Parse
         Parse.initialize("TiXE1VVZv2QrUJTyJsXlZQ4MhnoygRXJRIxTjk26", "bkdRkgavzxlC6z2vZUFoxONuSHhJyoisdXzvKvh7");
 
         // Initialize the main view
-        Ext.Viewport.add(Ext.create('PollStar.view.FriendsList'));
+        Ext.Viewport.add(Ext.create('PollStar.view.FriendsMain'));
     },
 
     onUpdated: function() {

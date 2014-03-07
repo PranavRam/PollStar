@@ -668,14 +668,16 @@ Ext.ClassManager.addNameAlternateMappings({
   "PollStar.model.User": [],
   "PollStar.store.Friends": [],
   "PollStar.store.Polls": [],
+  "PollStar.store.Users": [],
   "PollStar.util.ImageUpload": [],
   "PollStar.util.PollData": [],
   "PollStar.util.Templates": [],
   "PollStar.view.AddPoll": [],
-  "PollStar.view.Camera": [],
   "PollStar.view.FriendsList": [],
+  "PollStar.view.FriendsMain": [],
   "PollStar.view.Main": [],
-  "PollStar.view.PollList": []
+  "PollStar.view.PollList": [],
+  "PollStar.view.UsersList": []
 });
 Ext.ClassManager.addNameAliasMappings({
   "Ext.AbstractComponent": [],
@@ -1415,22 +1417,24 @@ Ext.ClassManager.addNameAliasMappings({
   "PollStar.model.User": [],
   "PollStar.store.Friends": [],
   "PollStar.store.Polls": [],
+  "PollStar.store.Users": [],
   "PollStar.util.ImageUpload": [],
   "PollStar.util.PollData": [],
   "PollStar.util.Templates": [],
   "PollStar.view.AddPoll": [
     "widget.addPollView"
   ],
-  "PollStar.view.Camera": [
-    "widget.camera"
-  ],
   "PollStar.view.FriendsList": [
     "widget.friendsList"
   ],
+  "PollStar.view.FriendsMain": [],
   "PollStar.view.Main": [
     "widget.main"
   ],
   "PollStar.view.PollList": [
     "widget.pollList"
+  ],
+  "PollStar.view.UsersList": [
+    "widget.usersList"
   ]
 });

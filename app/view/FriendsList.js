@@ -5,8 +5,13 @@ Ext.define('PollStar.view.FriendsList',{
 	],
 	xtype: 'friendsList',
 	config: {
-		fullscreen: true,
-		store: 'friendsStore',
-		itemTpl: '{username}'
+		//store: 'friendsStore',
+	},
+	initialize: function(){
+		//console.log(PollStar.util.Templates.pollList());
+		var me = this;
+		me.setItemTpl(Ext.select('#tpl_friends_list').elements[0].innerHTML);
+		me.setStore('friendsStore');
+		//me.refresh();
 	}
 });

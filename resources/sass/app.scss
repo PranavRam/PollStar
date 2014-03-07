@@ -6,11 +6,11 @@
 
 @import 'sencha-touch/cupertino';
 @import 'sencha-touch/cupertino/all';
+@import 'mixins';
 
 // Custom code goes here..
-//.x-toolbar {
-//	background-color: #FF8C00;
-//}
+
+
 .x-toolbar.x-docked-top {
   padding-top: 20px !important;
 } 
@@ -18,6 +18,12 @@
 // @include icon('user');
 @include icon('camera');
 @include icon('photos');
+@include icon('heart');
+@include icon('table');
+@include icon('delete');
+//@include icon('add');
+
+$lightred: #ff0000;
 
 .pollList-list-item {
     background: #ddd;
@@ -32,16 +38,40 @@
 	//background: orange;
 }
 
-.pollList-div {
-	display: table-cell;
-	vertical-align: middle;
-	> div {
-		display: inline-block;
+.pollList-div, .userList-div, .friendsList-div {
+	@include flex;
+
+	> img {
+		//display: inline-block;
+		margin: 0 10px 0 0;
+		width: 24px;
+	}
+	.flex-middle {
+		@include flex-middle-div
+	}
+	.toggleBtn {
+		@include flex-last-div
 	}
 }
 
-.x-list-item img {
+/* .pollList-div img {
 	display: inline-block;
 	height: 24px;
 	margin-bottom: 3px;
+} */
+
+[data-icon]:after {
+	font-family: 'Pictos';
+	content: attr(data-icon);
+	-webkit-font-smoothing: antialiased;
+	//float: right;
+	font-size: 1.5em;
+}
+
+[data-icon="*"]:after {
+	color: $lightred;
+}
+
+[data-icon="&"]:after {
+	color: green;
 }
