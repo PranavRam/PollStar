@@ -14,6 +14,7 @@ Ext.define('PollStar.view.PollList', {
         var me = this;
         me.setItemTpl(Ext.select('#tpl_poll_list').elements[0].innerHTML);
         me.setStore('pollsStore');
+        me.callParent(arguments);
         //me.refresh();
     }
 });

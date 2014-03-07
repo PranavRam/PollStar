@@ -13,5 +13,6 @@ Ext.define('PollStar.view.UsersList', {
         var me = this;
         me.setItemTpl(Ext.select('#tpl_user_list').elements[0].innerHTML);
         me.setStore('usersStore');
+        me.callParent(arguments);
     }
 });

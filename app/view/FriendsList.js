@@ -12,6 +12,7 @@ Ext.define('PollStar.view.FriendsList',{
 		var me = this;
 		me.setItemTpl(Ext.select('#tpl_friends_list').elements[0].innerHTML);
 		me.setStore('friendsStore');
+		me.callParent(arguments);
 		//me.refresh();
 	}
 });
