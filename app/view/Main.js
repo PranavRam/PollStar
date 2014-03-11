@@ -23,7 +23,8 @@ Ext.define('PollStar.view.Main', {
               xtype: 'spacer'
             },  {
               xtype: 'button',
-              iconCls: 'user'
+              iconCls: 'user',
+              action: 'navToUsers'
             }]
         }, {
           xtype: 'pollList',

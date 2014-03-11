@@ -14,15 +14,21 @@ Ext.define('PollStar.controller.LandingPageController', {
         refs: {
             cameraButton: 'button[action=activateCamera]',
             photoLibraryButton: 'button[action=activatePhotoLibrary]',
+            navToUsersBtn: 'button[action=navToUsers]',
             addPollViewImage: 'image[itemId=addPollImage]',
-            pollList: 'pollsList'
+            pollList: 'pollsList',
+            friendsMainView: 'friendsMain'
         },
         control: {
-        		pollList: {
-        			select: function(self, index, target, record, e, eOpts){
-        				console.log(index, record, target);
-        			}
-        		},
+            navToUsersBtn: {
+                tap: function(btn, e, eOpts) {
+                    var me = this;
+                    var friendsMainView = me.getFriendsMainView();
+                    Ext.Viewport.animateActiveItem(friendsMainView,
+                        me.getAnims().right
+                    );
+                }
+            },
             cameraButton: {
                 tap: function(self, e, eOpts) {
                     var me = this;
@@ -65,12 +71,13 @@ Ext.define('PollStar.controller.LandingPageController', {
         var addPollViewImage = me.getAddPollViewImage();
         Ext.Viewport.add(addPollView);
         //addPollViewImage.setSrc("data:image/jpeg;base64," + image_data);
-        //addPollViewImage.setSrc(image_uri);
+        addPollViewImage.setSrc(image_uri);
         console.log('in switching');
         addPollView.show();
     },
-    imagePicked: function(image_uri){
+    imagePicked: function(image_uri) {
         console.log('Success Image Select 1');
-        PollStar.util.ImageUpload.uploadFile(image_uri, 'Johnny Cash.jpg');
+        //PollStar.util.ImageUpload.uploadFile(image_uri, 'Johnny Cash.jpg');
+        me.switchToAddPollView(image_uri);
     }
 });

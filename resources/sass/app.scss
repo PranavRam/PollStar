@@ -50,6 +50,7 @@ $lightred: #ff0000;
 		@include flex-middle-div
 	}
 	.toggleBtn {
+		text-align: center;
 		@include flex-last-div
 	}
 }
@@ -60,18 +61,31 @@ $lightred: #ff0000;
 	margin-bottom: 3px;
 } */
 
-[data-icon]:after {
+.x-list .x-list-disclosure:before {
 	font-family: 'Pictos';
-	content: attr(data-icon);
+	//content: '*';
+	//content: attr(data-icon);
 	-webkit-font-smoothing: antialiased;
 	//float: right;
 	font-size: 1.5em;
 }
 
-[data-icon="*"]:after {
-	color: $lightred;
+.friends-list .x-list-disclosure {
+	&:before{
+		color: $lightred;
+		content: '*';
+	}
 }
 
-[data-icon="&"]:after {
-	color: green;
+.user-list .x-list-disclosure {
+	right: 1em !important;
+	&:before{
+		color: green;
+		content: 'U&';
+	}
 }
+
+// .x-field .x-field-input, .x-field .x-input-el:before {
+// 	font-family: 'Pictos';
+// 	content: 'U';
+// }

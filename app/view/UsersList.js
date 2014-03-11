@@ -6,7 +6,14 @@ Ext.define('PollStar.view.UsersList', {
     xtype: 'usersList',
     config: {
         //store: 'usersStore',
-        grouped: true
+        grouped: true,
+        onItemDisclosure: true,
+        cls: 'user-list',
+        listeners: {
+        	disclose: function(list, record, target, index, e, eOpts){
+        		console.log(index, record);
+        	}
+        }
     },
     initialize: function(){
         //console.log(PollStar.util.Templates.pollList());

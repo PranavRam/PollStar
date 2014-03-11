@@ -1,5 +1,6 @@
 Ext.define('PollStar.view.FriendsMain', {
     extend: 'Ext.TabPanel',
+    xtype: 'friendsMain',
     requires: [
         'PollStar.view.FriendsList',
     	'PollStar.view.UsersList'
@@ -22,7 +23,8 @@ Ext.define('PollStar.view.FriendsMain', {
                 xtype: 'spacer'
             }, {
                 xtype: 'button',
-                iconCls: 'table'
+                iconCls: 'table',
+                action: 'navToPolls'
             }]
         }, {
             title: 'Friends',

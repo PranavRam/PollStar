@@ -21,7 +21,6 @@ Ext.application({
         'Ext.ux.parse.app.Application',
         'Ext.MessageBox',
         'PollStar.util.ImageUpload'
-        //'PollStar.util.Templates'
     ],
     models: [
         'Poll',
@@ -41,7 +40,8 @@ Ext.application({
     ],
     controllers: [
         'LandingPageController',
-        'AddPollController'
+        'AddPollController',
+        'FriendsPageController'
     ],
 
     icon: {
@@ -74,7 +74,10 @@ Ext.application({
         Parse.initialize("TiXE1VVZv2QrUJTyJsXlZQ4MhnoygRXJRIxTjk26", "bkdRkgavzxlC6z2vZUFoxONuSHhJyoisdXzvKvh7");
 
         // Initialize the main view
-        Ext.Viewport.add(Ext.create('PollStar.view.FriendsMain'));
+        Ext.Viewport.add([
+            Ext.create('PollStar.view.Main'),
+            Ext.create('PollStar.view.FriendsMain')
+        ]);
     },
 
     onUpdated: function() {

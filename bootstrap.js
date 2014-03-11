@@ -663,6 +663,7 @@ Ext.ClassManager.addNameAlternateMappings({
     "Ext.viewport.WP"
   ],
   "PollStar.controller.AddPollController": [],
+  "PollStar.controller.FriendsPageController": [],
   "PollStar.controller.LandingPageController": [],
   "PollStar.model.Poll": [],
   "PollStar.model.User": [],
@@ -671,7 +672,6 @@ Ext.ClassManager.addNameAlternateMappings({
   "PollStar.store.Users": [],
   "PollStar.util.ImageUpload": [],
   "PollStar.util.PollData": [],
-  "PollStar.util.Templates": [],
   "PollStar.view.AddPoll": [],
   "PollStar.view.FriendsList": [],
   "PollStar.view.FriendsMain": [],
@@ -1412,6 +1412,7 @@ Ext.ClassManager.addNameAliasMappings({
   "Ext.viewport.Viewport": [],
   "Ext.viewport.WindowsPhone": [],
   "PollStar.controller.AddPollController": [],
+  "PollStar.controller.FriendsPageController": [],
   "PollStar.controller.LandingPageController": [],
   "PollStar.model.Poll": [],
   "PollStar.model.User": [],
@@ -1420,14 +1421,15 @@ Ext.ClassManager.addNameAliasMappings({
   "PollStar.store.Users": [],
   "PollStar.util.ImageUpload": [],
   "PollStar.util.PollData": [],
-  "PollStar.util.Templates": [],
   "PollStar.view.AddPoll": [
     "widget.addPollView"
   ],
   "PollStar.view.FriendsList": [
     "widget.friendsList"
   ],
-  "PollStar.view.FriendsMain": [],
+  "PollStar.view.FriendsMain": [
+    "widget.friendsMain"
+  ],
   "PollStar.view.Main": [
     "widget.main"
   ],

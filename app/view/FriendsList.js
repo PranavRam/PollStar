@@ -6,6 +6,8 @@ Ext.define('PollStar.view.FriendsList',{
 	xtype: 'friendsList',
 	config: {
 		//store: 'friendsStore',
+		//onItemDisclosure: true,
+		cls: 'friends-list'
 	},
 	initialize: function(){
 		//console.log(PollStar.util.Templates.pollList());
