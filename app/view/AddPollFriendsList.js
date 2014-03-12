@@ -1,15 +1,13 @@
-Ext.define('PollStar.view.FriendsList', {
+Ext.define('PollStar.view.AddPollFriendsList', {
     extend: 'Ext.dataview.List',
     requires: [
-        'PollStar.store.Friends',
         'Ext.field.Search'
     ],
-    xtype: 'friendsList',
+    xtype: 'addPollFriendsList',
     config: {
         //store: 'friendsStore',
         //onItemDisclosure: true,
-        cls: 'friends-list',
-        grouped: true,
+        mode: 'MULTI',
         items: [{
             xtype: 'searchfield',
             scrollDock: 'top',
@@ -21,7 +19,7 @@ Ext.define('PollStar.view.FriendsList', {
         //console.log(PollStar.util.Templates.pollList());
         var me = this;
         me.setItemTpl(Ext.select('#tpl_friends_list').elements[0].innerHTML);
-        me.setStore('friendsStore');
+        me.setStore(Ext.getStore('friendsStore'));
         me.callParent(arguments);
         //me.refresh();
     }

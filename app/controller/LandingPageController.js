@@ -1,5 +1,9 @@
 Ext.define('PollStar.controller.LandingPageController', {
     extend: 'Ext.app.Controller',
+    requires: [
+        'PollStar.view.AddPoll',
+        'Ext.util.DelayedTask'
+    ],
     config: {
         anims: {
             right: {
@@ -9,12 +13,18 @@ Ext.define('PollStar.controller.LandingPageController', {
             left: {
                 type: 'slide',
                 direction: 'right'
+            },
+            flip: {
+                type: 'flip',
+                duration: 300,
+                direction: 'right'
             }
         },
         refs: {
             cameraButton: 'button[action=activateCamera]',
             photoLibraryButton: 'button[action=activatePhotoLibrary]',
             navToUsersBtn: 'button[action=navToUsers]',
+            addPollView: 'addPollView',
             addPollViewImage: 'image[itemId=addPollImage]',
             pollList: 'pollsList',
             friendsMainView: 'friendsMain'
@@ -48,36 +58,51 @@ Ext.define('PollStar.controller.LandingPageController', {
                 tap: function(self, e, eOpts) {
                     var me = this;
 
+                    function success(image_uri){
+                      me.switchToAddPollView(image_uri);
+                    }
+
                     function fail(message) {
                         alert("Failed: " + message);
                     }
 
-                    navigator.camera.getPicture(me.imagePicked, fail, {
+                    /*navigator.camera.getPicture(me.imagePicked, fail, {
                         quality: 75,
                         destinationType: navigator.camera.DestinationType.FILE_URI,
                         sourceType: navigator.camera.PictureSourceType.PHOTOLIBRARY
-                    });
+                    });*/
+                    if (Ext.device) {
+                        Ext.device.Camera.capture({
+                            success: success,
+                            failure: fail,
+                            quality: 75,
+                            destination: 'file',
+                            source: 'library',
+                            encoding: 'jpg'
+                        });
+                    }
                     //console.log(Ext.ux.parse.data.ParseConnector.getRequiredHeaders());
                     //console.log(Ext.ux.parse.util.File);
                     console.log('here in cam');
-                    //success('yay')
+                    //me.imagePicked();
                 }
             }
         }
     },
     switchToAddPollView: function(image_uri) {
+        //console.log('in switch', image_uri);
         var me = this;
+        //console.log('before add poll');
         var addPollView = Ext.create("PollStar.view.AddPoll");
+        //console.log(addPollView);
+        //console.log('after add poll');
         var addPollViewImage = me.getAddPollViewImage();
         Ext.Viewport.add(addPollView);
+        //Ext.Viewport.animateActiveItem(addPollView, me.getAnims().flip);
+        //console.log('before setting iamge');
         //addPollViewImage.setSrc("data:image/jpeg;base64," + image_data);
         addPollViewImage.setSrc(image_uri);
-        console.log('in switching');
+        //console.log('in switching');
         addPollView.show();
-    },
-    imagePicked: function(image_uri) {
-        console.log('Success Image Select 1');
-        //PollStar.util.ImageUpload.uploadFile(image_uri, 'Johnny Cash.jpg');
-        me.switchToAddPollView(image_uri);
     }
 });

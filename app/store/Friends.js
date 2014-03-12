@@ -7,6 +7,11 @@ Ext.define('PollStar.store.Friends', {
     config: {
         storeId: 'friendsStore',
         model: 'PollStar.model.User',
+        grouper: {
+            groupFn: function(record) {
+                return record.get('username')[0];
+            }
+        }
         //autoLoad: true
 
         /*proxy: {

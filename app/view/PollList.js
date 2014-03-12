@@ -9,7 +9,7 @@ Ext.define('PollStar.view.PollList', {
             xtype: 'searchfield',
             scrollDock: 'top',
             //docked: 'top',
-            placeHolder: 'Search',
+            placeHolder: 'Search'
         }]
     },
     initialize: function() {

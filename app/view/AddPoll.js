@@ -1,5 +1,5 @@
 Ext.define('PollStar.view.AddPoll', {
-    extend: 'Ext.Panel',
+    extend: 'Ext.navigation.View',
     xtype: 'addPollView',
     requires: [,
         'Ext.form.Panel',
@@ -8,7 +8,8 @@ Ext.define('PollStar.view.AddPoll', {
         'Ext.Img'
     ],
     config: {
-        layout: 'vbox',
+        //layout: 'vbox',
+        //fullscreen: true,
         hidden: 'true',
         showAnimation: {
             type: 'slideIn',
@@ -21,10 +22,11 @@ Ext.define('PollStar.view.AddPoll', {
             duration: 200,
             direction: 'down'
         },
-        items: [{
-            xtype: 'toolbar',
+        navigationBar: {
             docked: 'top',
-            title: 'Add Poll',
+            layout: {
+                type: 'fit'
+            },
             items: [{
                 xtype: 'button',
                 text: 'Cancel',
@@ -33,47 +35,56 @@ Ext.define('PollStar.view.AddPoll', {
                 xtype: 'spacer'
             }, {
                 xtype: 'button',
+                text: 'Next',
+                action: 'nextPollData'
+            }, {
+                xtype: 'button',
                 text: 'Add',
-                action: 'addPoll'
+                action: 'addPoll',
+                hidden: true
             }]
-        }, {
-            xtype: 'image',
-            src: 'http://www.sencha.com/assets/images/sencha-avatar-64x64.png',
-            flex: 1,
-            itemId: 'addPollImage'
-        }, {
-            xtype: 'formpanel',
-            itemId: 'addPollForm',
-            flex: 3,
-            items: {
-                xtype: 'fieldset',
-                title: 'Poll Questions',
-                itemId: 'pollQuestionsFieldset',
-                defaults: {
-                    labelWrap: true
-                },
-                items: [{
-                    xtype: 'textfield',
-                    name: 'question',
-                    label: 'Question'
-                }, {
-                    xtype: 'sliderfield',
-                    label: 'Option Count',
-                    minValue: 2,
-                    maxValue: 5,
-                    value: 2
-                }, {
-                    xtype: 'textfield',
-                    name: 'options',
-                    label: 'Option 1',
-                    action: 'optionsSlider'
-                }, {
-                    xtype: 'textfield',
-                    name: 'options',
-                    label: 'Option 2',
-                    action: 'optionsSlider'
-                }]
-            }
+        },
+        items: [{
+            layout: 'vbox',
+            items: [{
+                xtype: 'image',
+                src: 'http://www.sencha.com/assets/images/sencha-avatar-64x64.png',
+                flex: 1,
+                itemId: 'addPollImage'
+            }, {
+                xtype: 'formpanel',
+                itemId: 'addPollForm',
+                flex: 3,
+                items: {
+                    xtype: 'fieldset',
+                    title: 'Poll Questions',
+                    itemId: 'pollQuestionsFieldset',
+                    defaults: {
+                        labelWrap: true
+                    },
+                    items: [{
+                        xtype: 'textfield',
+                        name: 'question',
+                        label: 'Question'
+                    }, {
+                        xtype: 'sliderfield',
+                        label: 'Option Count',
+                        minValue: 2,
+                        maxValue: 5,
+                        value: 2
+                    }, {
+                        xtype: 'textfield',
+                        name: 'options',
+                        label: 'Option 1',
+                        action: 'optionsSlider'
+                    }, {
+                        xtype: 'textfield',
+                        name: 'options',
+                        label: 'Option 2',
+                        action: 'optionsSlider'
+                    }]
+                }
+            }]
         }]
     }
 });

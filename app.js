@@ -35,8 +35,10 @@ Ext.application({
 
     views: [
         'Main',
+        'Login',
         'AddPoll',
-        'FriendsMain'
+        'FriendsMain',
+        'AddPoll'
     ],
     controllers: [
         'LandingPageController',
@@ -75,6 +77,7 @@ Ext.application({
 
         // Initialize the main view
         Ext.Viewport.add([
+            //Ext.create('PollStar.view.Login'),
             Ext.create('PollStar.view.Main'),
             Ext.create('PollStar.view.FriendsMain')
         ]);

@@ -85,6 +85,13 @@ $lightred: #ff0000;
 	}
 }
 
+.user-list .x-list-disclosure.delete {
+	&:before{
+		color: red;
+		content: '*';
+	}
+}
+
 // .x-field .x-field-input, .x-field .x-input-el:before {
 // 	font-family: 'Pictos';
 // 	content: 'U';
