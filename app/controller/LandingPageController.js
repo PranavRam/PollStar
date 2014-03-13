@@ -101,7 +101,7 @@ Ext.define('PollStar.controller.LandingPageController', {
         //Ext.Viewport.animateActiveItem(addPollView, me.getAnims().flip);
         //console.log('before setting iamge');
         //addPollViewImage.setSrc("data:image/jpeg;base64," + image_data);
-        addPollViewImage.setSrc(image_uri);
+        //addPollViewImage.setSrc(image_uri);
         //console.log('in switching');
         addPollView.show();
     }

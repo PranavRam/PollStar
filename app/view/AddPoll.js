@@ -48,7 +48,7 @@ Ext.define('PollStar.view.AddPoll', {
             layout: 'vbox',
             items: [{
                 xtype: 'image',
-                src: 'http://www.sencha.com/assets/images/sencha-avatar-64x64.png',
+                src: 'resources/startup/Moon.jpg',
                 flex: 1,
                 itemId: 'addPollImage'
             }, {

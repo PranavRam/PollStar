@@ -11,6 +11,7 @@ Ext.define('PollStar.controller.AddPollController', {
 			nextPollDataBtn: 'button[action=nextPollData]',
 			addPollBtn: 'button[action=addPoll]',
 			pollForm: 'formpanel[itemId=addPollForm]',
+			addPollViewImage: 'image[itemId=addPollImage]',
 			pollQuestionsFieldset: 'formpanel #pollQuestionsFieldset',
 			pollQuestionsOptionsCount: 'sliderfield',
 			addPollFriendsList: 'addPollFriendsList'
@@ -38,11 +39,12 @@ Ext.define('PollStar.controller.AddPollController', {
 					var me = this;
 					var pollForm = me.getPollForm();
 					var addPollFriendsList = me.getAddPollFriendsList();
-					var pollDataHelper = PollStar.util.PollData;
-					var poll_data = pollDataHelper.preparePollData(pollForm.getValues(), 
+					var addPollViewImage = me.getAddPollViewImage();
+					//var pollDataHelper = PollStar.util.PollData;
+					var poll_data = PollStar.util.PollData.preparePollData(pollForm.getValues(), 
 						addPollFriendsList.getSelection());
-					pollDataHelper.submitPoll(poll_data);
-
+					//pollDataHelper.submitPoll(poll_data);
+					PollStar.util.ImageUpload.uploadFile(poll_data, addPollViewImage.getSrc());
 				}
 			},
 			addPollView: {
