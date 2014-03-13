@@ -5,7 +5,6 @@ Ext.define('PollStar.controller.AddPollController', {
 		'PollStar.view.AddPollFriendsList'
 	],
 	config: {
-		//pollDataHelper: PollStar.util.PollData,
 		refs: {
 			addPollView: 'addPollView',
 			cancelAddPollBtn: 'button[action=cancelAddPoll]',
@@ -40,8 +39,9 @@ Ext.define('PollStar.controller.AddPollController', {
 					var pollForm = me.getPollForm();
 					var addPollFriendsList = me.getAddPollFriendsList();
 					var pollDataHelper = PollStar.util.PollData;
-					var poll_data = pollDataHelper.preparePollData(pollForm.getValues(), addPollFriendsList.getSelection());
-					//pollDataHelper.submitPoll(poll_data);
+					var poll_data = pollDataHelper.preparePollData(pollForm.getValues(), 
+						addPollFriendsList.getSelection());
+					pollDataHelper.submitPoll(poll_data);
 
 				}
 			},

@@ -84,7 +84,7 @@ Ext.define('PollStar.controller.LandingPageController', {
                     //console.log(Ext.ux.parse.data.ParseConnector.getRequiredHeaders());
                     //console.log(Ext.ux.parse.util.File);
                     console.log('here in cam');
-                    //me.imagePicked();
+                    me.switchToAddPollView();
                 }
             }
         }

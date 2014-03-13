@@ -8,7 +8,7 @@ Ext.define('PollStar.view.UsersList', {
     config: {
         //store: 'usersStore',
         grouped: true,
-        onItemDisclosure: true,
+        //onItemDisclosure: true,
         cls: 'user-list',
         items: [{
             xtype: 'searchfield',
@@ -20,6 +20,16 @@ Ext.define('PollStar.view.UsersList', {
         	disclose: function(list, record, target, index, e, eOpts){
         		hello_div = e;
         		console.log(index, record, e.target);
+        	},
+        	itemtap: function(list, index, target, record, e, eOpts){
+        		//console.log(index, record, e.target, target);
+        		//targetGlobal = target;
+        		//e.preventDefault();
+        		console.log(target);
+        		if(e.getTarget('[data-icon="U&"]')){
+        			console.log("Add record");
+        			return false;
+        		}
         	}
         }
     },
@@ -27,7 +37,7 @@ Ext.define('PollStar.view.UsersList', {
         //console.log(PollStar.util.Templates.pollList());
         var me = this;
         element = me;
-        console.log('element', me.element);
+        //console.log('element', me.element);
         me.setItemTpl(Ext.select('#tpl_user_list').elements[0].innerHTML);
         me.setStore('usersStore');
         me.callParent(arguments);

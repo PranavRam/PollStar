@@ -2,14 +2,17 @@ Ext.define('PollStar.util.ImageUpload', {
     singleton: true,
     uploadFile: function(image_uri, image_name) {
         var me = this;
+        var savedFile;
         me.convertImgToBase64(image_uri, function(base64Img) {
-        		var file = new Parse.File("Pranav.jpg", { base64: base64Img });
+        		var file = new Parse.File("PranavR.jpg", { base64: base64Img });
         		file.save().then(function(){
         			console.log("Success saving image", file.name());
+                    savedFile = file;
         		}, function(error){
         			console.log("Error Saving Image", error);
         		});
         });
+        return savedFile;
     },
     convertImgToBase64: function(url, callback, outputFormat) {
         var canvas = document.createElement('CANVAS');
