@@ -16,18 +16,24 @@ Ext.define('PollStar.util.PollData', {
     	poll_data.participants = friends;
     	return poll_data;
     },
- 		submitPoll: function(poll_data){
+ 		submitPoll: function(poll_data, callback){
  			var Poll = Parse.Object.extend('Poll');
  			var poll = new Poll();
- 			var relation = poll.relation("participants");
+ 			//var relation = poll.relation("participants");
 
  			poll.set('question', poll_data.question);
  			poll.set('options', poll_data.options);
  			poll.set('image', poll_data.image);
  			poll.set('owner', poll_data.owner);
- 			relation.add(poll_data.participants);
- 			poll.save();
-
+ 			poll.set('participants', poll_data.participants);
+ 			//relation.add(poll_data.participants);
+ 			poll.save().then(function(){
+ 				callback.success.call();
+ 			}, function(error){
+ 				callback.failure.call();
+ 			});
+			//callback.success.call();
+ 			
  		}/*,
     submitPollAjax: function(poll_data) {
         Ext.ux.parse.ParseAjax.request({

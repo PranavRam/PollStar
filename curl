@@ -1,0 +1,103 @@
+curl -X GET \
+  -H "X-Parse-Application-Id: TiXE1VVZv2QrUJTyJsXlZQ4MhnoygRXJRIxTjk26" \
+  -H "X-Parse-REST-API-Key: MQGUH1VVnC4aTIaVCxs9fYGfjkni9fKhwizJ8CbR" \
+  -G \
+  --data-urlencode 'where={"$or":[{"participants":{"$inQuery":{"where":{"objectId":"UO2sjYOKjp"},"className":"_User"}}},{"owner":{"__type":"Pointer","className":"_User","objectId":"uqyrfUihFH"}}]}' \
+  https://api.parse.com/1/classes/Poll
+
+
+  {
+    "$or": [
+        "participants": {
+            "$inQuery": {
+                "where": {
+                    "objectId": "UO2sjYOKjp"
+                },
+                "className": "_User"
+            }
+        },
+        {
+            "objectId": "pP5AQ082Oz"
+        }
+    ]
+}
+
+curl -X GET \
+  -H "X-Parse-Application-Id: TiXE1VVZv2QrUJTyJsXlZQ4MhnoygRXJRIxTjk26" \
+  -H "X-Parse-REST-API-Key: MQGUH1VVnC4aTIaVCxs9fYGfjkni9fKhwizJ8CbR" \
+  -G \
+  --data-urlencode 'where={"owner":{"__type":"Pointer","className":"_User","objectId":"8TOXdXf3tz"}}' \
+  https://api.parse.com/1/classes/Poll
+
+  curl -X GET \
+  -H "X-Parse-Application-Id: TiXE1VVZv2QrUJTyJsXlZQ4MhnoygRXJRIxTjk26" \
+  -H "X-Parse-REST-API-Key: MQGUH1VVnC4aTIaVCxs9fYGfjkni9fKhwizJ8CbR" \
+  -G \
+  --data-urlencode 'where={"$relatedTo":{"object":{"__type":"Pointer","className":"_User","objectId":"uqyrfUihFH"},"key":"friends"}}' \
+  https://api.parse.com/1/users
+
+var query = new Parse.Query(Parse.User);
+query.equalTo("username", "Pranav Ram");
+query.find({
+success: function(users) { pranav = users[0] }});
+var friends = pranav.relation("friends");
+
+var viral = Parse.Object.extend("User")
+var query = new Parse.Query(User)
+query.get("fBSxRaBSHA", {
+success: function(user) { viral = user; }});
+
+curl -X GET \
+  -H "X-Parse-Application-Id: TiXE1VVZv2QrUJTyJsXlZQ4MhnoygRXJRIxTjk26" \
+  -H "X-Parse-REST-API-Key: MQGUH1VVnC4aTIaVCxs9fYGfjkni9fKhwizJ8CbR" \
+  -G \
+  --data-urlencode 'order=-createdAt' \
+  --data-urlencode 'limit=10' \
+  --data-urlencode 'include=participants' \
+  https://api.parse.com/1/classes/Poll
+
+
+Héctor Ramos
+Parser
+over 1 year ago
+Did you try the following format?
+
+curl -X GET \
+  -H "X-Parse-Application-Id: TiXE1VVZv2QrUJTyJsXlZQ4MhnoygRXJRIxTjk26" \
+  -H "X-Parse-REST-API-Key: MQGUH1VVnC4aTIaVCxs9fYGfjkni9fKhwizJ8CbR" \
+  -G \
+   --data-urlencode 'where={"$relatedTo":{"object":{"__type":"Pointer","className":"Poll","objectId":"Fvzw1L6i5B"},"key":"participants"}}' \
+   https://api.parse.com/1/users
+
+curl -X GET \
+  -H "X-Parse-Application-Id: TiXE1VVZv2QrUJTyJsXlZQ4MhnoygRXJRIxTjk26" \
+  -H "X-Parse-REST-API-Key: MQGUH1VVnC4aTIaVCxs9fYGfjkni9fKhwizJ8CbR" \
+  -G \
+  --data-urlencode 'where={"participants":{"$inQuery":{"where":{"objectId": "UO2sjYOKjp"},"className":"_User"}}}' \
+  https://api.parse.com/1/classes/Poll
+
+curl -X GET \
+  -H "X-Parse-Application-Id: TiXE1VVZv2QrUJTyJsXlZQ4MhnoygRXJRIxTjk26" \
+  -H "X-Parse-REST-API-Key: MQGUH1VVnC4aTIaVCxs9fYGfjkni9fKhwizJ8CbR" \
+  -G \
+  --data-urlencode 'where={"owner":{"__type":"Pointer","className":"_User","objectId":"UO2sjYOKjp"}}' \
+  https://api.parse.com/1/classes/Poll
+
+curl -X GET \
+  -H "X-Parse-Application-Id: TiXE1VVZv2QrUJTyJsXlZQ4MhnoygRXJRIxTjk26" \
+  -H "X-Parse-REST-API-Key: MQGUH1VVnC4aTIaVCxs9fYGfjkni9fKhwizJ8CbR" \
+  -G \
+  --data-urlencode 'order=-createdAt' \
+  --data-urlencode 'limit=10' \
+  --data-urlencode 'include=participants' \
+  https://api.parse.com/1/classes/Poll
+
+Get all polls participating in
+curl -X GET \
+  -H "X-Parse-Application-Id: TiXE1VVZv2QrUJTyJsXlZQ4MhnoygRXJRIxTjk26" \
+  -H "X-Parse-REST-API-Key: MQGUH1VVnC4aTIaVCxs9fYGfjkni9fKhwizJ8CbR" \
+  -G \
+  --data-urlencode 'where={"participants":{"$inQuery":{"where":{"objectId":"fBSxRaBSHA"},"className":"_User"}}}' \
+  --data-urlencode 'include=participants' \
+  --data-urlencode 'include=owner' \
+  https://api.parse.com/1/classes/Poll

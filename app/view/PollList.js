@@ -8,23 +8,27 @@ Ext.define('PollStar.view.PollList', {
         items: [{
             xtype: 'searchfield',
             scrollDock: 'top',
+            hidden: true,
             //docked: 'top',
             placeHolder: 'Search'
         }]
     },
     initialize: function() {
         //console.log(PollStar.util.Templates.pollList());
+        console.log('init');
         var me = this;
         me.setItemTpl(Ext.select('#tpl_poll_list').elements[0].innerHTML);
         me.setStore('pollsStore');
-        //me.on('painted', me.setListScroller, me);
         me.callParent(arguments);
         //me.refresh();
+        //me.setListScroller();
     },
     setListScroller: function() {
-        /*var me = this;
-        me.down('searchfield').setHidden(false);
+        console.log('in scroller');
+        var me = this;
+        //me.down('searchfield').setHidden(false);
         console.log(me.getScrollable().getScroller());
-        me.getScrollable().getScroller().scrollTo(0, 45);*/
+        //debugger;
+        me.getScrollable().getScroller().scrollTo(0, 45);
     }
 });

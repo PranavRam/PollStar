@@ -8,6 +8,9 @@ Ext.define('PollStar.model.Poll', {
         }, {
             name: 'question',
             type: 'string'
+        }, {
+            name: 'owner',
+            type: 'object'
         }],
         idProperty: 'objectId'
     }

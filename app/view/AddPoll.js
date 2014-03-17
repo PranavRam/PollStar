@@ -48,7 +48,7 @@ Ext.define('PollStar.view.AddPoll', {
             layout: 'vbox',
             items: [{
                 xtype: 'image',
-                src: 'resources/startup/Moon.jpg',
+                src: 'resources/images/Moon.jpg',
                 flex: 1,
                 itemId: 'addPollImage'
             }, {
@@ -65,7 +65,8 @@ Ext.define('PollStar.view.AddPoll', {
                     items: [{
                         xtype: 'textfield',
                         name: 'question',
-                        label: 'Question'
+                        placeHolder: 'Question'
+                        //label: 'Question'
                     }, {
                         xtype: 'sliderfield',
                         label: 'Option Count',
@@ -75,12 +76,14 @@ Ext.define('PollStar.view.AddPoll', {
                     }, {
                         xtype: 'textfield',
                         name: 'options',
-                        label: 'Option 1',
+                        // label: 'Option 1',
+                        placeHolder: 'Option 1',
                         action: 'optionsSlider'
                     }, {
                         xtype: 'textfield',
                         name: 'options',
-                        label: 'Option 2',
+                        //label: 'Option 2',
+                        placeHolder: 'Option 2',
                         action: 'optionsSlider'
                     }]
                 }

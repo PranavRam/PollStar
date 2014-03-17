@@ -4,4 +4,4 @@
  * combination of content from app.json, and all required package's package.json
  * files.  Customizations should be placed in app.json.
  */
-{"id":"529db707-7d49-40e5-bb14-5442ab291b96","js":[{"path":"phonegap.js","remote":true},{"path":"touch/sencha-touch.js"},{"path":"bootstrap.js"},{"path":"app.js","update":"delta"},{"path":"resources/js/parse-1.2.17.min.js","update":"delta"}],"css":[{"path":"resources/css/app.css","update":"delta"}]}
+{"id":"529db707-7d49-40e5-bb14-5442ab291b96","js":[{"path":"phonegap.js","remote":true},{"path":"touch/sencha-touch.js"},{"path":"bootstrap.js"},{"path":"app.js","update":"delta"},{"path":"resources/js/parse-1.2.17.min.js","update":"delta"},{"path":"resources/js/canvasResize.js","update":"delta"},{"path":"resources/js/load-image.js","update":"delta"},{"path":"resources/js/load-image-ios.js","update":"delta"}],"css":[{"path":"resources/css/app.css","update":"delta"}]}

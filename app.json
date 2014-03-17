@@ -59,6 +59,18 @@
         {
             "path": "resources/js/parse-1.2.17.min.js",
             "update": "delta"
+        },
+        {
+            "path": "resources/js/canvasResize.js",
+            "update": "delta"
+        },
+        {
+            "path": "resources/js/load-image.js",
+            "update": "delta"
+        },
+        {
+            "path": "resources/js/load-image-ios.js",
+            "update": "delta"
         }
     ],
 

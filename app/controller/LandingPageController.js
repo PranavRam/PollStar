@@ -43,15 +43,28 @@ Ext.define('PollStar.controller.LandingPageController', {
                 tap: function(self, e, eOpts) {
                     var me = this;
 
+                    function success(image_uri){
+                      me.switchToAddPollView(image_uri);
+                    }
+
                     function fail(message) {
                         alert("Failed: " + message);
                     }
-                    navigator.camera.getPicture(me.imagePicked, fail, {
+                    /*navigator.camera.getPicture(me.imagePicked, fail, {
                         quality: 75,
                         destinationType: navigator.camera.DestinationType.FILE_URI,
                         sourceType: navigator.camera.PictureSourceType.CAMERA
-                    });
-                    //console.log('Camera Bitcheszzz');
+                    });*/
+                    if (Ext.device) {
+                        Ext.device.Camera.capture({
+                            success: success,
+                            failure: fail,
+                            quality: 75,
+                            destination: 'file',
+                            source: 'camera',
+                            encoding: 'jpg'
+                        });
+                    }
                 }
             },
             photoLibraryButton: {
@@ -59,6 +72,7 @@ Ext.define('PollStar.controller.LandingPageController', {
                     var me = this;
 
                     function success(image_uri){
+                      //console.log('image data',image_uri);
                       me.switchToAddPollView(image_uri);
                     }
 
@@ -75,7 +89,7 @@ Ext.define('PollStar.controller.LandingPageController', {
                         Ext.device.Camera.capture({
                             success: success,
                             failure: fail,
-                            quality: 75,
+                            quality: 50,
                             destination: 'file',
                             source: 'library',
                             encoding: 'jpg'
@@ -84,7 +98,7 @@ Ext.define('PollStar.controller.LandingPageController', {
                     //console.log(Ext.ux.parse.data.ParseConnector.getRequiredHeaders());
                     //console.log(Ext.ux.parse.util.File);
                     console.log('here in cam');
-                    me.switchToAddPollView();
+                    //me.switchToAddPollView();
                 }
             }
         }
@@ -100,8 +114,9 @@ Ext.define('PollStar.controller.LandingPageController', {
         Ext.Viewport.add(addPollView);
         //Ext.Viewport.animateActiveItem(addPollView, me.getAnims().flip);
         //console.log('before setting iamge');
+        //console.log(image_uri);
         //addPollViewImage.setSrc("data:image/jpeg;base64," + image_data);
-        //addPollViewImage.setSrc(image_uri);
+        addPollViewImage.setSrc(image_uri);
         //console.log('in switching');
         addPollView.show();
     }
