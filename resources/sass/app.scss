@@ -97,6 +97,11 @@ $iosBlue: #157efb;
 .userList-div img, .friendsList-div img {
 	border-radius: 50%;
 }
+
+.cancelActionSheetLabel {
+	@extend .x-button-label;
+	margin-left: 1.5em;
+}
 // .user-list .x-list-disclosure {
 // 	right: 1em !important;
 // 	&:before{

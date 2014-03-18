@@ -13,7 +13,7 @@ Ext.define('PollStar.view.ImageSelectionSheet', {
             action: 'activateCamera'
         }, {
             text: 'Cancel',
-            margin: '0 0 0 1.5em',
+            labelCls: 'cancelActionSheetLabel',
             listeners: {
                 tap: function(cBtn, e, eOpts) {
                     this.up('#imageselectionsheet').hide();
