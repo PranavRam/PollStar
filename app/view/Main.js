@@ -1,34 +1,35 @@
 Ext.define('PollStar.view.Main', {
-    extend: 'Ext.Container',
+    extend: 'Ext.navigation.View',
     xtype: 'main',
     requires: [
         'Ext.Toolbar',
         'PollStar.view.PollList'
     ],
     config: {
-      layout: 'vbox',
-        items: [{
-            xtype: 'toolbar',
+        navigationBar: {
             docked: 'top',
-            title: 'PollStar',
+            layout: {
+                type: 'fit'
+            },
             items: [{
-              xtype: 'button',
-              iconCls: 'camera',
-              action: 'activateCamera'
+                xtype: 'button',
+                iconCls: 'add',
+                action: 'activateImageSelect'
+            }, /*{
+                xtype: 'button',
+                iconCls: 'photos',
+                action: 'activatePhotoLibrary'
+            },*/ {
+                xtype: 'spacer'
             }, {
-              xtype: 'button',
-              iconCls: 'photos',
-              action: 'activatePhotoLibrary'
-            }, {
-              xtype: 'spacer'
-            },  {
-              xtype: 'button',
-              iconCls: 'user',
-              action: 'navToUsers'
+                xtype: 'button',
+                iconCls: 'user',
+                action: 'navToUsers'
             }]
-        }, {
+        },
+        items: [{
           xtype: 'pollList',
-          flex: 1
+          title: 'PollStar'
         }]
     }
 });

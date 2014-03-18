@@ -2,6 +2,7 @@ Ext.define('PollStar.controller.LandingPageController', {
     extend: 'Ext.app.Controller',
     requires: [
         'PollStar.view.AddPoll',
+        'PollStar.view.ImageSelectionSheet',
         'Ext.util.DelayedTask'
     ],
     config: {
@@ -21,15 +22,36 @@ Ext.define('PollStar.controller.LandingPageController', {
             }
         },
         refs: {
+            mainNavView: 'main',
             cameraButton: 'button[action=activateCamera]',
+            addPollBtn: 'button[action=activateImageSelect]',
             photoLibraryButton: 'button[action=activatePhotoLibrary]',
             navToUsersBtn: 'button[action=navToUsers]',
             addPollView: 'addPollView',
             addPollViewImage: 'image[itemId=addPollImage]',
-            pollList: 'pollsList',
-            friendsMainView: 'friendsMain'
+            pollList: 'pollList',
+            friendsMainView: 'friendsMain',
+            imageSelectionSheet: '#imageselectionsheet'
         },
         control: {
+            addPollBtn: {
+                tap: function(btn, e, eOpts) {
+                    var actionSheet = this.getImageSelectionSheet();
+                    if (!actionSheet) {
+                        actionSheet = Ext.create('PollStar.view.ImageSelectionSheet');
+                        Ext.Viewport.add(actionSheet);
+                    }
+                    actionSheet.show();
+                }
+            },
+            pollList: {
+                itemtap: function(list, index, target, record, e, eOpts) {
+                    var me = this;
+                    var mainNavView = me.getMainNavView();
+                    var loginView = Ext.create('PollStar.view.Login');
+                    mainNavView.push(loginView);
+                }
+            },
             navToUsersBtn: {
                 tap: function(btn, e, eOpts) {
                     var me = this;
@@ -42,66 +64,52 @@ Ext.define('PollStar.controller.LandingPageController', {
             cameraButton: {
                 tap: function(self, e, eOpts) {
                     var me = this;
-
-                    function success(image_uri){
-                      me.switchToAddPollView(image_uri);
-                    }
-
-                    function fail(message) {
-                        alert("Failed: " + message);
-                    }
-                    /*navigator.camera.getPicture(me.imagePicked, fail, {
-                        quality: 75,
-                        destinationType: navigator.camera.DestinationType.FILE_URI,
-                        sourceType: navigator.camera.PictureSourceType.CAMERA
-                    });*/
-                    if (Ext.device) {
-                        Ext.device.Camera.capture({
-                            success: success,
-                            failure: fail,
-                            quality: 75,
-                            destination: 'file',
-                            source: 'camera',
-                            encoding: 'jpg'
-                        });
-                    }
+                    me.selectImage('camera')
                 }
             },
             photoLibraryButton: {
                 tap: function(self, e, eOpts) {
                     var me = this;
-
-                    function success(image_uri){
-                      //console.log('image data',image_uri);
-                      me.switchToAddPollView(image_uri);
-                    }
-
-                    function fail(message) {
-                        alert("Failed: " + message);
-                    }
-
-                    /*navigator.camera.getPicture(me.imagePicked, fail, {
-                        quality: 75,
-                        destinationType: navigator.camera.DestinationType.FILE_URI,
-                        sourceType: navigator.camera.PictureSourceType.PHOTOLIBRARY
-                    });*/
-                    if (Ext.device) {
-                        Ext.device.Camera.capture({
-                            success: success,
-                            failure: fail,
-                            quality: 50,
-                            destination: 'file',
-                            source: 'library',
-                            encoding: 'jpg'
-                        });
-                    }
-                    //console.log(Ext.ux.parse.data.ParseConnector.getRequiredHeaders());
-                    //console.log(Ext.ux.parse.util.File);
-                    console.log('here in cam');
+                    
+                    me.selectImage('library')
                     //me.switchToAddPollView();
                 }
             }
         }
+    },
+    selectImage: function(source) {
+        var me = this;
+        var actionSheet = me.getImageSelectionSheet();
+        actionSheet.hide();
+
+        function success(image_uri) {
+            //console.log('image data',image_uri);
+            me.switchToAddPollView(image_uri);
+        }
+
+        function fail(message) {
+            alert("Failed: " + message);
+        }
+
+        /*navigator.camera.getPicture(me.imagePicked, fail, {
+            quality: 75,
+            destinationType: navigator.camera.DestinationType.FILE_URI,
+            sourceType: navigator.camera.PictureSourceType.PHOTOLIBRARY
+        });*/
+        if (Ext.device) {
+            Ext.device.Camera.capture({
+                success: success,
+                failure: fail,
+                quality: 75,
+                destination: 'file',
+                source: source,
+                encoding: 'jpg'
+            });
+        }
+        //console.log(Ext.ux.parse.data.ParseConnector.getRequiredHeaders());
+        //console.log(Ext.ux.parse.util.File);
+        console.log('here in cam');
+        me.switchToAddPollView();
     },
     switchToAddPollView: function(image_uri) {
         //console.log('in switch', image_uri);

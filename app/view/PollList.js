@@ -8,7 +8,6 @@ Ext.define('PollStar.view.PollList', {
         items: [{
             xtype: 'searchfield',
             scrollDock: 'top',
-            hidden: true,
             //docked: 'top',
             placeHolder: 'Search'
         }]
@@ -21,7 +20,7 @@ Ext.define('PollStar.view.PollList', {
         me.setStore('pollsStore');
         me.callParent(arguments);
         //me.refresh();
-        me.setListScroller();
+        //me.setListScroller();
     },
     setListScroller: function() {
         console.log('in scroller');
