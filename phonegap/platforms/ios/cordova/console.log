@@ -949,3 +949,7 @@
 2014-03-17 23:21:26.560 PollStar[39431:a0b] Resetting plugins due to page load.
 2014-03-17 23:21:33.698 PollStar[39431:a0b] Finished load of: file:///Users/pranavram/Library/Application%20Support/iPhone%20Simulator/7.0/Applications/9BC1C70B-702D-40D2-9115-CA07687AFF16/PollStar.app/www/index.html
 2014-03-17 23:23:47.821 PollStar[39431:a0b] THREAD WARNING: ['Camera'] took '64.844727' ms. Plugin should use a background thread.
+2014-03-18 13:44:46.952 PollStar[42392:a0b] Multi-tasking -> Device: YES, App: YES
+2014-03-18 13:44:47.000 PollStar[42392:a0b] Unlimited access to network resources
+2014-03-18 13:44:47.669 PollStar[42392:a0b] Resetting plugins due to page load.
+2014-03-18 13:44:48.086 PollStar[42392:a0b] Finished load of: file:///Users/pranavram/Library/Application%20Support/iPhone%20Simulator/7.0/Applications/9BC1C70B-702D-40D2-9115-CA07687AFF16/PollStar.app/www/index.html

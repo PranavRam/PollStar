@@ -21,12 +21,12 @@ Ext.define('PollStar.view.PollList', {
         me.setStore('pollsStore');
         me.callParent(arguments);
         //me.refresh();
-        //me.setListScroller();
+        me.setListScroller();
     },
     setListScroller: function() {
         console.log('in scroller');
         var me = this;
-        //me.down('searchfield').setHidden(false);
+        me.down('searchfield').setHidden(false);
         console.log(me.getScrollable().getScroller());
         //debugger;
         me.getScrollable().getScroller().scrollTo(0, 45);

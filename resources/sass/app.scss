@@ -89,6 +89,14 @@ $iosBlue: #157efb;
 	right: 0.4em;
 	top: 0.05em;
 }
+
+.x-list-item {
+	background-color: RGB(234, 244, 246);
+}
+
+.userList-div img, .friendsList-div img {
+	border-radius: 50%;
+}
 // .user-list .x-list-disclosure {
 // 	right: 1em !important;
 // 	&:before{
