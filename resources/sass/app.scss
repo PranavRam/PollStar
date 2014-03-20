@@ -25,6 +25,9 @@
 
 $lightred: #ff0000;
 $iosBlue: #157efb;
+$lightPurple: RGB(158, 106, 144);
+$lightBlue: RGB(234, 244, 246);
+$lightTeal: RGB(91, 183, 177);
 
 .pollList-list-item {
     background: #ddd;
@@ -91,7 +94,7 @@ $iosBlue: #157efb;
 }
 
 .x-list-item {
-	background-color: RGB(234, 244, 246);
+	background-color: $lightBlue;
 }
 
 .userList-div img, .friendsList-div img {
@@ -102,6 +105,54 @@ $iosBlue: #157efb;
 	@extend .x-button-label;
 	margin-left: 1.5em;
 }
+
+.poll-detail-form .x-form-fieldset-title {
+	text-align: center;
+}
+
+.poll-detail-form {
+	margin-top: -1em;
+}
+
+.purple-right-indicator {
+	text-align: center;
+	font-size: 1.5em;
+	color: white;
+	background-color: $lightPurple;
+	font-family: 'Pictos' !important;
+	//content: attr(data-icon);
+	.x-inner {
+		.x-innerhtml {
+			//font-size: 3em;
+		}
+		top: 45% !important;
+	}
+}
+
+.green-left-indicator {
+	text-align: center;
+	font-size: 1.5em;
+	color: white;
+	background-color: $lightTeal;
+	font-family: 'Pictos' !important;
+	//content: attr(data-icon);
+	.x-inner {
+		.x-innerhtml {
+			//font-size: 3em;
+		}
+		top: 45% !important;
+	}
+}
+
+.poll-detail-image {
+	// needs latest Compass, add '@import "compass"' to your scss
+	// background-color: #5bb7b1; // Old browsers
+	// @include filter-gradient(#5bb7b1, #9e6a90, horizontal); // IE6-9
+	// content: attr(data-url);
+	//@include background-image(url(data-url), linear-gradient(left,  #5bb7b1 0%,#9e6a90 100%));
+
+}
+
 // .user-list .x-list-disclosure {
 // 	right: 1em !important;
 // 	&:before{

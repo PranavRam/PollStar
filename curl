@@ -98,6 +98,5 @@ curl -X GET \
   -H "X-Parse-REST-API-Key: MQGUH1VVnC4aTIaVCxs9fYGfjkni9fKhwizJ8CbR" \
   -G \
   --data-urlencode 'where={"participants":{"$inQuery":{"where":{"objectId":"fBSxRaBSHA"},"className":"_User"}}}' \
-  --data-urlencode 'include=participants' \
-  --data-urlencode 'include=owner' \
+  --data-urlencode 'include=participants,owner' \
   https://api.parse.com/1/classes/Poll

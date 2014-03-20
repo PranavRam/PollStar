@@ -3,13 +3,20 @@ Ext.define('PollStar.model.Poll', {
     config: {
         fields: [{
             name: 'objectId',
-            type: 'auto',
+            type: 'string',
             persist: 'false'
         }, {
             name: 'question',
             type: 'string'
         }, {
+            name: 'options'
+        }, {
             name: 'owner',
+            type: 'object'
+        }, {
+            name: 'participants'
+        }, {
+            name: 'image',
             type: 'object'
         }],
         idProperty: 'objectId'

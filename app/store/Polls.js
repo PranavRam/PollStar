@@ -11,7 +11,7 @@ Ext.define('PollStar.store.Polls', {
 
         proxy: {
             type: 'parse',
-            url: 'https://api.parse.com/1/classes/Poll?order=-updatedAt&include=owner&include=participants'
+            url: 'https://api.parse.com/1/classes/Poll?order=-updatedAt&include=participants,owner'
         }
     }
 

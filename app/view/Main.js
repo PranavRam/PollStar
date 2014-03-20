@@ -6,6 +6,7 @@ Ext.define('PollStar.view.Main', {
         'PollStar.view.PollList'
     ],
     config: {
+        autoDestroy: true,
         navigationBar: {
             docked: 'top',
             layout: {

@@ -3,6 +3,7 @@ Ext.define('PollStar.controller.LandingPageController', {
     requires: [
         'PollStar.view.AddPoll',
         'PollStar.view.ImageSelectionSheet',
+        'PollStar.view.PollDetail',
         'Ext.util.DelayedTask'
     ],
     config: {
@@ -48,8 +49,11 @@ Ext.define('PollStar.controller.LandingPageController', {
                 itemtap: function(list, index, target, record, e, eOpts) {
                     var me = this;
                     var mainNavView = me.getMainNavView();
-                    var loginView = Ext.create('PollStar.view.Login');
-                    mainNavView.push(loginView);
+                    //var image = record.get('image').url;
+                    var pollDetail = Ext.create('PollStar.view.PollDetail',{
+                        record: record
+                    });
+                    mainNavView.push(pollDetail);
                 }
             },
             navToUsersBtn: {
@@ -109,7 +113,7 @@ Ext.define('PollStar.controller.LandingPageController', {
         //console.log(Ext.ux.parse.data.ParseConnector.getRequiredHeaders());
         //console.log(Ext.ux.parse.util.File);
         console.log('here in cam');
-        me.switchToAddPollView();
+        //me.switchToAddPollView();
     },
     switchToAddPollView: function(image_uri) {
         //console.log('in switch', image_uri);
