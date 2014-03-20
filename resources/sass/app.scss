@@ -144,15 +144,23 @@ $lightTeal: RGB(91, 183, 177);
 	}
 }
 
-.poll-detail-image {
+.poll-detail-image-background, .poll-detail-chart-background {
 	// needs latest Compass, add '@import "compass"' to your scss
-	// background-color: #5bb7b1; // Old browsers
-	// @include filter-gradient(#5bb7b1, #9e6a90, horizontal); // IE6-9
-	// content: attr(data-url);
-	//@include background-image(url(data-url), linear-gradient(left,  #5bb7b1 0%,#9e6a90 100%));
-
+	background-color: #5bb7b1; // Old browsers
+	//@include filter-gradient(#5bb7b1, #9e6a90, horizontal); // IE6-9
+	@include background-image(linear-gradient(left,  #5bb7b1 0%,#9e6a90 100%));
+	
 }
 
+.nv-legend-text {
+	fill: white;
+}
+// .poll-detail-chart-background {
+// 	// needs latest Compass, add '@import "compass"' to your scss
+// 	background-color: #5bb7b1; // Old browsers
+// 	@include filter-gradient(#5bb7b1, #9e6a90, horizontal); // IE6-9
+// 	@include background-image(linear-gradient(left,  #5bb7b1 0%,#9e6a90 100%));
+// }
 // .user-list .x-list-disclosure {
 // 	right: 1em !important;
 // 	&:before{

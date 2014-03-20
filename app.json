@@ -61,17 +61,29 @@
             "update": "delta"
         },
         {
-            "path": "resources/js/canvasResize.js",
-            "update": "delta"
-        },
-        {
             "path": "resources/js/load-image.js",
             "update": "delta"
         },
         {
             "path": "resources/js/load-image-ios.js",
             "update": "delta"
-        }
+        },
+        {
+            "path": "resources/js/d3.v3.js",
+            "update": "delta"
+        },
+        {
+            "path": "resources/js/nv.d3.min.js",
+            "update": "delta"
+        }/*,
+        {
+            "path": "resources/js/utils.js",
+            "update": "delta"
+        },
+        {
+            "path": "resources/js/pie.js",
+            "update": "delta"
+        }*/
     ],
 
     /**
@@ -91,6 +103,10 @@
      *      }
      */
     "css": [
+        {
+            "path": "resources/css/nv.d3.min.css",
+            "update": "delta"
+        },
         {
             "path": "resources/css/app.css",
             "update": "delta"

@@ -679,6 +679,7 @@ Ext.ClassManager.addNameAlternateMappings({
   "PollStar.view.ImageSelectionSheet": [],
   "PollStar.view.Login": [],
   "PollStar.view.Main": [],
+  "PollStar.view.PieChart": [],
   "PollStar.view.PollDetail": [],
   "PollStar.view.PollList": [],
   "PollStar.view.UsersList": []
@@ -1443,6 +1444,9 @@ Ext.ClassManager.addNameAliasMappings({
   ],
   "PollStar.view.Main": [
     "widget.main"
+  ],
+  "PollStar.view.PieChart": [
+    "widget.piechart"
   ],
   "PollStar.view.PollDetail": [],
   "PollStar.view.PollList": [
