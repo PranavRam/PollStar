@@ -77,6 +77,14 @@
             "update": "delta"
         },
         {
+            "path": "resources/js/load-image-exif.js",
+            "update": "delta"
+        },
+        {
+            "path": "resources/js/load-image-exif-map.js",
+            "update": "delta"
+        },
+        {
             "path": "resources/js/d3.v3.js",
             "update": "delta"
         },

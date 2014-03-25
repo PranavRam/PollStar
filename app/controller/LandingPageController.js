@@ -56,7 +56,7 @@ Ext.define('PollStar.controller.LandingPageController', {
                         record: record,
                         title: Ext.util.Format.ellipsis(record.get('question'), 15)
                     }); */
-                    
+
                     console.log(record.get('voted'));
                     var pollDetail = Ext.create('PollStar.view.poll_detail.Vote', {
                         record: record,
@@ -106,7 +106,8 @@ Ext.define('PollStar.controller.LandingPageController', {
 
         function success(image_uri) {
             //console.log('image data',image_uri);
-            me.switchToAddPollView(image_uri);
+            console.log('before image blb');
+            me.getImageBlob(image_uri);
         }
 
         function fail(message) {
@@ -131,7 +132,7 @@ Ext.define('PollStar.controller.LandingPageController', {
         //console.log(Ext.ux.parse.data.ParseConnector.getRequiredHeaders());
         //console.log(Ext.ux.parse.util.File);
         console.log('here in cam');
-        //me.switchToAddPollView();
+        // me.getImageBlob('resources/images/2.JPG');
     },
     switchToAddPollView: function(image_uri) {
         //console.log('in switch', image_uri);
@@ -149,5 +150,55 @@ Ext.define('PollStar.controller.LandingPageController', {
         addPollViewImage.setSrc(image_uri);
         //console.log('in switching');
         addPollView.show();
+    },
+    getImageBlob: function(image_uri) {
+        console.log(image_uri);
+        console.log('in image blob');
+        var me = this;
+        var xhr = new XMLHttpRequest();
+        xhr.open('GET', image_uri, true);
+        xhr.responseType = 'blob';
+
+        xhr.onreadystatechange = function() {
+            console.log('loaded image file');
+            if (xhr.readyState == 4 && xhr.status == 200) {
+                // Note: .response instead of .responseText
+                //var blob = new Blob([this.response], {type: 'image/jpeg'});
+                var imageBlob = this.response;
+                console.log('loaded image blob');
+                loadImage.parseMetaData(
+                    imageBlob,
+                    function(data) {
+                        if (!data.imageHead) {
+                            return;
+                        }
+                        // Combine data.imageHead with the image body of a resized file
+                        // to create scaled images with the original image meta data, e.g.:
+                        var orientation = data.exif.get('Orientation');
+                        console.log('after orientation');
+                        loadImage(
+                            imageBlob,
+                            function(img) {
+                                var imgData = img.toDataURL("image/jpeg");
+                                console.log(orientation);
+                                console.log(imgData);
+                                me.switchToAddPollView(imgData);
+                            }, {
+                                maxWidth: 640,
+                                maxHeight: 640,
+                                canvas: true,
+                                orientation: orientation
+                            }
+                        );
+                    }, {
+                        maxMetaDataSize: 262144,
+                        disableImageHead: false
+                    }
+                );
+
+            }
+        };
+
+        xhr.send();
     }
 });

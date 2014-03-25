@@ -73,9 +73,9 @@ Ext.application({
         function showScreen() {
             Ext.Viewport.add([
                 //Ext.create('PollStar.view.Login'),
-                /*Ext.create('PollStar.view.Main'),
-                Ext.create('PollStar.view.FriendsMain')*/
-                Ext.create('PollStar.view.AddPoll')
+                Ext.create('PollStar.view.Main'),
+                //Ext.create('PollStar.view.FriendsMain')
+                //Ext.create('PollStar.view.AddPoll')
             ]);
         }
         // Destroy the #appLoadingIndicator element

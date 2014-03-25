@@ -11,7 +11,7 @@ Ext.define('PollStar.view.AddPoll', {
     config: {
         //layout: 'vbox',
         //fullscreen: true,
-        //hidden: 'true',
+        hidden: 'true',
         showAnimation: {
             type: 'slideIn',
             duration: 300,
@@ -55,7 +55,7 @@ Ext.define('PollStar.view.AddPoll', {
             }, {
                 xtype: 'formpanel',
                 itemId: 'addPollForm',
-                flex: 3,
+                flex: 2,
                 items: {
                     xtype: 'fieldset',
                     title: 'Poll Questions',

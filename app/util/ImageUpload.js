@@ -48,13 +48,14 @@ Ext.define('PollStar.util.ImageUpload', {
                 callback(data);
             }
         });*/
-        loadImage(
+        /*loadImage(
             url,
             function (img) {
                 var imgData = img.toDataURL("image/jpeg");
                 callback(imgData);
             },
             {maxWidth: 640, maxHeight: 480, canvas: true}
-        );
+        );*/
+        callback(url);
     }
 });
