@@ -69,6 +69,14 @@
             "update": "delta"
         },
         {
+            "path": "resources/js/load-image-orientation.js",
+            "update": "delta"
+        },
+        {
+            "path": "resources/js/load-image-meta.js",
+            "update": "delta"
+        },
+        {
             "path": "resources/js/d3.v3.js",
             "update": "delta"
         },

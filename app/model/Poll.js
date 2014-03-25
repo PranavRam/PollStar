@@ -18,6 +18,11 @@ Ext.define('PollStar.model.Poll', {
         }, {
             name: 'image',
             type: 'object'
+        },{
+            name: 'voted',
+            type: 'string'
+        }, {
+            name: 'results'
         }],
         idProperty: 'objectId'
     }

@@ -85,11 +85,11 @@
 
 <!-- Poll List TPL Info -->
 <script type="text/template" id="tpl_poll_list">
-    <div class="pollList-div">
+    <div class="pollList-div {voted}">
         <img src="resources/images/sencha-avatar-64x64.png" alt=""/>
         <div>
             <p>{question:ellipsis(22, true)}</p>
-            <p><small>{owner.username}</small></p>
+            <p><small><i>{owner.username}</i></small></p>
         </div>
     </div>
 </script>

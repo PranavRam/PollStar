@@ -43,7 +43,8 @@ Ext.application({
     controllers: [
         'LandingPageController',
         'AddPollController',
-        'FriendsPageController'
+        'FriendsPageController',
+        'VoteController'
     ],
 
     icon: {
@@ -69,18 +70,41 @@ Ext.application({
     },
 
     launch: function() {
+        function showScreen() {
+            Ext.Viewport.add([
+                //Ext.create('PollStar.view.Login'),
+                /*Ext.create('PollStar.view.Main'),
+                Ext.create('PollStar.view.FriendsMain')*/
+                Ext.create('PollStar.view.AddPoll')
+            ]);
+        }
         // Destroy the #appLoadingIndicator element
         Ext.fly('appLoadingIndicator').destroy();
         //console.log(Ext.app.parseConfig().applicationId);
         // Initialize Parse
         Parse.initialize("TiXE1VVZv2QrUJTyJsXlZQ4MhnoygRXJRIxTjk26", "bkdRkgavzxlC6z2vZUFoxONuSHhJyoisdXzvKvh7");
-
-        // Initialize the main view
-        Ext.Viewport.add([
+        /*Ext.Viewport.add([
             //Ext.create('PollStar.view.Login'),
             Ext.create('PollStar.view.Main'),
             Ext.create('PollStar.view.FriendsMain')
-        ]);
+        ]);*/
+        var currentUser = Parse.User.current();
+        if (currentUser) {
+          showScreen();
+        } else {
+          console.log('not logged in');
+            Parse.User.logIn("Pranav Ram", "12345", {
+                success: function(user) {
+                    // Do stuff after successful login.
+                    showScreen();
+                },
+                error: function(user, error) {
+                    // The login failed. Check error to see why.
+                }
+            });
+        }
+
+        // Initialize the main view
     },
 
     onUpdated: function() {

@@ -4,6 +4,8 @@ Ext.define('PollStar.controller.LandingPageController', {
         'PollStar.view.AddPoll',
         'PollStar.view.ImageSelectionSheet',
         'PollStar.view.PollDetail',
+        'PollStar.view.poll_detail.Vote',
+        'PollStar.view.poll_detail.Results',
         'Ext.util.DelayedTask'
     ],
     config: {
@@ -50,9 +52,25 @@ Ext.define('PollStar.controller.LandingPageController', {
                     var me = this;
                     var mainNavView = me.getMainNavView();
                     //var image = record.get('image').url;
-                    var pollDetail = Ext.create('PollStar.view.PollDetail',{
-                        record: record
+                    /*var pollDetail = Ext.create('PollStar.view.PollDetail', {
+                        record: record,
+                        title: Ext.util.Format.ellipsis(record.get('question'), 15)
+                    }); */
+                    
+                    console.log(record.get('voted'));
+                    var pollDetail = Ext.create('PollStar.view.poll_detail.Vote', {
+                        record: record,
+                        title: Ext.util.Format.ellipsis(record.get('question'), 15)
                     });
+                    //console.log('parti', record.get('participants'));
+                    /*var pollDetail = Ext.create('PollStar.view.poll_detail.Results', {
+                        record: record,
+                        title: Ext.util.Format.ellipsis(record.get('question'), 15)
+                    });*/
+                    /*Ext.Viewport.setMasked({
+                        xtype: 'loadmask',
+                        message: 'Please Wait...'
+                    });*/
                     mainNavView.push(pollDetail);
                 }
             },
@@ -74,7 +92,7 @@ Ext.define('PollStar.controller.LandingPageController', {
             photoLibraryButton: {
                 tap: function(self, e, eOpts) {
                     var me = this;
-                    
+
                     me.selectImage('library')
                     //me.switchToAddPollView();
                 }
@@ -92,7 +110,7 @@ Ext.define('PollStar.controller.LandingPageController', {
         }
 
         function fail(message) {
-            alert("Failed: " + message);
+            //alert("Failed: " + message);
         }
 
         /*navigator.camera.getPicture(me.imagePicked, fail, {

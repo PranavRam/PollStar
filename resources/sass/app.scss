@@ -28,6 +28,33 @@ $iosBlue: #157efb;
 $lightPurple: RGB(158, 106, 144);
 $lightBlue: RGB(234, 244, 246);
 $lightTeal: RGB(91, 183, 177);
+$flatPurple: RGB(119, 107, 163);
+$pollImgBorder: RGB(229, 223, 88);
+$listVoted: RGB(98, 198, 162);
+
+.pollList-div {
+		padding-left: 1em;
+		height: 60px;
+    background: white;
+    border-bottom: 1px solid #ccc;
+    font-family: "Helvetica Neue";
+    > img {
+    	border: 3px solid #fff; /* stroke */
+    	-moz-border-radius: 43px;
+    	-webkit-border-radius: 43px;
+    	border-radius: 43px; /* border radius */
+    	-moz-background-clip: padding;
+    	-webkit-background-clip: padding-box;
+    	background-clip: padding-box; /* prevents bg color from leaking outside the border */
+    	background-color: #939fab; /* layer fill content */
+    	border-color: $pollImgBorder;
+    }
+}
+
+.pollList-div.voted {
+		color: white;
+    background: $listVoted;
+}
 
 .pollList-list-item {
     background: #ddd;
@@ -114,46 +141,45 @@ $lightTeal: RGB(91, 183, 177);
 	margin-top: -1em;
 }
 
-.purple-right-indicator {
+.poll-detail-results-options {
 	text-align: center;
-	font-size: 1.5em;
-	color: white;
-	background-color: $lightPurple;
-	font-family: 'Pictos' !important;
-	//content: attr(data-icon);
-	.x-inner {
-		.x-innerhtml {
-			//font-size: 3em;
-		}
-		top: 45% !important;
-	}
 }
 
-.green-left-indicator {
-	text-align: center;
-	font-size: 1.5em;
-	color: white;
-	background-color: $lightTeal;
-	font-family: 'Pictos' !important;
-	//content: attr(data-icon);
-	.x-inner {
-		.x-innerhtml {
-			//font-size: 3em;
-		}
-		top: 45% !important;
-	}
+.poll-detail-image-background {
+	background-color: #9e6a90; // Old browsers
+	//@include filter-gradient(#5bb7b1, #9e6a90, horizontal); // IE6-9
+	@include background-image(linear-gradient(left,  #9e6a90 0%,#5bb7b1 100%));
 }
 
-.poll-detail-image-background, .poll-detail-chart-background {
+.poll-detail-chart-background {
 	// needs latest Compass, add '@import "compass"' to your scss
 	background-color: #5bb7b1; // Old browsers
 	//@include filter-gradient(#5bb7b1, #9e6a90, horizontal); // IE6-9
 	@include background-image(linear-gradient(left,  #5bb7b1 0%,#9e6a90 100%));
-	
 }
 
+.poll-detail-image {
+	background-size: 100% !important;
+	height: 100%;
+}
 .nv-legend-text {
 	fill: white;
+}
+
+.poll-detail-results-options .x-form-fieldset-inner {
+	color: white;
+	background: $flatPurple;
+}
+
+.poll-detail-results-label {
+	height: 30px;
+	display: table;
+	vertical-align: middle;
+	margin: auto;
+}
+
+.pie-chart-svg {
+	opacity: 0;
 }
 // .poll-detail-chart-background {
 // 	// needs latest Compass, add '@import "compass"' to your scss

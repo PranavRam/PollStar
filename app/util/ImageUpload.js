@@ -51,7 +51,7 @@ Ext.define('PollStar.util.ImageUpload', {
         loadImage(
             url,
             function (img) {
-                imgData = img.toDataURL("image/jpeg");
+                var imgData = img.toDataURL("image/jpeg");
                 callback(imgData);
             },
             {maxWidth: 640, maxHeight: 480, canvas: true}

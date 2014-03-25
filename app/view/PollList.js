@@ -1,10 +1,14 @@
 Ext.define('PollStar.view.PollList', {
-    extend: 'Ext.dataview.List',
+    extend: 'Ext.dataview.DataView',
     requires: [
         'Ext.field.Search'
     ],
     xtype: 'pollList',
     config: {
+        /*masked: {
+            xtype: 'loadmask',
+            message: 'loading',
+        },*/
         items: [{
             xtype: 'searchfield',
             scrollDock: 'top',

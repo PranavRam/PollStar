@@ -7,6 +7,7 @@ Ext.define('PollStar.view.Main', {
     ],
     config: {
         autoDestroy: true,
+        defaultBackButtonText: 'Polls',
         navigationBar: {
             docked: 'top',
             layout: {

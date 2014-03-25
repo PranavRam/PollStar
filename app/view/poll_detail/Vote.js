@@ -1,14 +1,6 @@
-var css_style;
-Ext.define('PollStar.view.PollDetail', {
+Ext.define('PollStar.view.poll_detail.Vote', {
     extend: 'Ext.Container',
-    requires: [
-        'Ext.Img',
-        'Ext.form.Panel',
-        'Ext.field.Radio',
-        'Ext.form.FieldSet',
-        'Ext.Carousel',
-        'PollStar.view.PieChart'
-    ],
+    xtype: 'polldetailvote',
     config: {
         layout: 'vbox',
         imageUrl: null,
@@ -19,12 +11,8 @@ Ext.define('PollStar.view.PollDetail', {
     },
     initialize: function() {
         var me = this;
-        //console.log(me.getImageUrl());
         me.populateConfig();
         me.addItems();
-        //var record = me.getRecord();
-        //var imageUrl = record.get('image').url;
-        //me.add({xtype: 'piechart', cls: 'poll-detail-chart-background'});
         me.callParent(arguments);
     },
     populateConfig: function() {
@@ -42,13 +30,13 @@ Ext.define('PollStar.view.PollDetail', {
         var me = this;
         //console.log(me.getImageUrl());
         var items = [{
-            xtype: 'carousel',
-            flex: 2,
-            masked: {
-                xtype: 'loadmask',
-                message: 'loading',
-            },
+            flex: 1,
+            layout: 'fit',
             items: [{
+                masked: {
+                    xtype: 'loadmask',
+                    message: 'loading',
+                },
                 cls: 'poll-detail-image-background',
                 items: [{
                     xtype: 'image',
@@ -58,16 +46,13 @@ Ext.define('PollStar.view.PollDetail', {
                         load: function() {
                             console.log('loaddd');
                             //Ext.Viewport.setMasked(false);
-                            this.up('carousel').setMasked(false);
+                            this.up().setMasked(false);
                         },
                         tap: function() {
                             console.log('tapped');
                         }
                     }
                 }]
-            }, {
-                xtype: 'piechart',
-                cls: 'poll-detail-chart-background',
             }]
         }, {
             xtype: 'label',

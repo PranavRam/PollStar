@@ -665,6 +665,7 @@ Ext.ClassManager.addNameAlternateMappings({
   "PollStar.controller.AddPollController": [],
   "PollStar.controller.FriendsPageController": [],
   "PollStar.controller.LandingPageController": [],
+  "PollStar.controller.VoteController": [],
   "PollStar.model.Poll": [],
   "PollStar.model.User": [],
   "PollStar.store.Friends": [],
@@ -682,7 +683,9 @@ Ext.ClassManager.addNameAlternateMappings({
   "PollStar.view.PieChart": [],
   "PollStar.view.PollDetail": [],
   "PollStar.view.PollList": [],
-  "PollStar.view.UsersList": []
+  "PollStar.view.UsersList": [],
+  "PollStar.view.poll_detail.Results": [],
+  "PollStar.view.poll_detail.Vote": []
 });
 Ext.ClassManager.addNameAliasMappings({
   "Ext.AbstractComponent": [],
@@ -1419,6 +1422,7 @@ Ext.ClassManager.addNameAliasMappings({
   "PollStar.controller.AddPollController": [],
   "PollStar.controller.FriendsPageController": [],
   "PollStar.controller.LandingPageController": [],
+  "PollStar.controller.VoteController": [],
   "PollStar.model.Poll": [],
   "PollStar.model.User": [],
   "PollStar.store.Friends": [],
@@ -1454,5 +1458,11 @@ Ext.ClassManager.addNameAliasMappings({
   ],
   "PollStar.view.UsersList": [
     "widget.usersList"
+  ],
+  "PollStar.view.poll_detail.Results": [
+    "widget.polldetailresults"
+  ],
+  "PollStar.view.poll_detail.Vote": [
+    "widget.polldetailvote"
   ]
 });
