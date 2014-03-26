@@ -102,7 +102,7 @@ Ext.define('PollStar.controller.LandingPageController', {
     selectImage: function(source) {
         var me = this;
         var actionSheet = me.getImageSelectionSheet();
-        if(actionSheet) actionSheet.hide();
+        if (actionSheet) actionSheet.hide();
 
         function success(image_uri) {
             //console.log('image data',image_uri);
@@ -153,7 +153,8 @@ Ext.define('PollStar.controller.LandingPageController', {
         addPollView.show();
     },
     getImageBlob: function(image_uri) {
-        console.log(image_uri);
+        var me = this;
+        /*console.log(image_uri);
         console.log('in image blob');
         var me = this;
         var xhr = new XMLHttpRequest();
@@ -200,6 +201,60 @@ Ext.define('PollStar.controller.LandingPageController', {
             }
         };
 
-        xhr.send();
+        xhr.send();*/
+        //var progressIndicator = Ext.create("Ext.ProgressIndicator");
+        console.log('before request')
+        var request = {
+            url: image_uri,
+            responseType: "blob",
+            xhr2: true,
+            //progress: progressIndicator,
+            success: function(response) {
+                console.log(response.responseBytes);
+                me.getImageMetaData(response.responseBytes);
+                
+            },
+            failure: function(response) {
+                if(response.status == 0)
+                    me.getImageMetaData(response.responseBytes);
+                else 
+                    alert('Could not select the image, Please try again');
+            }
+        };
+        //Ext.Viewport.add(progressIndicator);
+        Ext.Ajax.request(request);
+        console.log('request sent');
+    },
+    getImageMetaData: function(blob){
+        var me = this;
+        loadImage.parseMetaData(
+            blob,
+            function(data) {
+                if (!data.imageHead) {
+                    return;
+                }
+                // Combine data.imageHead with the image body of a resized file
+                // to create scaled images with the original image meta data, e.g.:
+                var orientation = data.exif.get('Orientation');
+                console.log('after orientation');
+                loadImage(
+                    blob,
+                    function(img) {
+                        var imgData = img.toDataURL("image/jpeg");
+                        console.log(orientation);
+                        //console.log(imgData);
+                        me.switchToAddPollView(imgData, orientation);
+                    }, {
+                        maxWidth: 640,
+                        maxHeight: 640,
+                        canvas: true,
+                        orientation: orientation
+                    }
+                );
+            }, {
+                maxMetaDataSize: 262144,
+                disableImageHead: false
+            }
+        );
     }
 });
