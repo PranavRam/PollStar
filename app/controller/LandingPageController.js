@@ -102,7 +102,7 @@ Ext.define('PollStar.controller.LandingPageController', {
     selectImage: function(source) {
         var me = this;
         var actionSheet = me.getImageSelectionSheet();
-        actionSheet.hide();
+        if(actionSheet) actionSheet.hide();
 
         function success(image_uri) {
             //console.log('image data',image_uri);
@@ -160,7 +160,7 @@ Ext.define('PollStar.controller.LandingPageController', {
         xhr.responseType = 'blob';
 
         xhr.onreadystatechange = function() {
-            console.log('loaded image file');
+            //console.log('loaded image file');
             if (xhr.readyState == 4 && xhr.status == 200) {
                 // Note: .response instead of .responseText
                 //var blob = new Blob([this.response], {type: 'image/jpeg'});
@@ -180,8 +180,8 @@ Ext.define('PollStar.controller.LandingPageController', {
                             imageBlob,
                             function(img) {
                                 var imgData = img.toDataURL("image/jpeg");
-                                console.log(orientation);
-                                console.log(imgData);
+                                //console.log(orientation);
+                                //console.log(imgData);
                                 me.switchToAddPollView(imgData);
                             }, {
                                 maxWidth: 640,

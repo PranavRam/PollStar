@@ -27,16 +27,29 @@ Ext.define('PollStar.view.UsersList', {
         		//e.preventDefault();
         		console.log(target);
         		if(e.getTarget('[data-icon="U&"]')){
-        			console.log("Add record");
+        			//console.log("Add record");
         			return false;
         		}
-        	}
+        	},
+            itemtouchstart: function(list, index, target, record, e, eOpts ) {
+                //console.log('itemtap start');
+                var target = e.getTarget('[data-icon="U&"]');
+                if (target) {
+                    Ext.fly(target).addCls('x-button-pressed');
+                    //console.log(target);
+                }
+            },
+            itemtouchend: function(list, index, target, record, e, eOpts ) {
+                Ext.fly(e.target).removeCls('x-button-pressed');
+                //console.log(e.target);
+                //target.down('[data-icon="U&"]').removeCls('x-button-pressed');
+                //console.log(target.down('[data-icon="U&"]'));
+            }
         }
     },
     initialize: function(){
         //console.log(PollStar.util.Templates.pollList());
         var me = this;
-        element = me;
         //console.log('element', me.element);
         me.setItemTpl(Ext.select('#tpl_user_list').elements[0].innerHTML);
         me.setStore('usersStore');

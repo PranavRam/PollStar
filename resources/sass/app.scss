@@ -38,7 +38,7 @@ $listVoted: RGB(98, 198, 162);
     background: white;
     border-bottom: 1px solid #ccc;
     font-family: "Helvetica Neue";
-    > img {
+    img {
     	border: 3px solid #fff; /* stroke */
     	-moz-border-radius: 43px;
     	-webkit-border-radius: 43px;
@@ -72,7 +72,7 @@ $listVoted: RGB(98, 198, 162);
 .pollList-div, .userList-div, .friendsList-div {
 	@include flex;
 
-	> img {
+	img {
 		//display: inline-block;
 		margin: 0 10px 0 0;
 		width: 24px;
@@ -180,6 +180,14 @@ $listVoted: RGB(98, 198, 162);
 
 .pie-chart-svg {
 	opacity: 0;
+}
+
+.x-layout-box-item {
+	-webkit-transition : all 100ms ease-in;
+}
+
+.x-button-pressed{
+	opacity: 0.3;
 }
 // .poll-detail-chart-background {
 // 	// needs latest Compass, add '@import "compass"' to your scss

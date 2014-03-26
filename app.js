@@ -20,7 +20,8 @@ Ext.application({
     requires: [
         'Ext.ux.parse.app.Application',
         'Ext.MessageBox',
-        'PollStar.util.ImageUpload'
+        'PollStar.util.ImageUpload',
+        'Ext.Anim'
     ],
     models: [
         'Poll',
@@ -74,7 +75,7 @@ Ext.application({
             Ext.Viewport.add([
                 //Ext.create('PollStar.view.Login'),
                 Ext.create('PollStar.view.Main'),
-                //Ext.create('PollStar.view.FriendsMain')
+                Ext.create('PollStar.view.FriendsMain')
                 //Ext.create('PollStar.view.AddPoll')
             ]);
         }
