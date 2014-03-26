@@ -31,7 +31,7 @@ Ext.define('PollStar.controller.LandingPageController', {
             photoLibraryButton: 'button[action=activatePhotoLibrary]',
             navToUsersBtn: 'button[action=navToUsers]',
             addPollView: 'addPollView',
-            addPollViewImage: 'image[itemId=addPollImage]',
+            addPollViewImage: 'pollimage[itemId=addPollImage]',
             pollList: 'pollList',
             friendsMainView: 'friendsMain',
             imageSelectionSheet: '#imageselectionsheet'
@@ -132,9 +132,9 @@ Ext.define('PollStar.controller.LandingPageController', {
         //console.log(Ext.ux.parse.data.ParseConnector.getRequiredHeaders());
         //console.log(Ext.ux.parse.util.File);
         console.log('here in cam');
-        // me.getImageBlob('resources/images/2.JPG');
+        // me.getImageBlob('resources/images/2.JPG', 0);
     },
-    switchToAddPollView: function(image_uri) {
+    switchToAddPollView: function(image_uri, orientation) {
         //console.log('in switch', image_uri);
         var me = this;
         //console.log('before add poll');
@@ -148,6 +148,7 @@ Ext.define('PollStar.controller.LandingPageController', {
         //console.log(image_uri);
         //addPollViewImage.setSrc("data:image/jpeg;base64," + image_data);
         addPollViewImage.setSrc(image_uri);
+        addPollViewImage.setImageOrientation(orientation);
         //console.log('in switching');
         addPollView.show();
     },
@@ -160,8 +161,8 @@ Ext.define('PollStar.controller.LandingPageController', {
         xhr.responseType = 'blob';
 
         xhr.onreadystatechange = function() {
-            //console.log('loaded image file');
-            if (xhr.readyState == 4 && xhr.status == 200) {
+            //console.log('onreadystate', xhr.readyState, xhr.status);
+            if (xhr.readyState == 4 && (xhr.status == 200 || xhr.status == 0)) {
                 // Note: .response instead of .responseText
                 //var blob = new Blob([this.response], {type: 'image/jpeg'});
                 var imageBlob = this.response;
@@ -180,9 +181,9 @@ Ext.define('PollStar.controller.LandingPageController', {
                             imageBlob,
                             function(img) {
                                 var imgData = img.toDataURL("image/jpeg");
-                                //console.log(orientation);
+                                console.log(orientation);
                                 //console.log(imgData);
-                                me.switchToAddPollView(imgData);
+                                me.switchToAddPollView(imgData, orientation);
                             }, {
                                 maxWidth: 640,
                                 maxHeight: 640,

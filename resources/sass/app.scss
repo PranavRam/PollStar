@@ -186,8 +186,12 @@ $listVoted: RGB(98, 198, 162);
 	-webkit-transition : all 100ms ease-in;
 }
 
-.x-button-pressed{
+.addUser-button-pressed{
 	opacity: 0.3;
+}
+
+.addPollImage {
+	background-size: contain !important;
 }
 // .poll-detail-chart-background {
 // 	// needs latest Compass, add '@import "compass"' to your scss

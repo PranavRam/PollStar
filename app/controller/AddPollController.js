@@ -130,7 +130,19 @@ Ext.define('PollStar.controller.AddPollController', {
                         //console.log(Ext.ComponentQuery.query('textfield[action=optionsSlider]'));
                     }
                 }
+            },
+            'viewport': {
+                //capture the orientation change event
+                orientationchange: 'onOrientationchange'
             }
+        },
+        onOrientationchange: function(viewport, orientation, width, height){
+            console.log(viewport, orientation, width, height);
+            var me = this;
+            var pollView = me.getAddPollView;
+            pollView.getNavigationBar().setHidden(true);
+            pollView.element.dom.style.setProperty('-webkit-transform', "rotate(90deg)");
+
         }
     }
 })

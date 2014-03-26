@@ -35,12 +35,12 @@ Ext.define('PollStar.view.UsersList', {
                 //console.log('itemtap start');
                 var target = e.getTarget('[data-icon="U&"]');
                 if (target) {
-                    Ext.fly(target).addCls('x-button-pressed');
+                    Ext.fly(target).addCls('addUser-button-pressed');
                     //console.log(target);
                 }
             },
             itemtouchend: function(list, index, target, record, e, eOpts ) {
-                Ext.fly(e.target).removeCls('x-button-pressed');
+                Ext.fly(e.target).removeCls('addUser-button-pressed');
                 //console.log(e.target);
                 //target.down('[data-icon="U&"]').removeCls('x-button-pressed');
                 //console.log(target.down('[data-icon="U&"]'));

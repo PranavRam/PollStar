@@ -6,7 +6,8 @@ Ext.define('PollStar.view.AddPoll', {
         'Ext.form.FieldSet',
         'Ext.field.Slider',
         'Ext.Img',
-        'Ext.SegmentedButton'
+        'Ext.SegmentedButton',
+        'PollStar.view.PollImage'
     ],
     config: {
         //layout: 'vbox',
@@ -49,38 +50,11 @@ Ext.define('PollStar.view.AddPoll', {
             layout: 'vbox',
             cls: 'flexboxDiv',
             items: [{
-                xtype: 'image',
+                xtype: 'pollimage',
                 src: 'resources/images/Moon.jpg',
                 flex: 1,
                 itemId: 'addPollImage',
                 cls: 'addPollImage',
-                listeners: {
-                    tap: function(img, e, eOpts){                        
-                        //var formpanel = img.up('addPollView').down('formpanel');
-                        //var navBar = img.up('addPollView').getNavigationBar();
-                        //console.log(formpanel);
-                        if(!img.fullscreen) img.fullscreen = false;
-                        //console.log(img);
-                        if(img.fullscreen){
-                            // formpanel.setHidden(false);
-                            // img.setFlex(1);
-                            //formpanel.setFlex(2);
-                            // formpanel.setHidden(false);
-                            img.element.dom.style.setProperty("height", "0", "important")
-                            img.fullscreen = false;
-                            //navBar.setHidden(false);
-                        }
-                        else {
-                            // formpanel.setHidden(true);
-                            //formpanel.setFlex(0);
-                            //console.log(img.getStyle());
-                            // img.setHeight(window.innerHeight);
-                            img.element.dom.style.setProperty("height", window.innerHeight+"px", "important");
-                            img.fullscreen = true;
-                            //navBar.setHidden(true);
-                        }
-                    }
-                }
             }, {
                 xtype: 'formpanel',
                 cls: 'addPollForm',
