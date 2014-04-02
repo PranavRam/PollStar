@@ -13,6 +13,9 @@
 
 $lightred: #ff0000;
 $iosBlue: #157efb;
+
+$universalBlue: RGB(68, 158, 215);
+
 $lightPurple: RGB(158, 106, 144);
 $lightBlue: RGB(234, 244, 246);
 $lightTeal: RGB(91, 183, 177);
@@ -22,17 +25,29 @@ $listVoted: RGB(98, 198, 162);
 $toolBarBlue: RGB(226, 240, 249);
 $toolBarTextColor: RGB(68, 158, 215);
 
+$list-color-1: RGB(69, 191, 215);
+$list-color-2: RGB(116, 206, 205);
+$list-color-3: $listVoted;
+$list-color-4: RGB(97, 189, 116);
+$list-color-5: RGB(160, 212, 99);
+$list-label-colors: $list-color-1, $list-color-2, $list-color-3, $list-color-4, $list-color-5;
+
 .x-toolbar.x-docked-top {
   padding-top: 20px !important;
   background-color: $toolBarBlue;
 
   .x-title {
   	color: $toolBarTextColor;
-  }
+	}
   .x-button-icon:before {
-  	color: $toolBarTextColor;
+  	color: $universalBlue;
   }
+
 } 
+
+.x-tab.x-tab-active .x-button-icon:before, .x-tab.x-tab-active .x-button-label, .x-tab.x-tab-active .x-badge {
+	color: $universalBlue;
+}
 // Examples of using the icon mixin:
 // @include icon('user');
 @include icon('camera');
@@ -124,7 +139,7 @@ $toolBarTextColor: RGB(68, 158, 215);
 }
 
 .userList-div .x-button-icon {
-	color: $iosBlue;
+	color: $universalBlue;
 	//font-size: 1.5em;
 	right: 0.4em;
 	top: 0.05em;
@@ -138,17 +153,8 @@ $toolBarTextColor: RGB(68, 158, 215);
 	border-radius: 50%;
 }
 
-.cancelActionSheetLabel {
-	@extend .x-button-label;
-	margin-left: 1.5em;
-}
-
-.poll-detail-form .x-form-fieldset-title {
+.x-form-fieldset-title {
 	text-align: center;
-}
-
-.poll-detail-form {
-	margin-top: -1em;
 }
 
 .poll-detail-results-options {
@@ -168,24 +174,24 @@ $toolBarTextColor: RGB(68, 158, 215);
 	@include background-image(linear-gradient(left,  #5bb7b1 0%,#9e6a90 100%));
 }
 
-.poll-detail-image {
+/* .poll-detail-image {
 	background-size: 100% !important;
 	height: 100%;
-}
+} */
 .nv-legend-text {
 	fill: white;
 }
 
 .poll-detail-results-options .x-form-fieldset-inner {
 	color: white;
-	background: $flatPurple;
+	//background: $flatPurple;
 }
 
 .poll-detail-results-label {
-	height: 30px;
-	display: table;
+	//height: 30px;
+	/* display: table;
 	vertical-align: middle;
-	margin: auto;
+	margin: auto; */
 }
 
 .pie-chart-svg {
@@ -209,6 +215,56 @@ $toolBarTextColor: RGB(68, 158, 215);
 	background-size: contain !important;
 	background-position: center;
 	-webkit-transform: rotate(90deg);
+}
+
+/* .poll-detail-results-label:nth-child(1) {
+	color: red;
+} */
+
+.x-field-labeled .x-form-label, .x-input-radio:checked+.x-field-mask:after {
+	color: white !important;
+}
+
+@for $i from 1 through length($list-label-colors) {
+    /* .x-label:nth-child(#{$i}) {
+        background-color: nth($list-label-colors, $i);
+        width: 100%
+    } */
+    .x-field-labeled:nth-child(#{$i}) {
+        background-color: nth($list-label-colors, $i) !important;
+        //width: 100%
+    }
+}
+
+.x-form-fieldset .x-field:before {
+	border-bottom-width: 0px !important;
+}
+.poll-detail-results-label {
+	padding: 1em;
+}
+/* .poll-detail-results-label .checked:before {
+	font-family: 'Pictos' !important;
+	content: '*';
+	//position: absolute;
+	//right: 1em;
+} */
+
+.x-thumb:after {
+	background-color: $universalBlue;
+}
+
+.x-button-label {
+	color: $universalBlue !important;
+}
+
+.x-segmentedbutton .x-button {
+	border: 1px solid $universalBlue !important;
+	&.x-button-pressed {
+		background-color: $universalBlue !important;
+		.x-button-label {
+			color: white !important;
+		}
+	}
 }
 // .poll-detail-chart-background {
 // 	// needs latest Compass, add '@import "compass"' to your scss

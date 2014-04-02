@@ -1,6 +1,9 @@
 Ext.define('PollStar.view.poll_detail.Results', {
     extend: 'Ext.Carousel',
     xtype: 'polldetailresults',
+    requires: [
+      'PollStar.view.PollImage'
+    ],
     config: {
         imageUrl: null,
         question: null,
@@ -35,19 +38,17 @@ Ext.define('PollStar.view.poll_detail.Results', {
         //console.log(me.getImageUrl());
         var items = [{
                 cls: 'poll-detail-chart-background',
+                layout: 'fit',
                 flex: 1,
                 items: [{
-                    xtype: 'image',
+                    xtype: 'pollimage',
                     src: me.getImageUrl(),
-                    cls: 'poll-detail-image',
+                    cls: 'pollImage',
                     listeners: {
                         load: function() {
                             console.log('loaddd');
                             //Ext.Viewport.setMasked(false);
                             //this.up('carousel').setMasked(false);
-                        },
-                        tap: function() {
-                            console.log('tapped');
                         }
                     }
                 }]
@@ -71,10 +72,20 @@ Ext.define('PollStar.view.poll_detail.Results', {
         var options = me.getOptions();
         var innerItems = [];
         Ext.Array.forEach(options, function(item, index) {
-            var item = {
+            /*var item = {
                 xtype: 'label',
                 cls: 'poll-detail-results-label',
                 html: item
+            }*/
+            var item = {
+                xtype: 'radiofield',
+                labelWidth: '80%',
+                labelWrap: true,
+                //name: 'vote',
+                //value: item,
+                label: item,
+                disabled: true,
+                checked: (index == 0)
             }
             innerItems.push(item);
         });

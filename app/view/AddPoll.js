@@ -101,7 +101,7 @@ Ext.define('PollStar.view.AddPoll', {
                     },{
                         xtype: 'segmentedbutton',
                         docked: 'bottom',
-                        style: 'background-color: RGB(234, 244, 246)',
+                        style: 'background-color: RGB(234, 244, 246); padding-bottom: 1em;',
                         layout: {
                             pack: 'center'
                         },

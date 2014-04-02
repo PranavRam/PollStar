@@ -62,15 +62,15 @@ Ext.define('PollStar.controller.LandingPageController', {
                     var currentTime = new Date();
                     //console.log(endTime, currentTime);
                     //console.log(currentTime < endTime);
-                    var pollDetail = Ext.create('PollStar.view.poll_detail.Vote', {
-                        record: record,
-                        title: Ext.util.Format.ellipsis(record.get('question'), 15)
-                    });
-                    //console.log('parti', record.get('participants'));
-                    /*var pollDetail = Ext.create('PollStar.view.poll_detail.Results', {
+                    /*var pollDetail = Ext.create('PollStar.view.poll_detail.Vote', {
                         record: record,
                         title: Ext.util.Format.ellipsis(record.get('question'), 15)
                     });*/
+                    //console.log('parti', record.get('participants'));
+                    var pollDetail = Ext.create('PollStar.view.poll_detail.Results', {
+                        record: record,
+                        title: Ext.util.Format.ellipsis(record.get('question'), 15)
+                    });
                     /*Ext.Viewport.setMasked({
                         xtype: 'loadmask',
                         message: 'Please Wait...'
@@ -136,7 +136,7 @@ Ext.define('PollStar.controller.LandingPageController', {
         //console.log(Ext.ux.parse.data.ParseConnector.getRequiredHeaders());
         //console.log(Ext.ux.parse.util.File);
         console.log('here in cam');
-        //me.getImageBlob('resources/images/1.JPG');
+        // me.getImageBlob('resources/images/1.JPG');
     },
     switchToAddPollView: function(image_uri, orientation) {
         //console.log('in switch', image_uri);

@@ -1,6 +1,9 @@
 Ext.define('PollStar.view.poll_detail.Vote', {
     extend: 'Ext.Container',
     xtype: 'polldetailvote',
+    requires: [
+      'PollStar.view.PollImage'
+    ],
     config: {
         layout: 'vbox',
         imageUrl: null,
@@ -37,19 +40,18 @@ Ext.define('PollStar.view.poll_detail.Vote', {
                     xtype: 'loadmask',
                     message: 'loading',
                 },
+                layout: 'fit',
                 cls: 'poll-detail-image-background',
                 items: [{
-                    xtype: 'image',
+                    xtype: 'pollimage',
+                    //flex: 1,
                     src: me.getImageUrl(),
-                    cls: 'poll-detail-image',
+                    cls: 'pollImage',
                     listeners: {
                         load: function() {
                             console.log('loaddd');
                             //Ext.Viewport.setMasked(false);
                             this.up().setMasked(false);
-                        },
-                        tap: function() {
-                            console.log('tapped');
                         }
                     }
                 }]
