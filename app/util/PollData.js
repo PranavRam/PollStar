@@ -17,9 +17,9 @@ Ext.define('PollStar.util.PollData', {
             friend.id = record.get('objectId');
             return friend;
         });
-        var owner = Parse.Object("User");
-        owner.id = "UO2sjYOKjp";
-        poll_data.owner = owner;
+        /*var owner = Parse.Object("User");
+        owner.id = "UO2sjYOKjp";*/
+        poll_data.owner = Parse.User.current();
         poll_data.participants = friends;
         poll_data.endTime = me._getEndTime(timeToAdd);
         return poll_data;

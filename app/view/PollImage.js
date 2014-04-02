@@ -29,13 +29,14 @@ Ext.define('PollStar.view.PollImage', {
 		            //console.log(img.getStyle());
 		            // img.setHeight(window.innerHeight);
 		            //console.log(img.getImageOrientation());
+		            navBar.setHidden(true);
 		            if(img.getImageOrientation() == 1){
 		            	img.element.dom.style.setProperty("-webkit-transform", "rotate(90deg)");
 		            }
 		            img.element.dom.style.setProperty("height", screen.height+"px", "important");
 		            //img.element.dom.style.setProperty("background-size", "contain");
 		            img.fullscreen = true;
-		            navBar.setHidden(true);
+		            
 		            //img.setMode('image');
 		        }
 		    }

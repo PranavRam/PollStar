@@ -1183,3 +1183,35 @@ Terminating in response to SpringBoard's termination.
 2014-03-27 02:06:02.733 PollStar[46515:a0b] Resetting plugins due to page load.
 2014-03-27 02:06:05.962 PollStar[46515:a0b] Finished load of: file:///Users/pranavram/Library/Application%20Support/iPhone%20Simulator/7.0/Applications/F947BD27-7176-49B9-8F27-903427777542/PollStar.app/www/index.html
 2014-03-27 02:06:36.355 PollStar[46515:a0b] THREAD WARNING: ['Camera'] took '93.853760' ms. Plugin should use a background thread.
+2014-03-27 02:19:22.584 PollStar[47490:a0b] Multi-tasking -> Device: YES, App: YES
+2014-03-27 02:19:22.613 PollStar[47490:a0b] Unlimited access to network resources
+2014-03-27 02:19:23.228 PollStar[47490:a0b] Resetting plugins due to page load.
+2014-03-27 02:19:29.579 PollStar[47490:a0b] Finished load of: file:///Users/pranavram/Library/Application%20Support/iPhone%20Simulator/7.0/Applications/F947BD27-7176-49B9-8F27-903427777542/PollStar.app/www/index.html
+2014-03-27 02:27:25.540 PollStar[48377:a0b] Multi-tasking -> Device: YES, App: YES
+2014-03-27 02:27:25.565 PollStar[48377:a0b] Unlimited access to network resources
+2014-03-27 02:27:26.013 PollStar[48377:a0b] Resetting plugins due to page load.
+2014-03-27 02:27:32.593 PollStar[48377:a0b] Finished load of: file:///Users/pranavram/Library/Application%20Support/iPhone%20Simulator/7.0/Applications/F947BD27-7176-49B9-8F27-903427777542/PollStar.app/www/index.html
+2014-03-27 02:30:37.555 PollStar[48377:a0b] THREAD WARNING: ['Camera'] took '90.344971' ms. Plugin should use a background thread.
+2014-03-27 12:23:50.849 PollStar[49715:a0b] Multi-tasking -> Device: YES, App: YES
+2014-03-27 12:23:50.964 PollStar[49715:a0b] Unlimited access to network resources
+2014-03-27 12:23:51.578 PollStar[49715:a0b] Resetting plugins due to page load.
+2014-03-27 12:23:52.061 PollStar[49715:a0b] Finished load of: file:///Users/pranavram/Library/Application%20Support/iPhone%20Simulator/7.0/Applications/F947BD27-7176-49B9-8F27-903427777542/PollStar.app/www/index.html
+2014-03-27 12:24:05.790 PollStar[49715:a0b] THREAD WARNING: ['Camera'] took '94.502930' ms. Plugin should use a background thread.
+2014-03-27 12:28:23.250 PollStar[50573:a0b] Multi-tasking -> Device: YES, App: YES
+2014-03-27 12:28:23.265 PollStar[50573:a0b] Unlimited access to network resources
+2014-03-27 12:28:23.780 PollStar[50573:a0b] Resetting plugins due to page load.
+2014-03-27 12:29:10.675 PollStar[50573:a0b] Finished load of: file:///Users/pranavram/Library/Application%20Support/iPhone%20Simulator/7.0/Applications/F947BD27-7176-49B9-8F27-903427777542/PollStar.app/www/index.html
+2014-03-27 12:38:37.660 PollStar[51487:a0b] Multi-tasking -> Device: YES, App: YES
+2014-03-27 12:38:37.692 PollStar[51487:a0b] Unlimited access to network resources
+2014-03-27 12:38:38.271 PollStar[51487:a0b] Resetting plugins due to page load.
+2014-03-27 12:38:45.662 PollStar[51487:a0b] Finished load of: file:///Users/pranavram/Library/Application%20Support/iPhone%20Simulator/7.0/Applications/F947BD27-7176-49B9-8F27-903427777542/PollStar.app/www/index.html
+2014-03-27 12:39:02.548 PollStar[51487:a0b] THREAD WARNING: ['Camera'] took '149.721191' ms. Plugin should use a background thread.
+2014-03-27 19:25:59.084 PollStar[1514:a0b] Multi-tasking -> Device: YES, App: YES
+2014-03-27 19:25:59.135 PollStar[1514:a0b] Unlimited access to network resources
+2014-03-27 19:25:59.714 PollStar[1514:a0b] Resetting plugins due to page load.
+2014-03-27 19:26:04.700 PollStar[1514:a0b] Finished load of: file:///Users/pranavram/Library/Application%20Support/iPhone%20Simulator/7.0/Applications/F947BD27-7176-49B9-8F27-903427777542/PollStar.app/www/index.html
+Terminating in response to SpringBoard's termination.
+2014-04-02 19:22:21.656 PollStar[32198:a0b] Multi-tasking -> Device: YES, App: YES
+2014-04-02 19:22:21.712 PollStar[32198:a0b] Unlimited access to network resources
+2014-04-02 19:22:22.522 PollStar[32198:a0b] Resetting plugins due to page load.
+2014-04-02 19:22:27.085 PollStar[32198:a0b] Finished load of: file:///Users/pranavram/Library/Application%20Support/iPhone%20Simulator/7.0/Applications/F947BD27-7176-49B9-8F27-903427777542/PollStar.app/www/index.html

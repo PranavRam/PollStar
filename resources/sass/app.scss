@@ -11,8 +11,27 @@
 // Custom code goes here..
 
 
+$lightred: #ff0000;
+$iosBlue: #157efb;
+$lightPurple: RGB(158, 106, 144);
+$lightBlue: RGB(234, 244, 246);
+$lightTeal: RGB(91, 183, 177);
+$flatPurple: RGB(119, 107, 163);
+$pollImgBorder: RGB(229, 223, 88);
+$listVoted: RGB(98, 198, 162);
+$toolBarBlue: RGB(226, 240, 249);
+$toolBarTextColor: RGB(68, 158, 215);
+
 .x-toolbar.x-docked-top {
   padding-top: 20px !important;
+  background-color: $toolBarBlue;
+
+  .x-title {
+  	color: $toolBarTextColor;
+  }
+  .x-button-icon:before {
+  	color: $toolBarTextColor;
+  }
 } 
 // Examples of using the icon mixin:
 // @include icon('user');
@@ -22,15 +41,6 @@
 @include icon('table');
 @include icon('delete');
 //@include icon('add');
-
-$lightred: #ff0000;
-$iosBlue: #157efb;
-$lightPurple: RGB(158, 106, 144);
-$lightBlue: RGB(234, 244, 246);
-$lightTeal: RGB(91, 183, 177);
-$flatPurple: RGB(119, 107, 163);
-$pollImgBorder: RGB(229, 223, 88);
-$listVoted: RGB(98, 198, 162);
 
 .pollList-div {
 		padding-left: 1em;

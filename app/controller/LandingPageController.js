@@ -57,7 +57,11 @@ Ext.define('PollStar.controller.LandingPageController', {
                         title: Ext.util.Format.ellipsis(record.get('question'), 15)
                     }); */
 
-                    console.log(record.get('voted'));
+                    //console.log(record.get('voted'));
+                    var endTime = new Date(record.get('endTime').iso);
+                    var currentTime = new Date();
+                    //console.log(endTime, currentTime);
+                    //console.log(currentTime < endTime);
                     var pollDetail = Ext.create('PollStar.view.poll_detail.Vote', {
                         record: record,
                         title: Ext.util.Format.ellipsis(record.get('question'), 15)
@@ -132,7 +136,7 @@ Ext.define('PollStar.controller.LandingPageController', {
         //console.log(Ext.ux.parse.data.ParseConnector.getRequiredHeaders());
         //console.log(Ext.ux.parse.util.File);
         console.log('here in cam');
-        // me.getImageBlob('resources/images/2.JPG', 0);
+        me.getImageBlob('resources/images/2.JPG', 0);
     },
     switchToAddPollView: function(image_uri, orientation) {
         //console.log('in switch', image_uri);
@@ -203,22 +207,23 @@ Ext.define('PollStar.controller.LandingPageController', {
 
         xhr.send();*/
         //var progressIndicator = Ext.create("Ext.ProgressIndicator");
-        console.log('before request')
+        //console.log('before request')
         var request = {
             url: image_uri,
             responseType: "blob",
             xhr2: true,
             //progress: progressIndicator,
             success: function(response) {
-                console.log(response.responseBytes);
+                //console.log(response);
                 me.getImageMetaData(response.responseBytes);
                 
             },
             failure: function(response) {
+                console.log(response.requestId);
                 if(response.status == 0)
                     me.getImageMetaData(response.responseBytes);
                 else 
-                    alert('Could not select the image, Please try again');
+                    console.log('Could not select the image, Please try again');
             }
         };
         //Ext.Viewport.add(progressIndicator);
