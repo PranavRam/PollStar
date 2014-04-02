@@ -1,13 +1,17 @@
 Ext.define('PollStar.view.PollImage', {
-	extend: 'Ext.Img',
-	xtype: 'pollimage',
-	config: {
-		imageOrientation: null,
-		//mode: 'image',
-		//height: '100%',
-		listeners: {
-		    tap: function(img, e, eOpts){                        
-		        var formpanel = img.up('addPollView').down('formpanel');
+    extend: 'Ext.Img',
+    requires: [
+        'PollStar.view.ImageFullScreen'
+    ],
+    xtype: 'pollimage',
+    config: {
+        imageOrientation: null,
+        //mode: 'image',
+        //height: '100%',
+        listeners: {
+            tap: function(img, e, eOpts) {
+            	var me = this;
+                /*var formpanel = img.up('addPollView').down('formpanel');
 		        var navBar = img.up('addPollView').getNavigationBar();
 		        //console.log(formpanel);
 		        if(!img.fullscreen) img.fullscreen = false;
@@ -38,8 +42,15 @@ Ext.define('PollStar.view.PollImage', {
 		            img.fullscreen = true;
 		            
 		            //img.setMode('image');
-		        }
-		    }
-		}
-	}
+		        }*/
+                var fullscreenimage = Ext.create('PollStar.view.ImageFullScreen');
+                Ext.Viewport.add(fullscreenimage);
+                console.log(me.getSrc());
+                fullscreenimage.down('image').setSrc(me.getSrc());
+                //if(me.getImageOrientation() == 1)
+                	//fullscreenimage.down('image').setCls('rotate-90-right');
+                fullscreenimage.show();
+            }
+        }
+    }
 });

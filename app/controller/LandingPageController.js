@@ -136,7 +136,7 @@ Ext.define('PollStar.controller.LandingPageController', {
         //console.log(Ext.ux.parse.data.ParseConnector.getRequiredHeaders());
         //console.log(Ext.ux.parse.util.File);
         console.log('here in cam');
-        me.getImageBlob('resources/images/2.JPG', 0);
+        //me.getImageBlob('resources/images/1.JPG');
     },
     switchToAddPollView: function(image_uri, orientation) {
         //console.log('in switch', image_uri);
@@ -250,8 +250,8 @@ Ext.define('PollStar.controller.LandingPageController', {
                         //console.log(imgData);
                         me.switchToAddPollView(imgData, orientation);
                     }, {
-                        maxWidth: 640,
-                        maxHeight: 640,
+                        maxWidth: 1280,
+                        maxHeight: 1280,
                         canvas: true,
                         orientation: orientation
                     }

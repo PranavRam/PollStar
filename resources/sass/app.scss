@@ -200,8 +200,15 @@ $toolBarTextColor: RGB(68, 158, 215);
 	opacity: 0.3;
 }
 
-.addPollImage {
+.pollImage, .imageFullScreen {
 	background-size: contain !important;
+}
+
+.rotate-90-right {
+	background-repeat: no-repeat !important;
+	background-size: contain !important;
+	background-position: center;
+	-webkit-transform: rotate(90deg);
 }
 // .poll-detail-chart-background {
 // 	// needs latest Compass, add '@import "compass"' to your scss

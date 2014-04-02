@@ -71,6 +71,8 @@ Ext.application({
     },
 
     launch: function() {
+        Ext.Viewport.bodyElement.on('resize', Ext.emptyFn, this, { buffer: 1});
+        //Ext.Msg.alert("Orientation");
         function showScreen() {
             Ext.Viewport.add([
                 //Ext.create('PollStar.view.Login'),

@@ -54,7 +54,7 @@ Ext.define('PollStar.view.AddPoll', {
                 src: 'resources/images/Moon.jpg',
                 flex: 1,
                 itemId: 'addPollImage',
-                cls: 'addPollImage',
+                cls: 'pollImage',
             }, {
                 xtype: 'formpanel',
                 cls: 'addPollForm',
