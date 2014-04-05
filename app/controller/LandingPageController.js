@@ -146,7 +146,7 @@ Ext.define('PollStar.controller.LandingPageController', {
             Ext.device.Camera.capture({
                 success: success,
                 failure: fail,
-                quality: 75,
+                quality: 100,
                 destination: 'file',
                 source: source,
                 encoding: 'jpg'

@@ -1,0 +1,72 @@
+$universalBlue: RGB(68, 158, 215);
+.circle-text {
+    position: relative;
+    margin: 2em 0;
+    background: url('../images/CameraIcon.png') no-repeat, url(../images/circle.png) no-repeat center;
+    background-size: 34px 24px, contain !important;
+    background-position: center 40% !important;
+    //background-size: auto 100%;
+    // background-repeat:no-repeat;
+    > div {
+        //float:left;
+        //width:100%;
+        position: absolute;
+        top: 60%;
+        //top: 50%;
+        line-height:1em;
+        //margin-top:-0.5em;
+        text-align:center;
+        color:white;
+    }
+}
+
+.login-button {
+    -moz-border-radius: 10px;
+    -webkit-border-radius: 10px;
+    border-radius: 10px; /* border radius */
+    -moz-background-clip: padding;
+    -webkit-background-clip: padding-box;
+    background-clip: padding-box; /* prevents bg color from leaking outside the border */
+    background-color: #3f9dd9; /* layer fill content */
+    height: 4em;
+    .x-button-label {
+        color: white !important;
+        padding: 1em;
+    }
+}
+
+.login-view-bottom {
+    text-align: center;
+}
+
+.login-view {
+    .x-toolbar.x-docked-top {
+        padding-top: 20px !important;
+        background-color: $universalBlue;
+        .x-title {
+            color: white;
+        }
+    }
+    .x-field-input {
+        border: 0px;
+        border-bottom: 1px solid #3f9dd9!important;
+        border-radius: 0px;
+
+        .x-input-text {
+            text-indent: 40px;
+            background: url('../images/email_icon.png') no-repeat 10px 15px;
+            background-size: 24px;
+        }
+
+        .x-input-password {
+            text-indent: 40px;
+            background: url('../images/password_icon.png') no-repeat 12px 10px;
+            background-size: 19px;
+        }
+
+        ::-webkit-input-placeholder { 
+            color:$universalBlue;
+            font-weight: lighter;
+        }
+    }
+}
