@@ -14,12 +14,12 @@ Ext.define('PollStar.view.PieChart', {
     initialize: function() {
         //console.log(this.parent.getHeight());;
         var me = this;
-        this.on('painted', function() {
-            if (this.chart) {
-                this.chart.update();
+        me.on('painted', function() {
+            if (me.chart) {
+                me.chart.update();
             }
             //console.log(me.getHeight(), me.getWidth());
-            d3.select('.pie-chart-svg')
+            d3.select('.nv-pieChart')
                 .transition()
                 .duration(1000)
                 .style("opacity", 1);
@@ -62,7 +62,7 @@ Ext.define('PollStar.view.PieChart', {
                 .y(function(d) {
                     return d.value
                 })
-                .showLabels(false);
+                .donut(true);
 
             //console.log(this.innerElement.dom);
             d3.select(this.innerElement.dom).append('svg')

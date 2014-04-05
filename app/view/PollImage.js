@@ -7,6 +7,8 @@ Ext.define('PollStar.view.PollImage', {
     config: {
         imageOrientation: null,
         //mode: 'image',
+        //centered: true,
+        //width: '100%',
         //height: '100%',
         listeners: {
             tap: function(img, e, eOpts) {

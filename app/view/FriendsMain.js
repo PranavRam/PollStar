@@ -3,7 +3,7 @@ Ext.define('PollStar.view.FriendsMain', {
     xtype: 'friendsMain',
     requires: [
         'PollStar.view.FriendsList',
-    	'PollStar.view.UsersList'
+        'PollStar.view.UsersList'
     ],
     config: {
         tabBarPosition: 'bottom',
@@ -13,12 +13,8 @@ Ext.define('PollStar.view.FriendsMain', {
             title: 'PollStar',
             items: [{
                 xtype: 'button',
-                iconCls: 'camera',
-                action: 'activateCamera'
-            }, {
-                xtype: 'button',
-                iconCls: 'photos',
-                action: 'activatePhotoLibrary'
+                iconCls: 'add',
+                action: 'activateImageSelect'
             }, {
                 xtype: 'spacer'
             }, {

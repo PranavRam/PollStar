@@ -37,6 +37,15 @@ Ext.define('PollStar.controller.LandingPageController', {
             imageSelectionSheet: '#imageselectionsheet'
         },
         control: {
+            'main titlebar': {
+                back: function(view, eOpts) {
+                    (Ext.ComponentQuery
+                        .query('main titlebar button[category=hideOffMain]'))
+                        .forEach(function(button) {
+                            button.show();
+                        });
+                }
+            },
             addPollBtn: {
                 tap: function(btn, e, eOpts) {
                     var actionSheet = this.getImageSelectionSheet();
@@ -50,7 +59,13 @@ Ext.define('PollStar.controller.LandingPageController', {
             pollList: {
                 itemtap: function(list, index, target, record, e, eOpts) {
                     var me = this;
+                    //list.setDisabled(true);
                     var mainNavView = me.getMainNavView();
+                    (Ext.ComponentQuery
+                        .query('main titlebar button[category=hideOffMain]'))
+                        .forEach(function(button) {
+                            button.hide();
+                        });
                     //var image = record.get('image').url;
                     /*var pollDetail = Ext.create('PollStar.view.PollDetail', {
                         record: record,
@@ -62,15 +77,19 @@ Ext.define('PollStar.controller.LandingPageController', {
                     var currentTime = new Date();
                     //console.log(endTime, currentTime);
                     //console.log(currentTime < endTime);
-                    /*var pollDetail = Ext.create('PollStar.view.poll_detail.Vote', {
-                        record: record,
-                        title: Ext.util.Format.ellipsis(record.get('question'), 15)
-                    });*/
-                    //console.log('parti', record.get('participants'));
-                    var pollDetail = Ext.create('PollStar.view.poll_detail.Results', {
-                        record: record,
-                        title: Ext.util.Format.ellipsis(record.get('question'), 15)
-                    });
+                    var pollDetail;
+                    if (index % 2 === 0) {
+                        pollDetail = Ext.create('PollStar.view.poll_detail.Vote', {
+                            record: record,
+                            title: Ext.util.Format.ellipsis(record.get('question'), 15)
+                        });
+                    } else {
+                        //console.log('parti', record.get('participants'));
+                        pollDetail = Ext.create('PollStar.view.poll_detail.Results', {
+                            record: record,
+                            title: Ext.util.Format.ellipsis(record.get('question'), 15)
+                        });
+                    }
                     /*Ext.Viewport.setMasked({
                         xtype: 'loadmask',
                         message: 'Please Wait...'
@@ -216,13 +235,13 @@ Ext.define('PollStar.controller.LandingPageController', {
             success: function(response) {
                 //console.log(response);
                 me.getImageMetaData(response.responseBytes);
-                
+
             },
             failure: function(response) {
                 console.log(response.requestId);
-                if(response.status == 0)
+                if (response.status == 0)
                     me.getImageMetaData(response.responseBytes);
-                else 
+                else
                     console.log('Could not select the image, Please try again');
             }
         };
@@ -230,7 +249,7 @@ Ext.define('PollStar.controller.LandingPageController', {
         Ext.Ajax.request(request);
         console.log('request sent');
     },
-    getImageMetaData: function(blob){
+    getImageMetaData: function(blob) {
         var me = this;
         loadImage.parseMetaData(
             blob,

@@ -16,7 +16,8 @@ Ext.define('PollStar.view.Main', {
             items: [{
                 xtype: 'button',
                 iconCls: 'add',
-                action: 'activateImageSelect'
+                action: 'activateImageSelect',
+                category: 'hideOffMain'
             }, /*{
                 xtype: 'button',
                 iconCls: 'photos',
@@ -26,7 +27,8 @@ Ext.define('PollStar.view.Main', {
             }, {
                 xtype: 'button',
                 iconCls: 'user',
-                action: 'navToUsers'
+                action: 'navToUsers',
+                category: 'hideOffMain'
             }]
         },
         items: [{

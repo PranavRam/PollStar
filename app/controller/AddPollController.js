@@ -18,6 +18,12 @@ Ext.define('PollStar.controller.AddPollController', {
             addPollFriendsList: 'addPollFriendsList'
         },
         control: {
+            'addPollView titlebar': {
+                back: function(view, eOpts) {
+                    var me = this;
+                    me.getCancelAddPollBtn().show();
+                }
+            },
             cancelAddPollBtn: {
                 tap: function(self, e, eOpts) {
                     var me = this;
@@ -33,6 +39,7 @@ Ext.define('PollStar.controller.AddPollController', {
                 tap: function(self, e, eOpts) {
                     var me = this;
                     me.getAddPollView().push(Ext.create("PollStar.view.AddPollFriendsList"));
+                    me.getCancelAddPollBtn().hide();
                 }
             },
             addPollBtn: {

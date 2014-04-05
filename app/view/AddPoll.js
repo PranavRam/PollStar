@@ -12,6 +12,12 @@ Ext.define('PollStar.view.AddPoll', {
     config: {
         //layout: 'vbox',
         //fullscreen: true,
+        listeners: {
+            back: function(view, eOpts){
+                //alert('hey');
+                //view.down('button[action=cancelAddPoll]').show();
+            }
+        },
         hidden: 'true',
         showAnimation: {
             type: 'slideIn',

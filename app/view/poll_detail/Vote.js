@@ -74,6 +74,8 @@ Ext.define('PollStar.view.poll_detail.Vote', {
             var item = {
                 xtype: 'radiofield',
                 name: 'vote',
+                labelWidth: '80%',
+                labelWrap: true,
                 value: item,
                 label: item,
                 checked: (index == 0)

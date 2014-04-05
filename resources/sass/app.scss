@@ -30,24 +30,27 @@ $list-color-2: RGB(116, 206, 205);
 $list-color-3: $listVoted;
 $list-color-4: RGB(97, 189, 116);
 $list-color-5: RGB(160, 212, 99);
-$list-label-colors: $list-color-1, $list-color-2, $list-color-3, $list-color-4, $list-color-5;
+$list-color-6: RGB(188, 223, 84);
+$list-color-7: RGB(229, 223, 88);
+$list-color-8: RGB(228, 173, 85);
+$list-color-9: RGB(227, 132, 80);
+$list-label-colors: 
+	$list-color-1, $list-color-2, $list-color-3, $list-color-4, $list-color-5,
+	$list-color-6, $list-color-7, $list-color-8, $list-color-9;
 
 .x-toolbar.x-docked-top {
   padding-top: 20px !important;
+  //padding-bottom: 5px;
   background-color: $toolBarBlue;
 
   .x-title {
-  	color: $toolBarTextColor;
-	}
-  .x-button-icon:before {
   	color: $universalBlue;
-  }
-
+	}
 } 
 
-.x-tab.x-tab-active .x-button-icon:before, .x-tab.x-tab-active .x-button-label, .x-tab.x-tab-active .x-badge {
+/* .x-tab.x-tab-active .x-button-icon:before, .x-tab.x-tab-active .x-button-label, .x-tab.x-tab-active .x-badge {
 	color: $universalBlue;
-}
+} */
 // Examples of using the icon mixin:
 // @include icon('user');
 @include icon('camera');
@@ -60,7 +63,9 @@ $list-label-colors: $list-color-1, $list-color-2, $list-color-3, $list-color-4, 
 .pollList-div {
 		padding-left: 1em;
 		height: 60px;
-    background: white;
+    //background: white;
+    //background-color: $listVoted;
+    color: white;
     border-bottom: 1px solid #ccc;
     font-family: "Helvetica Neue";
     img {
@@ -72,13 +77,27 @@ $list-label-colors: $list-color-1, $list-color-2, $list-color-3, $list-color-4, 
     	-webkit-background-clip: padding-box;
     	background-clip: padding-box; /* prevents bg color from leaking outside the border */
     	background-color: #939fab; /* layer fill content */
-    	border-color: $pollImgBorder;
+    	border-color: white;
+    }
+}
+
+@for $i from 1 through length($list-label-colors) {
+    /* .x-label:nth-child(#{$i}) {
+        background-color: nth($list-label-colors, $i);
+        width: 100%
+    } */
+    .x-dataview-item:nth-child(9n+#{$i}) {
+        background-color: nth($list-label-colors, $i);
+        //width: 100%
     }
 }
 
 .pollList-div.voted {
-		color: white;
-    background: $listVoted;
+		color: black;
+    background-color: white;
+    img {
+    	border-color: $universalBlue;
+    }
 }
 
 .pollList-list-item {
@@ -146,7 +165,7 @@ $list-label-colors: $list-color-1, $list-color-2, $list-color-3, $list-color-4, 
 }
 
 .x-list-item {
-	background-color: $lightBlue;
+	//background-color: $lightBlue;
 }
 
 .userList-div img, .friendsList-div img {
@@ -194,7 +213,7 @@ $list-label-colors: $list-color-1, $list-color-2, $list-color-3, $list-color-4, 
 	margin: auto; */
 }
 
-.pie-chart-svg {
+.nv-pieChart {
 	opacity: 0;
 }
 
@@ -208,6 +227,10 @@ $list-label-colors: $list-color-1, $list-color-2, $list-color-3, $list-color-4, 
 
 .pollImage, .imageFullScreen {
 	background-size: contain !important;
+	/* img {
+		max-width: 100%;
+		height: auto;
+	} */
 }
 
 .rotate-90-right {
@@ -253,11 +276,11 @@ $list-label-colors: $list-color-1, $list-color-2, $list-color-3, $list-color-4, 
 	background-color: $universalBlue;
 }
 
-.x-button-label {
+/* .x-button-label {
 	color: $universalBlue !important;
-}
+} */
 
-.x-segmentedbutton .x-button {
+/* .x-segmentedbutton .x-button {
 	border: 1px solid $universalBlue !important;
 	&.x-button-pressed {
 		background-color: $universalBlue !important;
@@ -265,7 +288,7 @@ $list-label-colors: $list-color-1, $list-color-2, $list-color-3, $list-color-4, 
 			color: white !important;
 		}
 	}
-}
+} */
 // .poll-detail-chart-background {
 // 	// needs latest Compass, add '@import "compass"' to your scss
 // 	background-color: #5bb7b1; // Old browsers
