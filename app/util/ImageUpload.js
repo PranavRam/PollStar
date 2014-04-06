@@ -6,7 +6,7 @@ Ext.define('PollStar.util.ImageUpload', {
     uploadFile: function(poll_data, base64Img, image_name, callback) {
         var me = this;
         //console.log(image_uri);
-        var file = new Parse.File(Parse.User.current().id, {
+        var file = new Parse.File(Parse.User.current().id+".jpg", {
             base64: base64Img
         });
         file.save().then(function() {

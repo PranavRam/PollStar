@@ -56,7 +56,7 @@ Ext.define('PollStar.view.Login', {
                 }]
             }, {
                 xtype: 'button',
-                itemId: 'logInButton',
+                itemId: 'loginButton',
                 cls: 'login-button',
                 ui: 'action',
                 //padding: '10px',

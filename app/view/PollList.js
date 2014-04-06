@@ -1,8 +1,9 @@
 var button, cmp;
 Ext.define('PollStar.view.PollList', {
-    extend: 'Ext.dataview.DataView',
+    extend: 'Ext.dataview.List',
     requires: [
-        'Ext.field.Search'
+        'Ext.field.Search',
+        'Ext.plugin.PullRefresh'
     ],
     xtype: 'pollList',
     config: {
@@ -10,6 +11,13 @@ Ext.define('PollStar.view.PollList', {
             xtype: 'loadmask',
             message: 'loading',
         },*/
+        cls: 'poll-list',
+        plugins: [{
+            xclass: 'Ext.plugin.PullRefresh',
+            pullText: 'Pull down to update!',
+            releaseRefreshText: 'Retrieving data ',
+            loadingText: 'Loading ...'
+        }],
         items: [{
             xtype: 'searchfield',
             scrollDock: 'top',
@@ -19,7 +27,7 @@ Ext.define('PollStar.view.PollList', {
             // labelWidth: '5%',
             disabled: true,
             listeners: {
-                blur: function(){
+                blur: function() {
                     var me = this;
                     me.setDisabled(true);
                 },
@@ -29,16 +37,27 @@ Ext.define('PollStar.view.PollList', {
                     cmp.on('tap', function(e) {
                         console.log('before focus search');
                         var target = e.getTarget('.x-field-search');
-                        if(target){
+                        if (target) {
                             console.log(target);
-                        //console.log(button);
+                            //console.log(button);
                             me.setDisabled(false);
                             me.focus();
                         }
                     });
                 }
             }
-        }]
+        }],
+        listeners: {
+            painted: {
+                order: 'before',
+                single: true,
+                fn: function(cmp) {
+                    //console.log(Ext.DomQuery.select('.voted'));
+                    var me = this;
+                    me.findVoted();
+                }
+            }
+        }
     },
     initialize: function() {
         //console.log(PollStar.util.Templates.pollList());
@@ -62,5 +81,13 @@ Ext.define('PollStar.view.PollList', {
         console.log(me.getScrollable().getScroller());
         //debugger;
         me.getScrollable().getScroller().scrollTo(0, 45);
+    },
+    findVoted: function() {
+        var me = this;
+        var votedItems = Ext.DomQuery.select('.voted');
+        Ext.Array.forEach(votedItems, function(votes, index) {
+            var xListItem = Ext.get(votes).up('.x-list-item');
+            xListItem.addCls('votedParent');
+        });
     }
 });

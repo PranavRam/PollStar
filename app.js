@@ -28,12 +28,6 @@ Ext.application({
         'User'
     ],
 
-    stores: [
-        'Polls',
-        'Friends',
-        'Users'
-    ],
-
     views: [
         'Main',
         'Login',
@@ -42,6 +36,7 @@ Ext.application({
         'AddPoll'
     ],
     controllers: [
+        'LoginController',
         'LandingPageController',
         'AddPollController',
         'FriendsPageController',
@@ -71,18 +66,8 @@ Ext.application({
     },
 
     launch: function() {
-        Ext.Viewport.bodyElement.on('resize', Ext.emptyFn, this, { buffer: 1});
         //Ext.Msg.alert("Orientation");
-        function showScreen() {
-            Ext.Viewport.add([
-                Ext.create('PollStar.view.Login'),
-                // Ext.create('PollStar.view.Main'),
-                // Ext.create('PollStar.view.FriendsMain')
-                //Ext.create('PollStar.view.AddPoll')
-            ]);
-        }
         // Destroy the #appLoadingIndicator element
-        Ext.fly('appLoadingIndicator').destroy();
         //console.log(Ext.app.parseConfig().applicationId);
         // Initialize Parse
         Parse.initialize("TiXE1VVZv2QrUJTyJsXlZQ4MhnoygRXJRIxTjk26", "bkdRkgavzxlC6z2vZUFoxONuSHhJyoisdXzvKvh7");
@@ -93,18 +78,25 @@ Ext.application({
         ]);*/
         var currentUser = Parse.User.current();
         if (currentUser) {
-          showScreen();
-        } else {
-          console.log('not logged in');
-            Parse.User.logIn("Pranav Ram", "12345", {
-                success: function(user) {
-                    // Do stuff after successful login.
-                    showScreen();
-                },
-                error: function(user, error) {
-                    // The login failed. Check error to see why.
-                }
+            /*Ext.Viewport.setMasked({
+              xtype: 'loadmask',
+              message: 'Loading...'
+            });*/
+            currentUser.fetch().then(function(user) {
+                //showScreen(false);
+                Ext.ux.parse.data.ParseConnector._sessionToken = user.getSessionToken();
+                PollStar.app.fireEvent('userLoggedIn');
+            }, function(err, user) {
+                console.log("Session Login Failure: " + JSON.stringify(err));
+                Ext.ux.parse.data.ParseConnector._sessionToken = currentUser.getSessionToken();
+                PollStar.app.fireEvent('userLoggedIn');
             });
+        } else {
+            console.log('not logged in');
+            Ext.fly('spinner').destroy();
+            Ext.Viewport.add([
+                Ext.create('PollStar.view.Login')
+            ]);
         }
 
         // Initialize the main view

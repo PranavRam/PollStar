@@ -7,6 +7,7 @@ Ext.define('PollStar.view.FriendsMain', {
     ],
     config: {
         tabBarPosition: 'bottom',
+        hidden: true,
         items: [{
             xtype: 'toolbar',
             docked: 'top',

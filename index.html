@@ -11,42 +11,57 @@
          */
         html, body {
             height: 100%;
-            background-color: #1985D0
+            background-color: RGB(68, 158, 215);
         }
 
-        #appLoadingIndicator {
-            position: absolute;
-            top: 50%;
-            margin-top: -15px;
-            text-align: center;
-            width: 100%;
-            height: 30px;
-            -webkit-animation-name: appLoadingIndicator;
-            -webkit-animation-duration: 0.5s;
-            -webkit-animation-iteration-count: infinite;
-            -webkit-animation-direction: linear;
+        .spinner {
+          margin: 0px auto;
+          top: 50%;
+          width: 40px;
+          height: 40px;
+          position: relative;
+          text-align: center;
+          
+          -webkit-animation: rotate 2.0s infinite linear;
+          animation: rotate 2.0s infinite linear;
         }
 
-        #appLoadingIndicator > * {
-            background-color: #FFFFFF;
-            display: inline-block;
-            height: 30px;
-            -webkit-border-radius: 15px;
-            margin: 0 5px;
-            width: 30px;
-            opacity: 0.8;
+        .dot1, .dot2 {
+          width: 60%;
+          height: 60%;
+          display: inline-block;
+          position: absolute;
+          top: 0;
+          background-color: white;
+          border-radius: 100%;
+          
+          -webkit-animation: bounce 2.0s infinite ease-in-out;
+          animation: bounce 2.0s infinite ease-in-out;
         }
 
-        @-webkit-keyframes appLoadingIndicator{
-            0% {
-                opacity: 0.8
-            }
-            50% {
-                opacity: 0
-            }
-            100% {
-                opacity: 0.8
-            }
+        .dot2 {
+          top: auto;
+          bottom: 0px;
+          -webkit-animation-delay: -1.0s;
+          animation-delay: -1.0s;
+        }
+
+        @-webkit-keyframes rotate { 100% { -webkit-transform: rotate(360deg) }}
+        @keyframes rotate { 100% { transform: rotate(360deg); -webkit-transform: rotate(360deg) }}
+
+        @-webkit-keyframes bounce {
+          0%, 100% { -webkit-transform: scale(0.0) }
+          50% { -webkit-transform: scale(1.0) }
+        }
+
+        @keyframes bounce {
+          0%, 100% { 
+            transform: scale(0.0);
+            -webkit-transform: scale(0.0);
+          } 50% { 
+            transform: scale(1.0);
+            -webkit-transform: scale(1.0);
+          }
         }
     </style>
     <!--<script src="http://debug.phonegap.com/target/target-script-min.js#pranav"></script> -->
@@ -54,10 +69,9 @@
     <script id="microloader" type="text/javascript" src=".sencha/app/microloader/development.js"></script>
 </head>
 <body>
-    <div id="appLoadingIndicator">
-        <div></div>
-        <div></div>
-        <div></div>
+    <div class="spinner" id="spinner">
+      <div class="dot1"></div>
+      <div class="dot2"></div>
     </div>
 </body>
 </html>

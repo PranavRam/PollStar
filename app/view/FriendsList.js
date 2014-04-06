@@ -9,6 +9,12 @@ Ext.define('PollStar.view.FriendsList', {
         //store: 'friendsStore',
         //onItemDisclosure: true,
         cls: 'friends-list',
+        plugins: [{
+            xclass: 'Ext.plugin.PullRefresh',
+            pullText: 'Pull down to update!',
+            releaseRefreshText: 'Retrieving data ',
+            loadingText: 'Loading ...'
+        }],
         grouped: true,
         items: [{
             xtype: 'searchfield',

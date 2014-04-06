@@ -84,6 +84,7 @@ Ext.define('PollStar.view.poll_detail.Vote', {
         });
         var btn = Ext.create('Ext.Button', {
             text: 'Vote',
+            cls: 'vote-button',
             action: 'voteForPoll'
         });
         innerItems.push(btn);

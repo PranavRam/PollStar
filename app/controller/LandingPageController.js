@@ -29,6 +29,7 @@ Ext.define('PollStar.controller.LandingPageController', {
             cameraButton: 'button[action=activateCamera]',
             addPollBtn: 'button[action=activateImageSelect]',
             photoLibraryButton: 'button[action=activatePhotoLibrary]',
+            settingsBtn: 'button[action=settings]',
             navToUsersBtn: 'button[action=navToUsers]',
             addPollView: 'addPollView',
             addPollViewImage: 'pollimage[itemId=addPollImage]',
@@ -58,14 +59,10 @@ Ext.define('PollStar.controller.LandingPageController', {
             },
             pollList: {
                 itemtap: function(list, index, target, record, e, eOpts) {
+                    console.log(e);
                     var me = this;
                     //list.setDisabled(true);
                     var mainNavView = me.getMainNavView();
-                    (Ext.ComponentQuery
-                        .query('main titlebar button[category=hideOffMain]'))
-                        .forEach(function(button) {
-                            button.hide();
-                        });
                     //var image = record.get('image').url;
                     /*var pollDetail = Ext.create('PollStar.view.PollDetail', {
                         record: record,
@@ -95,6 +92,17 @@ Ext.define('PollStar.controller.LandingPageController', {
                         message: 'Please Wait...'
                     });*/
                     mainNavView.push(pollDetail);
+                    (Ext.ComponentQuery
+                        .query('main titlebar button[category=hideOffMain]'))
+                        .forEach(function(button) {
+                            button.hide();
+                        });
+                    return false;
+                }
+            },
+            settingsBtn: {
+                tap: function(btn, e, eOpts){
+                    Parse.User.logOut();
                 }
             },
             navToUsersBtn: {
@@ -177,56 +185,7 @@ Ext.define('PollStar.controller.LandingPageController', {
     },
     getImageBlob: function(image_uri) {
         var me = this;
-        /*console.log(image_uri);
-        console.log('in image blob');
-        var me = this;
-        var xhr = new XMLHttpRequest();
-        xhr.open('GET', image_uri, true);
-        xhr.responseType = 'blob';
-
-        xhr.onreadystatechange = function() {
-            //console.log('onreadystate', xhr.readyState, xhr.status);
-            if (xhr.readyState == 4 && (xhr.status == 200 || xhr.status == 0)) {
-                // Note: .response instead of .responseText
-                //var blob = new Blob([this.response], {type: 'image/jpeg'});
-                var imageBlob = this.response;
-                console.log('loaded image blob');
-                loadImage.parseMetaData(
-                    imageBlob,
-                    function(data) {
-                        if (!data.imageHead) {
-                            return;
-                        }
-                        // Combine data.imageHead with the image body of a resized file
-                        // to create scaled images with the original image meta data, e.g.:
-                        var orientation = data.exif.get('Orientation');
-                        console.log('after orientation');
-                        loadImage(
-                            imageBlob,
-                            function(img) {
-                                var imgData = img.toDataURL("image/jpeg");
-                                console.log(orientation);
-                                //console.log(imgData);
-                                me.switchToAddPollView(imgData, orientation);
-                            }, {
-                                maxWidth: 640,
-                                maxHeight: 640,
-                                canvas: true,
-                                orientation: orientation
-                            }
-                        );
-                    }, {
-                        maxMetaDataSize: 262144,
-                        disableImageHead: false
-                    }
-                );
-
-            }
-        };
-
-        xhr.send();*/
-        //var progressIndicator = Ext.create("Ext.ProgressIndicator");
-        //console.log('before request')
+        
         var request = {
             url: image_uri,
             responseType: "blob",

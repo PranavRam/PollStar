@@ -13,7 +13,7 @@ Ext.define('PollStar.view.AddPoll', {
         //layout: 'vbox',
         //fullscreen: true,
         listeners: {
-            back: function(view, eOpts){
+            back: function(view, eOpts) {
                 //alert('hey');
                 //view.down('button[action=cancelAddPoll]').show();
             }
@@ -104,7 +104,7 @@ Ext.define('PollStar.view.AddPoll', {
                         //label: 'Option 2',
                         placeHolder: 'Option 2',
                         action: 'optionsSlider'
-                    },{
+                    }, {
                         xtype: 'segmentedbutton',
                         docked: 'bottom',
                         style: 'background-color: RGB(234, 244, 246); padding-bottom: 1em;',
@@ -119,10 +119,13 @@ Ext.define('PollStar.view.AddPoll', {
                             text: '6 Hours',
                             data: 6
                         }, {
+                            text: '12 Hours',
+                            data: 12
+                        }, {
                             text: '1 Day',
                             data: 24
                         }]
-                    },{
+                    }, {
                         xtype: 'label',
                         html: 'Poll End Time',
                         docked: 'bottom',

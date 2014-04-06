@@ -7,7 +7,7 @@
 @import 'sencha-touch/cupertino';
 @import 'sencha-touch/cupertino/all';
 @import 'mixins';
-
+@import 'sencha-touch/cupertino/src/plugin/PullRefresh';
 // Custom code goes here..
 
 
@@ -63,12 +63,12 @@ $list-label-colors:
 //@include icon('add');
 
 .pollList-div {
-		padding-left: 1em;
-		height: 60px;
+		//padding-left: 1em;
+		//height: 40px;
     //background: white;
     //background-color: $listVoted;
     color: white;
-    border-bottom: 1px solid #ccc;
+    //border-bottom: 1px solid #ccc;
     font-family: "Helvetica Neue";
     img {
     	border: 3px solid #fff; /* stroke */
@@ -88,24 +88,31 @@ $list-label-colors:
         background-color: nth($list-label-colors, $i);
         width: 100%
     } */
-    .x-dataview-item:nth-child(9n+#{$i}) {
+    /* .x-dataview-item:nth-child(9n+#{$i}) {
         background-color: nth($list-label-colors, $i);
         //width: 100%
+    } */
+    .poll-list .x-list-item:nth-child(9n+#{$i}) {
+        background-color: nth($list-label-colors, $i);
+        //width: 100%
+        border-bottom: 1px solid #ccc;
     }
 }
 
-.pollList-div.voted {
-		color: black;
-    background-color: white;
+.x-list-item.votedParent {
+		.pollList-div {
+			color: black;
+		}
+    background-color: white !important;
     img {
     	border-color: $universalBlue;
     }
 }
 
-.pollList-list-item {
+/* .pollList-list-item {
     background: #ddd;
     border-bottom: 1px solid #ccc;
-}
+} */
 
 .pollList-list-item {
     //font-weight: bold;
@@ -278,6 +285,21 @@ $list-label-colors:
 	background-color: $universalBlue;
 }
 
+.vote-button {
+	-moz-border-radius: 10px;
+	-webkit-border-radius: 10px;
+	border-radius: 10px; /* border radius */
+	-moz-background-clip: padding;
+	-webkit-background-clip: padding-box;
+	background-clip: padding-box; /* prevents bg color from leaking outside the border */
+	background-color: #3f9dd9; /* layer fill content */
+	//height: 4em;
+	margin-top: 1em;
+	.x-button-label {
+	    color: white !important;
+	    //padding: 1em;
+	}
+}
 /* .x-button-label {
 	color: $universalBlue !important;
 } */
