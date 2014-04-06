@@ -87,7 +87,8 @@ Ext.define('PollStar.view.PollList', {
         var votedItems = Ext.DomQuery.select('.voted');
         Ext.Array.forEach(votedItems, function(votes, index) {
             var xListItem = Ext.get(votes).up('.x-list-item');
-            xListItem.addCls('votedParent');
+            if(!xListItem.hasCls('votedParent'))
+                xListItem.addCls('votedParent');
         });
     }
 });

@@ -8,7 +8,8 @@ Ext.define('PollStar.controller.VoteController', {
         refs: {
             pollVoteView: 'polldetailvote',
             pollVoteOptions: 'polldetailvote formpanel',
-            voteBtn: 'button[action=voteForPoll]'
+            voteBtn: 'button[action=voteForPoll]',
+            pollList: 'pollList'
         },
         control: {
             voteBtn: {
@@ -16,6 +17,7 @@ Ext.define('PollStar.controller.VoteController', {
                     var me = this;
                     var options = me.getPollVoteOptions();
                     var pollVoteView = me.getPollVoteView();
+                    var pollList = me.getPollList();
                     var voteDetails = {
                         pollId: pollVoteView.getRecord().get('objectId'),
                         vote: options.getValues().vote
@@ -23,9 +25,14 @@ Ext.define('PollStar.controller.VoteController', {
                     console.log('tapped vote!', voteDetails);
                     Parse.Cloud.run('pollSubmit', voteDetails, {
                         success: function(result) {
-                            console.log(result)
+                            console.log(result);
+                            pollVoteView.getRecord().set('voted', "voted");
+                            pollList.findVoted();
+
                         },
-                        error: function(error) {}
+                        error: function(error) {
+                            console.log(error);
+                        }
                     });
                 }
             }            
