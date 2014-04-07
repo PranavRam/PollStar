@@ -20,6 +20,11 @@ Ext.define('PollStar.view.FriendsMain', {
                 xtype: 'spacer'
             }, {
                 xtype: 'button',
+                iconCls: 'settings',
+                action: 'settings',
+                category: 'hideOffMain'
+            }, {
+                xtype: 'button',
                 iconCls: 'table',
                 action: 'navToPolls'
             }]

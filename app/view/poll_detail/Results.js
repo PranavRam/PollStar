@@ -85,7 +85,8 @@ Ext.define('PollStar.view.poll_detail.Results', {
                 //value: item,
                 label: item,
                 disabled: true,
-                checked: (index == 0)
+                checked: (index == 0),
+                cls: 'color-label'
             }
             innerItems.push(item);
         });

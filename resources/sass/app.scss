@@ -131,11 +131,8 @@ $list-label-colors:
 		width: 24px;
 	}
 	.flex-middle {
+		position: relative;
 		@include flex-middle-div
-	}
-	.toggleBtn {
-		text-align: center;
-		@include flex-last-div
 	}
 }
 
@@ -262,7 +259,7 @@ $list-label-colors:
         background-color: nth($list-label-colors, $i);
         width: 100%
     } */
-    .x-field-labeled:nth-child(#{$i}) {
+    .color-label.x-field-labeled:nth-child(#{$i}) {
         background-color: nth($list-label-colors, $i) !important;
         //width: 100%
     }
@@ -307,7 +304,7 @@ $list-label-colors:
 
 .poll-detail-participants {
 	background-image: url('../images/blurred.png');
-	background-repeat:repeat-y;
+	//background-repeat:repeat-y;
 	.x-list-item .x-innerhtml {
 		color: white;
 		text-align: center;
@@ -316,6 +313,24 @@ $list-label-colors:
 	.icon {
 		position: absolute;
 		left: 1em;
+	}
+}
+
+.icon-right {
+	position: absolute;
+	right: 0;
+	line-height: 1em;
+	color: $universalBlue;
+	&:before {
+		font-size: 2em;
+	}
+}
+
+.poll-admin-form {
+	background-image: url('../images/blurred.png');
+	.x-form-fieldset-inner {
+		border: 0;
+		background: transparent;
 	}
 }
 /* .x-button-label {

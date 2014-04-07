@@ -88,13 +88,13 @@ Ext.define('PollStar.view.poll_detail.Owner', {
         items.push(me.prepareList());
         var formpanel = {
             xtype: 'formpanel',
+            cls: 'poll-admin-form',
             scrollable: null,
             flex: 1,
             items: [{
                 xtype: 'fieldset',
                 title: 'Options',
                 items: innerItems,
-                cls: 'poll-detail-form'
             }]
         }
         items.push(formpanel);
@@ -109,9 +109,9 @@ Ext.define('PollStar.view.poll_detail.Owner', {
             itemTpl: new Ext.XTemplate(
                 '<span class="icon" data-icon="{[this.hasVoted(values.objectId)]}"></span>{username}', {
                     hasVoted: function(name) {
-                      //console.log(name);
-                        if(Ext.Array.contains(me.getVotedList(), name))
-                          return "2"
+                        //console.log(name);
+                        if (Ext.Array.contains(me.getVotedList(), name))
+                            return "2"
                         return ":";
                     }
                 }
