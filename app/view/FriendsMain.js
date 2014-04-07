@@ -33,7 +33,7 @@ Ext.define('PollStar.view.FriendsMain', {
             xtype: 'usersList'
         }, {
             title: 'Groups',
-            iconCls: 'heart'
+            iconCls: 'favorites'
         }]
     }
 })

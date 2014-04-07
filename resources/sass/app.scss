@@ -300,6 +300,24 @@ $list-label-colors:
 	    //padding: 1em;
 	}
 }
+
+.radio-label {
+	text-align: center;
+}
+
+.poll-detail-participants {
+	background-image: url('../images/blurred.png');
+	background-repeat:repeat-y;
+	.x-list-item .x-innerhtml {
+		color: white;
+		text-align: center;
+		position: relative
+	}
+	.icon {
+		position: absolute;
+		left: 1em;
+	}
+}
 /* .x-button-label {
 	color: $universalBlue !important;
 } */

@@ -2,7 +2,7 @@ var button, cmp;
 Ext.define('PollStar.view.PollList', {
     extend: 'Ext.dataview.List',
     requires: [
-        'Ext.field.Search',
+        'PollStar.view.components.Search',
         'Ext.plugin.PullRefresh'
     ],
     xtype: 'pollList',
@@ -18,35 +18,10 @@ Ext.define('PollStar.view.PollList', {
             releaseRefreshText: 'Retrieving data ',
             loadingText: 'Loading ...'
         }],
-        items: [{
-            xtype: 'searchfield',
-            scrollDock: 'top',
-            //docked: 'top',
-            placeHolder: 'Search',
-            // label: 's',
-            // labelWidth: '5%',
-            disabled: true,
-            listeners: {
-                blur: function() {
-                    var me = this;
-                    me.setDisabled(true);
-                },
-                painted: function(cmp) {
-                    //console.log(cmp);
-                    var me = this;
-                    cmp.on('tap', function(e) {
-                        console.log('before focus search');
-                        var target = e.getTarget('.x-field-search');
-                        if (target) {
-                            console.log(target);
-                            //console.log(button);
-                            me.setDisabled(false);
-                            me.focus();
-                        }
-                    });
-                }
-            }
-        }],
+        /*items: [{
+            xtype: 'seachpollstar',
+            scrollDock: 'top'
+        }],*/
         listeners: {
             painted: {
                 order: 'before',

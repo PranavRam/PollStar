@@ -6,6 +6,7 @@ Ext.define('PollStar.controller.LandingPageController', {
         'PollStar.view.PollDetail',
         'PollStar.view.poll_detail.Vote',
         'PollStar.view.poll_detail.Results',
+        'PollStar.view.poll_detail.Owner',
         'Ext.util.DelayedTask'
     ],
     config: {
@@ -59,10 +60,12 @@ Ext.define('PollStar.controller.LandingPageController', {
             },
             pollList: {
                 itemtap: function(list, index, target, record, e, eOpts) {
-                    console.log(e);
+                    //console.log(e);
                     var me = this;
                     //list.setDisabled(true);
                     var mainNavView = me.getMainNavView();
+                    var pollDetail;
+
                     //var image = record.get('image').url;
                     /*var pollDetail = Ext.create('PollStar.view.PollDetail', {
                         record: record,
@@ -72,21 +75,16 @@ Ext.define('PollStar.controller.LandingPageController', {
                     //console.log(record.get('voted'));
                     var endTime = new Date(record.get('endTime').iso);
                     var currentTime = new Date();
+                    if (Parse.User.current().id == record.get('owner').objectId)
+                        pollDetail = me.showOwnerView(record);
                     //console.log(endTime, currentTime);
                     //console.log(currentTime < endTime);
-                    var pollDetail;
-                    if (index % 2 === 0) {
-                        pollDetail = Ext.create('PollStar.view.poll_detail.Vote', {
-                            record: record,
-                            title: Ext.util.Format.ellipsis(record.get('question'), 15)
-                        });
+                   /* if (index % 2 === 0) {
+                        pollDetail = me.showVoteView(record);
                     } else {
                         //console.log('parti', record.get('participants'));
-                        pollDetail = Ext.create('PollStar.view.poll_detail.Results', {
-                            record: record,
-                            title: Ext.util.Format.ellipsis(record.get('question'), 15)
-                        });
-                    }
+                        pollDetail = me.showResultsView(record);
+                    }*/
                     /*Ext.Viewport.setMasked({
                         xtype: 'loadmask',
                         message: 'Please Wait...'
@@ -101,7 +99,7 @@ Ext.define('PollStar.controller.LandingPageController', {
                 }
             },
             settingsBtn: {
-                tap: function(btn, e, eOpts){
+                tap: function(btn, e, eOpts) {
                     Parse.User.logOut();
                 }
             },
@@ -185,7 +183,7 @@ Ext.define('PollStar.controller.LandingPageController', {
     },
     getImageBlob: function(image_uri) {
         var me = this;
-        
+
         var request = {
             url: image_uri,
             responseType: "blob",
@@ -239,5 +237,23 @@ Ext.define('PollStar.controller.LandingPageController', {
                 disableImageHead: false
             }
         );
+    },
+    showVoteView: function(record) {
+        return Ext.create('PollStar.view.poll_detail.Vote', {
+            record: record,
+            title: Ext.util.Format.ellipsis(record.get('question'), 15)
+        });
+    },
+    showResultsView: function(record) {
+        return Ext.create('PollStar.view.poll_detail.Results', {
+            record: record,
+            title: Ext.util.Format.ellipsis(record.get('question'), 15)
+        });
+    },
+    showOwnerView: function(record) {
+        return Ext.create('PollStar.view.poll_detail.Owner', {
+            record: record,
+            title: Ext.util.Format.ellipsis(record.get('question'), 15)
+        });
     }
 });
