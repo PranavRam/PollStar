@@ -75,16 +75,16 @@ Ext.define('PollStar.controller.LandingPageController', {
                     //console.log(record.get('voted'));
                     var endTime = new Date(record.get('endTime').iso);
                     var currentTime = new Date();
-                    /*if (Parse.User.current().id == record.get('owner').objectId)
-                        pollDetail = me.showOwnerView(record);*/
+                    if (Parse.User.current().id == record.get('owner').objectId)
+                        pollDetail = me.showOwnerView(record);
                     //console.log(endTime, currentTime);
                     //console.log(currentTime < endTime);
-                    if (index % 2 === 0) {
+                   /* if (index % 2 === 0) {
                         pollDetail = me.showVoteView(record);
                     } else {
                         //console.log('parti', record.get('participants'));
                         pollDetail = me.showResultsView(record);
-                    }
+                    }*/
                     /*Ext.Viewport.setMasked({
                         xtype: 'loadmask',
                         message: 'Please Wait...'
@@ -161,7 +161,7 @@ Ext.define('PollStar.controller.LandingPageController', {
         //console.log(Ext.ux.parse.data.ParseConnector.getRequiredHeaders());
         //console.log(Ext.ux.parse.util.File);
         console.log('here in cam');
-        // me.getImageBlob('resources/images/1.JPG');
+        me.getImageBlob('resources/images/2.JPG');
     },
     switchToAddPollView: function(image_uri, orientation) {
         //console.log('in switch', image_uri);

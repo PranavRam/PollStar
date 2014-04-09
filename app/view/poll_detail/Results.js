@@ -37,13 +37,14 @@ Ext.define('PollStar.view.poll_detail.Results', {
         var me = this;
         //console.log(me.getImageUrl());
         var items = [{
-                cls: 'poll-detail-chart-background',
+                //cls: 'poll-detail-chart-background',
                 layout: 'fit',
                 flex: 1,
                 items: [{
                     xtype: 'pollimage',
                     src: me.getImageUrl(),
                     cls: 'pollImage',
+                    //mode: 'image',
                     listeners: {
                         load: function() {
                             console.log('loaddd');
@@ -56,8 +57,8 @@ Ext.define('PollStar.view.poll_detail.Results', {
             xtype: 'label',
             html: 'Q. ' + me.getQuestion(),
             //margin: '5px auto 0 auto',
-            height: '36px',
-            style: 'text-align: center; padding: 0.5em; background-color: RGB(234, 244, 246)'
+            //height: '36px',
+            cls: 'poll-detail-question'
         }];
         me.prepareOptionsRadio(items);
         console.dir(items)

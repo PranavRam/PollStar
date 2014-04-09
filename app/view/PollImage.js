@@ -6,7 +6,7 @@ Ext.define('PollStar.view.PollImage', {
     xtype: 'pollimage',
     config: {
         imageOrientation: null,
-        //mode: 'image',
+        mode: 'image',
         //centered: true,
         //width: '100%',
         //height: '100%',

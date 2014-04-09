@@ -2,7 +2,9 @@ Ext.define('PollStar.view.poll_detail.Vote', {
     extend: 'Ext.Container',
     xtype: 'polldetailvote',
     requires: [
-      'PollStar.view.PollImage'
+        'PollStar.view.PollImage',
+        //'Ext.Img',
+        'PollStar.view.components.ImageMask'
     ],
     config: {
         layout: 'vbox',
@@ -10,7 +12,9 @@ Ext.define('PollStar.view.poll_detail.Vote', {
         question: null,
         options: null,
         participants: null,
-        record: null
+        record: null,
+        cls: 'poll-detail-image-background',
+
     },
     initialize: function() {
         var me = this;
@@ -37,20 +41,22 @@ Ext.define('PollStar.view.poll_detail.Vote', {
             layout: 'fit',
             items: [{
                 masked: {
-                    xtype: 'loadmask',
-                    message: 'loading',
+                    xtype: 'imagemask',
+                    message: 'loading image',
                 },
                 layout: 'fit',
-                cls: 'poll-detail-image-background',
+                //cls: 'poll-detail-image-background',
                 items: [{
                     xtype: 'pollimage',
                     //flex: 1,
                     src: me.getImageUrl(),
                     cls: 'pollImage',
+                    //mode: 'image',
                     listeners: {
                         load: function() {
                             console.log('loaddd');
                             //Ext.Viewport.setMasked(false);
+                            console.log(this);
                             this.up().setMasked(false);
                         }
                     }
@@ -60,8 +66,8 @@ Ext.define('PollStar.view.poll_detail.Vote', {
             xtype: 'label',
             html: 'Q. ' + me.getQuestion(),
             //margin: '5px auto 0 auto',
-            height: '36px',
-            style: 'text-align: center; padding: 0.5em; background-color: RGB(234, 244, 246)'
+            //height: '36px',
+            cls: 'poll-detail-question'
         }];
         me.prepareOptionsRadio(items);
         me.add(items);

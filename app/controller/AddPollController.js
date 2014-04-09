@@ -118,7 +118,8 @@ Ext.define('PollStar.controller.AddPollController', {
                                 xtype: 'textfield',
                                 name: 'options',
                                 placeHolder: 'Option ' + (i + oldValue + 1),
-                                action: 'optionsSlider'
+                                action: 'optionsSlider',
+                                cls: 'options-input'
                             }
                             optionsArr.push(options);
                         }

@@ -231,7 +231,12 @@ $list-label-colors:
 	opacity: 0.3;
 }
 
-.pollImage, .imageFullScreen {
+.pollImage img {
+	display: block;
+	margin: auto;
+}
+
+.imageFullScreen {
 	background-size: contain !important;
 	/* img {
 		max-width: 100%;
@@ -263,6 +268,37 @@ $list-label-colors:
         background-color: nth($list-label-colors, $i) !important;
         //width: 100%
     }
+
+    .options-label:nth-child(#{$i}) {
+    		.x-innerhtml {
+	        border-left: solid 5px nth($list-label-colors, $i) !important;
+	        //width: 100%
+	      }
+    }
+}
+
+.addPollForm .options-input:nth-child(4){
+	border-left: solid 3px nth($list-label-colors, 1);
+	margin-top: 5px;
+}
+
+.addPollForm .options-input:nth-child(5){
+	border-left: solid 3px nth($list-label-colors, 2);
+	margin-top: 5px;
+}
+
+.addPollForm .options-input:nth-child(6){
+	border-left: solid 3px nth($list-label-colors, 3);
+	margin-top: 5px;
+}
+
+.addPollForm .options-input:nth-child(7){
+	border-left: solid 3px nth($list-label-colors, 4);
+	margin-top: 5px;
+}
+.addPollForm .options-input:nth-child(8){
+	border-left: solid 3px nth($list-label-colors, 5);
+	margin-top: 5px;
 }
 
 .x-form-fieldset .x-field:before {
@@ -298,13 +334,19 @@ $list-label-colors:
 	}
 }
 
-.radio-label {
+.options-label {
 	text-align: center;
+	border-bottom: solid 1px rgb(150,164,163);
+	width: 80%;
+	margin: auto;
+	color: white;
+	.x-innerhtml {
+		margin: 0.5em 0;
+	}
 }
 
 .poll-detail-participants {
-	background-image: url('../images/blurred.png');
-	//background-repeat:repeat-y;
+	background-color: transparent;
 	.x-list-item .x-innerhtml {
 		color: white;
 		text-align: center;
@@ -326,41 +368,76 @@ $list-label-colors:
 	}
 }
 
-.poll-admin-form {
+.poll-detail-container {
 	background-image: url('../images/blurred.png');
+}
+
+.poll-admin-form {
+	//background-image: url('../images/blurred.png');
+	//margin-top: -2em;
+	margin-bottom: 1em;
 	.x-form-fieldset-inner {
 		border: 0;
 		background: transparent;
 	}
-}
-/* .x-button-label {
-	color: $universalBlue !important;
-} */
-
-/* .x-segmentedbutton .x-button {
-	border: 1px solid $universalBlue !important;
-	&.x-button-pressed {
-		background-color: $universalBlue !important;
-		.x-button-label {
-			color: white !important;
+	.x-form-fieldset-title {
+		margin-bottom: 1em;
+		.x-innerhtml{
+			color: white;
+			font-family: serif;
+			font-style: oblique;
+			font-size: 1em;
+			white-space: nowrap;
 		}
 	}
-} */
-// .poll-detail-chart-background {
-// 	// needs latest Compass, add '@import "compass"' to your scss
-// 	background-color: #5bb7b1; // Old browsers
-// 	@include filter-gradient(#5bb7b1, #9e6a90, horizontal); // IE6-9
-// 	@include background-image(linear-gradient(left,  #5bb7b1 0%,#9e6a90 100%));
-// }
-// .user-list .x-list-disclosure {
-// 	right: 1em !important;
-// 	&:before{
-// 		color: green;
-// 		content: 'U&';
-// 	}
-// }
+}
 
-// .x-field .x-field-input, .x-field .x-input-el:before {
-// 	font-family: 'Pictos';
-// 	content: 'U';
-// }
+.addPollForm {
+	.add-options-label, .add-options-slider, .poll-end-label, .poll-end-button {
+		border-left: solid 3px $list-color-9;
+	}
+
+	.poll-end-label {
+		margin-top: 5px;
+	}
+
+	.question {
+		border-left: solid 3px $list-color-6;
+	}
+}
+
+.addPollForm .x-form-fieldset .x-form-fieldset-inner {
+	border: 0;
+}
+
+.poll-detail-question {
+	text-align: center; 
+  padding: 0.5em; 
+  /* background-color: RGB(234, 244, 246);
+  border-radius: 10px;
+  width: 95%;
+  margin: 5px auto 0 auto; */
+  opacity: 0.5;
+}
+
+.x-carousel-indicator span {
+	border: solid 1px $universalBlue;
+}
+
+.x-mask.imagemask{
+	opacity: 0.7;
+	.x-mask-inner {
+		width: 100%;
+		height: 100%;
+		-webkit-border-radius: 0;
+		border-radius: 0;
+
+		.spinner {
+			top: 10%;
+		}
+		.dot1, .dot2 {
+			background-color: $universalBlue;
+			//opacity: 0.7;
+		}
+	}
+}

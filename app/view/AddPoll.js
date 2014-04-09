@@ -10,14 +10,8 @@ Ext.define('PollStar.view.AddPoll', {
         'PollStar.view.PollImage'
     ],
     config: {
-        //layout: 'vbox',
+        // layout: 'vbox',
         //fullscreen: true,
-        listeners: {
-            back: function(view, eOpts) {
-                //alert('hey');
-                //view.down('button[action=cancelAddPoll]').show();
-            }
-        },
         hidden: 'true',
         showAnimation: {
             type: 'slideIn',
@@ -53,22 +47,43 @@ Ext.define('PollStar.view.AddPoll', {
             }]
         },
         items: [{
-            layout: 'vbox',
+            // layout: 'vbox',
+            scrollable: 'vertical',
             cls: 'flexboxDiv',
             items: [{
                 xtype: 'pollimage',
-                src: 'resources/images/Moon.jpg',
-                flex: 1,
+                // flex: 1,
+                height: 240,
                 itemId: 'addPollImage',
                 cls: 'pollImage',
+                style: 'background-color: RGB(234, 244, 246)',
+                listeners: {
+                    load: function(cmp) {
+                        var img = Ext.get(cmp.element).down('img').dom;
+                        //console.log(img.dom.naturalHeight, img.dom.naturalWidth);
+                        var screenWidth = window.screen.width;
+                        var screenHeight= window.screen.height;
+                        var imgH = img.naturalHeight;
+                        var imgW = img.naturalWidth;
+
+                        if(imgW < imgH){
+                            cmp.setHeight((screenHeight/2)-24);
+                        }
+                        else {
+                            var height = screenWidth * (img.naturalHeight / img.naturalWidth);
+                            cmp.setHeight(height);
+                        }
+                    }
+                }
             }, {
                 xtype: 'formpanel',
                 cls: 'addPollForm',
                 itemId: 'addPollForm',
-                flex: 2,
+                // flex: 2,
+                scrollable: null,
                 items: {
                     xtype: 'fieldset',
-                    title: 'Poll Questions',
+                    //title: 'Poll Questions',
                     itemId: 'pollQuestionsFieldset',
                     defaults: {
                         labelWrap: true
@@ -76,7 +91,8 @@ Ext.define('PollStar.view.AddPoll', {
                     items: [{
                         xtype: 'textfield',
                         name: 'question',
-                        placeHolder: 'Question'
+                        placeHolder: 'Question',
+                        cls: 'question'
                         //label: 'Question'
                     }, {
                         xtype: 'label',
@@ -84,29 +100,34 @@ Ext.define('PollStar.view.AddPoll', {
                         //align: 'center',
                         //margin: '5px auto 0 auto',
                         height: '30px',
-                        style: 'text-align: center; padding: 0.5em; background-color: RGB(234, 244, 246)'
+                        style: 'text-align: center; padding: 0.5em; background-color: RGB(234, 244, 246)',
+                        cls: 'add-options-label'
                     }, {
                         xtype: 'sliderfield',
                         //label: 'Option Count',
                         minValue: 2,
                         maxValue: 5,
                         value: 2,
-                        style: 'background-color: RGB(234, 244, 246)'
+                        style: 'background-color: RGB(234, 244, 246)',
+                        cls: 'add-options-slider'
                     }, {
                         xtype: 'textfield',
                         name: 'options',
                         // label: 'Option 1',
                         placeHolder: 'Option 1',
-                        action: 'optionsSlider'
+                        action: 'optionsSlider',
+                        cls: 'options-input'
                     }, {
                         xtype: 'textfield',
                         name: 'options',
                         //label: 'Option 2',
                         placeHolder: 'Option 2',
-                        action: 'optionsSlider'
+                        action: 'optionsSlider',
+                        cls: 'options-input'
                     }, {
                         xtype: 'segmentedbutton',
                         docked: 'bottom',
+                        cls: 'poll-end-button',
                         style: 'background-color: RGB(234, 244, 246); padding-bottom: 1em;',
                         layout: {
                             pack: 'center'
@@ -132,7 +153,8 @@ Ext.define('PollStar.view.AddPoll', {
                         //align: 'center',
                         //margin: '5px auto 0 auto',
                         height: '30px',
-                        style: 'text-align: center; padding: 0.5em; background-color: RGB(234, 244, 246)'
+                        style: 'text-align: center; padding: 0.5em; background-color: RGB(234, 244, 246)',
+                        cls: 'poll-end-label'
                     }]
                 }
             }]

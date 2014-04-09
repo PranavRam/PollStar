@@ -687,6 +687,9 @@ Ext.ClassManager.addNameAlternateMappings({
   "PollStar.view.PollImage": [],
   "PollStar.view.PollList": [],
   "PollStar.view.UsersList": [],
+  "PollStar.view.components.ImageMask": [],
+  "PollStar.view.components.Search": [],
+  "PollStar.view.poll_detail.Owner": [],
   "PollStar.view.poll_detail.Results": [],
   "PollStar.view.poll_detail.Vote": []
 });
@@ -1468,6 +1471,15 @@ Ext.ClassManager.addNameAliasMappings({
   ],
   "PollStar.view.UsersList": [
     "widget.usersList"
+  ],
+  "PollStar.view.components.ImageMask": [
+    "widget.imagemask"
+  ],
+  "PollStar.view.components.Search": [
+    "widget.seachpollstar"
+  ],
+  "PollStar.view.poll_detail.Owner": [
+    "widget.polldetailowner"
   ],
   "PollStar.view.poll_detail.Results": [
     "widget.polldetailresults"
