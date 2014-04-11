@@ -42,6 +42,11 @@ Ext.define('PollStar.view.Main', {
                     iconCls: 'user',
                     action: 'navToUsers',
                     category: 'hideOffMain'
+                }, {
+                    xtype: 'button',
+                    text: 'Vote',
+                    action: 'voteForPoll',
+                    hidden: true
                 }
             ]
         },

@@ -7,6 +7,7 @@ Ext.define('PollStar.controller.LandingPageController', {
         'PollStar.view.poll_detail.Vote',
         'PollStar.view.poll_detail.Results',
         'PollStar.view.poll_detail.Owner',
+        'PollStar.view.poll_detail.PollDetails',
         'Ext.util.DelayedTask'
     ],
     config: {
@@ -46,6 +47,8 @@ Ext.define('PollStar.controller.LandingPageController', {
                         .forEach(function(button) {
                             button.show();
                         });
+                    Ext.ComponentQuery.
+                        query('button[action=voteForPoll]')[0].setHidden(true);
                 }
             },
             addPollBtn: {
@@ -73,13 +76,13 @@ Ext.define('PollStar.controller.LandingPageController', {
                     }); */
 
                     //console.log(record.get('voted'));
-                    var endTime = new Date(record.get('endTime').iso);
-                    var currentTime = new Date();
+                    /*var endTime = new Date(record.get('endTime').iso);
+                    var currentTime = new Date();*/
                     if (Parse.User.current().id == record.get('owner').objectId)
                         pollDetail = me.showOwnerView(record);
                     //console.log(endTime, currentTime);
                     //console.log(currentTime < endTime);
-                   /* if (index % 2 === 0) {
+                    /*if (index % 2 === 0) {
                         pollDetail = me.showVoteView(record);
                     } else {
                         //console.log('parti', record.get('participants'));
@@ -239,9 +242,12 @@ Ext.define('PollStar.controller.LandingPageController', {
         );
     },
     showVoteView: function(record) {
-        return Ext.create('PollStar.view.poll_detail.Vote', {
+        Ext.ComponentQuery.
+            query('button[action=voteForPoll]')[0].setHidden(false);
+        return Ext.create('PollStar.view.poll_detail.PollDetails', {
             record: record,
-            title: Ext.util.Format.ellipsis(record.get('question'), 15)
+            title: Ext.util.Format.ellipsis(record.get('question'), 15),
+            canVote: true
         });
     },
     showResultsView: function(record) {
@@ -251,9 +257,10 @@ Ext.define('PollStar.controller.LandingPageController', {
         });
     },
     showOwnerView: function(record) {
-        return Ext.create('PollStar.view.poll_detail.Owner', {
+        return Ext.create('PollStar.view.poll_detail.PollDetails', {
             record: record,
-            title: Ext.util.Format.ellipsis(record.get('question'), 15)
+            title: Ext.util.Format.ellipsis(record.get('question'), 15),
+            owner: true
         });
     }
 });

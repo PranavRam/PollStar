@@ -37,7 +37,32 @@ Ext.define('PollStar.view.ImageFullScreen', {
             }]
         }, {
             xtype: 'image',
-            cls: 'imageFullScreen'
+            //cls: 'rotate-90-right',
+            mode: 'image',
+            listeners: {
+                load: function(cmp) {
+                    var img = Ext.get(cmp.element).down('img').dom;
+                    //console.log(img.dom.naturalHeight, img.dom.naturalWidth);
+                    var screenWidth = window.screen.width;
+                    var screenHeight = window.screen.height;
+                    var imgH = img.naturalHeight;
+                    var imgW = img.naturalWidth;
+                    console.log(screenHeight, screenWidth, imgH, imgW);
+                    if (imgW < imgH) {
+                        cmp.setHeight(screenHeight - 24);
+                    } else {
+                        //var height = imgW;
+                        cmp.addCls('rotate-90-right');
+                        var ratio = img.naturalWidth/(screenHeight-24);
+                        var height = img.naturalHeight / ratio;
+                        var width = img.naturalWidth / ratio;
+                        //cmp.setHeight(height-24);
+                        cmp.setHeight(height);
+                        cmp.setWidth(width);
+                    }
+                    //cmp.up().setMasked(false);
+                }
+            }
         }]
     },
     initialize: function() {

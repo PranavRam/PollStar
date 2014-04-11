@@ -1,6 +1,6 @@
-Ext.define('PollStar.view.poll_detail.Vote', {
+Ext.define('PollStar.view.poll_detail.PollDetails', {
     extend: 'Ext.Container',
-    xtype: 'polldetailvote',
+    xtype: 'polldetails',
     requires: [
         'PollStar.view.PollImage',
         //'Ext.Img',
@@ -14,6 +14,8 @@ Ext.define('PollStar.view.poll_detail.Vote', {
         options: null,
         participants: null,
         record: null,
+        canVote: false,
+        owner: false,
         cls: 'poll-detail-container',
         scrollable: 'vertical',
         // layout: 'fit'
@@ -65,7 +67,7 @@ Ext.define('PollStar.view.poll_detail.Vote', {
             }, {
                 flex: 5,
                 cls: 'text',
-                html: '<p class="poster">@Pranav Ram <span class="catch-line">asks</span></p><p class="question">' + me.getQuestion()+'</p>',
+                html: '<p class="poster">@Pranav Ram <span class="catch-line">asks</span></p><p class="question">' + me.getQuestion() + '</p>',
             }]
         });
         items.push(question_container);
@@ -106,7 +108,10 @@ Ext.define('PollStar.view.poll_detail.Vote', {
                 }
             }]
         });
-        me.prepareOptionsRadio(items);
+        if(me.getOwner())
+            me.prepareOwnerOptionsRadio(items);
+        else
+            me.prepareOptionsRadio(items);
         me.add(items);
     },
     prepareOptionsRadio: function(items) {
@@ -124,6 +129,7 @@ Ext.define('PollStar.view.poll_detail.Vote', {
                 label: item,
                 checked: (index == 0),
                 cls: 'color-label',
+                disabled: (!me.getCanVote()),
                 listeners: {
                     check: function(radio_field, e, eOpts) {
                         //console.log(radiofield.up('formpanel').getValues());
@@ -153,5 +159,33 @@ Ext.define('PollStar.view.poll_detail.Vote', {
         }
         items.push(formpanel);
         //return items;
-    }
+    },
+    prepareOwnerOptionsRadio: function(items) {
+        var me = this;
+        var options = me.getOptions();
+        var innerItems = [];
+        Ext.Array.forEach(options, function(item, index) {
+            var item = {
+                xtype: 'label',
+                html: (index + 1) + '. ' + item,
+                cls: 'options-label'
+            }
+            innerItems.push(item);
+        });
+        //items.push(me.prepareList());
+        var formpanel = {
+            xtype: 'formpanel',
+            cls: 'poll-admin-form',
+            scrollable: null,
+            flex: 1,
+            items: [{
+                xtype: 'fieldset',
+                // title: 'Options',
+                items: innerItems,
+            }],
+            margin: '1em 0'
+        }
+        items.push(formpanel);
+        //return items;
+    },
 });
