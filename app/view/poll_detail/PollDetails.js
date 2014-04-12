@@ -17,7 +17,10 @@ Ext.define('PollStar.view.poll_detail.PollDetails', {
         canVote: false,
         owner: false,
         cls: 'poll-detail-container',
-        scrollable: 'vertical',
+        scrollable: {
+            direction: 'vertical',
+            directionLock: true
+        }
         // layout: 'fit'
 
     },
@@ -31,6 +34,21 @@ Ext.define('PollStar.view.poll_detail.PollDetails', {
             if (radiofield.isChecked())
                 radiofield.addCls('checked');
         });
+        var textCmp = me.down('[cls=text]');
+        var data = {question: me.getQuestion()};
+        if(me.getOwner()){
+            data.name = "You" 
+            data.catch_line = "asked";
+        }
+        else{
+            data.name = me.getRecord().get('owner').username
+            data.catch_line = 'asks';
+        }
+        var tpl = new Ext.XTemplate(
+            '<p class="poster">@{name} <span class="catch-line">{catch_line}</span></p>',
+            '<p class="question">{question}</p>'
+            );
+        tpl.overwrite(textCmp.element, data);
     },
     populateConfig: function() {
         var me = this;
@@ -66,9 +84,7 @@ Ext.define('PollStar.view.poll_detail.PollDetails', {
                 }]
             }, {
                 flex: 5,
-                cls: 'text',
-                html: '<p class="poster">@Pranav Ram <span class="catch-line">asks</span></p><p class="question">' + me.getQuestion() + '</p>',
-            }]
+                cls: 'text'            }]
         });
         items.push(question_container);
         items.push({
@@ -116,10 +132,12 @@ Ext.define('PollStar.view.poll_detail.PollDetails', {
     },
     prepareOptionsRadio: function(items) {
         var me = this;
+        var pollsVoted = JSON.parse(localStorage.getItem('pollsVoted'));
+        var pollId = me.getRecord().get('objectId');
         var options = me.getOptions();
         var innerItems = [];
         Ext.Array.forEach(options, function(item, index) {
-            var item = {
+            var radio = {
                 xtype: 'radiofield',
                 //width: window.screen.width,
                 name: 'vote',
@@ -127,7 +145,14 @@ Ext.define('PollStar.view.poll_detail.PollDetails', {
                 labelWrap: true,
                 value: item,
                 label: item,
-                checked: (index == 0),
+                checked: function(){
+                    //console.log('checked here');
+                    if(pollsVoted && pollsVoted[pollId])
+                        return pollsVoted[pollId] == item;
+                    else{
+                        return (index == 0);
+                    }
+                }(),
                 cls: 'color-label',
                 disabled: (!me.getCanVote()),
                 listeners: {
@@ -141,7 +166,7 @@ Ext.define('PollStar.view.poll_detail.PollDetails', {
                     }
                 }
             }
-            innerItems.push(item);
+            innerItems.push(radio);
         });
 
         var formpanel = {
@@ -165,12 +190,12 @@ Ext.define('PollStar.view.poll_detail.PollDetails', {
         var options = me.getOptions();
         var innerItems = [];
         Ext.Array.forEach(options, function(item, index) {
-            var item = {
+            var radio = {
                 xtype: 'label',
                 html: (index + 1) + '. ' + item,
                 cls: 'options-label'
             }
-            innerItems.push(item);
+            innerItems.push(radio);
         });
         //items.push(me.prepareList());
         var formpanel = {

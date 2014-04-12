@@ -82,15 +82,24 @@ Ext.application({
               xtype: 'loadmask',
               message: 'Loading...'
             });*/
-            currentUser.fetch().then(function(user) {
-                //showScreen(false);
-                Ext.ux.parse.data.ParseConnector._sessionToken = user.getSessionToken();
-                PollStar.app.fireEvent('userLoggedIn');
-            }, function(err, user) {
-                console.log("Session Login Failure: " + JSON.stringify(err));
+            
+            if(!Ext.isEmpty(localStorage.getItem('pollsVoted'))){
                 Ext.ux.parse.data.ParseConnector._sessionToken = currentUser.getSessionToken();
                 PollStar.app.fireEvent('userLoggedIn');
-            });
+            }
+            else {
+                currentUser.fetch().then(function(user) {
+                    //showScreen(false);
+                    var pollsVoted = Parse.User.current().get('pollsVoted');
+                    localStorage.setItem('pollsVoted', JSON.stringify(pollsVoted));
+                    Ext.ux.parse.data.ParseConnector._sessionToken = user.getSessionToken();
+                    PollStar.app.fireEvent('userLoggedIn');
+                }, function(err, user) {
+                    console.log("Session Login Failure: " + JSON.stringify(err));
+                    Ext.ux.parse.data.ParseConnector._sessionToken = currentUser.getSessionToken();
+                    PollStar.app.fireEvent('userLoggedIn');
+                });
+            }
         } else {
             console.log('not logged in');
             Ext.fly('spinner').destroy();

@@ -64,7 +64,7 @@ Ext.define('PollStar.controller.LoginController', {
             listeners: {
                 load: function(store, records, successful, operation, eOpts) {
                     //console.log(records);
-                    var pollsVoted = Parse.User.current().get('pollsVoted');
+                    var pollsVoted = JSON.parse(localStorage.getItem('pollsVoted'));
 
                     Ext.Array.forEach(records, function(record, index) {
                         var pollId = record.get('objectId');

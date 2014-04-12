@@ -93,6 +93,14 @@
             "update": "delta"
         }/*,
         {
+            "path": "resources/js/snap.svg.js",
+            "update": "delta"
+        }*//*,
+        {
+            "path": "resources/js/move.js",
+            "update": "delta"
+        }*//*,
+        {
             "path": "resources/js/utils.js",
             "update": "delta"
         },
@@ -123,6 +131,10 @@
             "path": "resources/css/nv.d3.min.css",
             "update": "delta"
         },
+        /*{
+            "path": "resources/css/animate.css",
+            "update": "delta"
+        },*/
         {
             "path": "resources/css/app.css",
             "update": "delta"

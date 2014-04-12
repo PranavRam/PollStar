@@ -22,8 +22,8 @@
           position: relative;
           text-align: center;
           
-          -webkit-animation: rotate 2.0s infinite linear;
-          animation: rotate 2.0s infinite linear;
+          -webkit-animation: rotateLoader 2.0s infinite linear;
+          animation: rotateLoader 2.0s infinite linear;
         }
 
         .dot1, .dot2 {
@@ -35,8 +35,8 @@
           background-color: white;
           border-radius: 100%;
           
-          -webkit-animation: bounce 2.0s infinite ease-in-out;
-          animation: bounce 2.0s infinite ease-in-out;
+          -webkit-animation: bounceLoader 2.0s infinite ease-in-out;
+          animation: bounceLoader 2.0s infinite ease-in-out;
         }
 
         .dot2 {
@@ -46,15 +46,15 @@
           animation-delay: -1.0s;
         }
 
-        @-webkit-keyframes rotate { 100% { -webkit-transform: rotate(360deg) }}
-        @keyframes rotate { 100% { transform: rotate(360deg); -webkit-transform: rotate(360deg) }}
+        @-webkit-keyframes rotateLoader { 100% { -webkit-transform: rotate(360deg) }}
+        @keyframes rotateLoader { 100% { transform: rotate(360deg); -webkit-transform: rotate(360deg) }}
 
-        @-webkit-keyframes bounce {
+        @-webkit-keyframes bounceLoader {
           0%, 100% { -webkit-transform: scale(0.0) }
           50% { -webkit-transform: scale(1.0) }
         }
 
-        @keyframes bounce {
+        @keyframes bounceLoader {
           0%, 100% { 
             transform: scale(0.0);
             -webkit-transform: scale(0.0);
@@ -74,7 +74,10 @@
       <div class="dot2"></div>
     </div>
 </body>
+<script type="text/javascript" src="resources/js/move.js"></script>
 </html>
+
+
 <!-- Friends List TPL Info -->
 <script type="text/template" id="tpl_friends_list">
     <div class="friendsList-div">

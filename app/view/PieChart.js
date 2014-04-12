@@ -14,15 +14,65 @@ Ext.define('PollStar.view.PieChart', {
     initialize: function() {
         //console.log(this.parent.getHeight());;
         var me = this;
+        me.callParent(arguments);
         me.on('painted', function() {
+            /*var p = Snap(".nv-pieWrap");
+            var bbox = p.getBBox();
+            p.attr({
+                transform: "r160," + bbox.cx + ',' + bbox.cy,
+            });
+            p.animate({
+                    transform: "r360," + bbox.cx + ',' + bbox.cy,
+                    opacity: 1
+                },
+                800);*/
+            /*var rectDim = Ext.DomQuery.select('.nv-pieWrap')[0].getBBox();
+            var width = rectDim.width;
+            var x = rectDim.x;
+            var y = rectDim.y;
+            var height = rectDim.height;
+            var centerX = (width/2) + x;
+            var centerY = (height/2) + y;
+            console.log('painted');
             if (me.chart) {
-                me.chart.update();
-            }
+                //me.chart.update();
+                move('.nv-pieWrap')
+                    .rotate(-200)
+                    .duration(0)
+                    .end(function(){
+                        move('.nv-pieWrap')
+                            .set('opacity', 1)
+                            .rotate(0)
+                            .duration('1s')
+                            .end();
+                    });
+                d3.select('.nv-pieWrap')
+                    .transition()
+                    .duration(2000)
+                    .style('opacity', 1)
+                    .attr("transform", "rotate(40,"+centerY+","+centerX+")");
+            }*/
             //console.log(me.getHeight(), me.getWidth());
-            d3.select('.nv-pieChart')
+            /*d3.select('.nv-pieWrap')
+                .classed('animated rotateIn', true);*/
+            /*var p = Snap(".nv-pieWrap");
+            var bbox = p.getBBox();*/
+            var rectDim = Ext.DomQuery.select('.nv-pieWrap')[0].getBBox();
+            var width = rectDim.width;
+            var x = rectDim.x;
+            var y = rectDim.y;
+            var height = rectDim.height;
+            var centerX = (width / 2) + x;
+            var centerY = (height / 2) + y;
+            d3.select('.nv-pieWrap')
                 .transition()
                 .duration(1000)
-                .style("opacity", 1);
+                .style('opacity', 1)
+                .attrTween("transform", tween);
+
+            function tween(d, i, a) {
+                return d3.interpolateString("rotate(-200," + centerX + "," + centerY + ")", "rotate(0," + centerX + "," + centerY + ")");
+            }
         });
 
         function exampleData() {
@@ -66,19 +116,19 @@ Ext.define('PollStar.view.PieChart', {
 
             //console.log(this.innerElement.dom);
             d3.select(this.innerElement.dom).append('svg')
-                //.style('opacity', 0)
-                .on('click', function(d, i) {
-                    me.chart.dispatch.tooltipHide();
-                    //console.dir(i);
-                })
+            //.style('opacity', 0)
+            .on('click', function(d, i) {
+                me.chart.dispatch.tooltipHide();
+            })
                 .attr('class', 'pie-chart-svg')
                 .datum(exampleData())
-                .transition().duration(350)
-                .call(chart);
+            //.transition().duration(350)
+            .call(chart);
+            console.log('done');
 
             nv.utils.windowResize(chart.update);
             this.chart = chart;
-            //pieChart = chart;
+            pieChart = chart;
             return chart;
         }, this));
     }

@@ -78,16 +78,17 @@ Ext.define('PollStar.controller.LandingPageController', {
                     //console.log(record.get('voted'));
                     /*var endTime = new Date(record.get('endTime').iso);
                     var currentTime = new Date();*/
-                    if (Parse.User.current().id == record.get('owner').objectId)
-                        pollDetail = me.showOwnerView(record);
+                    //console.log(record.get('owner').username);
+                    /*if (Parse.User.current().id == record.get('owner').objectId)
+                        pollDetail = me.showOwnerView(record);*/
                     //console.log(endTime, currentTime);
                     //console.log(currentTime < endTime);
-                    /*if (index % 2 === 0) {
+                    if (index % 2 === 0) {
                         pollDetail = me.showVoteView(record);
                     } else {
                         //console.log('parti', record.get('participants'));
                         pollDetail = me.showResultsView(record);
-                    }*/
+                    }
                     /*Ext.Viewport.setMasked({
                         xtype: 'loadmask',
                         message: 'Please Wait...'

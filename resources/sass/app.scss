@@ -220,7 +220,14 @@ $list-label-colors:
 }
 
 .nv-pieChart {
-	opacity: 0;
+	//opacity: 0;
+	.nv-pieWrap {
+		-webkit-transform-origin: center center;
+		transform-origin: center center;
+		/* -webkit-transform: rotate(-200deg);
+		transform: rotate(-200deg); */
+		opacity: 0;
+	}
 }
 
 .x-layout-box-item {
@@ -374,7 +381,9 @@ $list-label-colors:
 }
 
 .poll-detail-container {
-	background-image: url('../images/blurred.png');
+	//background-image: url('../images/blurred.png');
+	// background-image: url('../images/black_linen_v2_@2X.png');
+	background-image: url('../images/micro_carbon.png');
 }
 
 .poll-admin-form {
@@ -502,8 +511,8 @@ $list-label-colors:
 	//padding: 2em 0;
 	//margin-bottom: 1em;
 	// background-color: rgba(44,47,51,0.6);
-	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(70,86,87,1)), color-stop(100%,rgba(108,139,137,1))); /* Chrome,Safari4+ */
-	background: -webkit-linear-gradient(top, rgba(70,86,87,1) 0%,rgba(108,139,137,1) 100%); /* Chrome10+,Safari5.1+ */
+	// background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(70,86,87,1)), color-stop(100%,rgba(108,139,137,1))); /* Chrome,Safari4+ */
+	// background: -webkit-linear-gradient(top, rgba(70,86,87,1) 0%,rgba(108,139,137,1) 100%); /* Chrome10+,Safari5.1+ */
 	.container {
 		padding-left: 10px;
 		//background-color: rgba(211,73,58,0.8);
@@ -548,4 +557,11 @@ $list-label-colors:
 		padding: 10px;
 	}
 	//margin: 2em auto 1em;
+}
+
+.animated .rotateIn {
+	transform: translate3d(0,0,0);
+	-webkit-transform: translate3d(0,0,0);
+	-webkit-backface-visibility: hidden;
+	-webkit-perspective: 1000;
 }

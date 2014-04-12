@@ -6,8 +6,8 @@ Ext.define('PollStar.controller.VoteController', {
     ],
     config: {
         refs: {
-            pollVoteView: 'polldetailvote',
-            pollVoteOptions: 'polldetailvote formpanel',
+            pollVoteView: 'polldetails',
+            pollVoteOptions: 'polldetails formpanel',
             voteBtn: 'button[action=voteForPoll]',
             pollList: 'pollList'
         },
@@ -18,8 +18,9 @@ Ext.define('PollStar.controller.VoteController', {
                     var options = me.getPollVoteOptions();
                     var pollVoteView = me.getPollVoteView();
                     var pollList = me.getPollList();
+                    var pollId = pollVoteView.getRecord().get('objectId');
                     var voteDetails = {
-                        pollId: pollVoteView.getRecord().get('objectId'),
+                        pollId: pollId,
                         vote: options.getValues().vote
                     }
                     console.log('tapped vote!', voteDetails);
@@ -27,6 +28,9 @@ Ext.define('PollStar.controller.VoteController', {
                         success: function(result) {
                             console.log(result);
                             pollVoteView.getRecord().set('voted', "voted");
+                            var pollsVoted = JSON.parse(localStorage.getItem('pollsVoted'));
+                            pollsVoted[pollId] = options.getValues().vote;
+                            localStorage.setItem('pollsVoted', JSON.stringify(pollsVoted));
                             pollList.findVoted();
 
                         },
@@ -35,7 +39,7 @@ Ext.define('PollStar.controller.VoteController', {
                         }
                     });
                 }
-            }            
+            }
         }
     }
 })
