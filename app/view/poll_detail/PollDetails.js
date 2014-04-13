@@ -83,7 +83,7 @@ Ext.define('PollStar.view.poll_detail.PollDetails', {
                     centered: true
                 }]
             }, {
-                flex: 5,
+                flex: 3,
                 cls: 'text'            }]
         });
         items.push(question_container);

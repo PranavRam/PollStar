@@ -3,7 +3,8 @@ Ext.define('PollStar.view.Main', {
     xtype: 'main',
     requires: [
         'Ext.Toolbar',
-        'PollStar.view.PollList'
+        'PollStar.view.PollList',
+        'PollStar.view.components.ToolbarSpinner'
     ],
     config: {
         autoDestroy: true,
@@ -20,35 +21,32 @@ Ext.define('PollStar.view.Main', {
                 type: 'fit'
             },
             items: [{
-                    xtype: 'button',
-                    iconCls: 'add',
-                    action: 'activateImageSelect',
-                    category: 'hideOffMain'
-                },
-                /*{
                 xtype: 'button',
-                iconCls: 'photos',
-                action: 'activatePhotoLibrary'
-            },*/
-                {
-                    xtype: 'spacer'
-                }, {
-                    xtype: 'button',
-                    iconCls: 'settings',
-                    action: 'settings',
-                    category: 'hideOffMain'
-                }, {
-                    xtype: 'button',
-                    iconCls: 'user',
-                    action: 'navToUsers',
-                    category: 'hideOffMain'
-                }, {
-                    xtype: 'button',
-                    text: 'Vote',
-                    action: 'voteForPoll',
-                    hidden: true
-                }
-            ]
+                iconCls: 'add',
+                action: 'activateImageSelect',
+                category: 'hideOffMain'
+            }, {
+                xtype: 'tbarspinner',
+                //align: 'right',
+                hidden: true
+            }, {
+                xtype: 'spacer'
+            }, {
+                xtype: 'button',
+                iconCls: 'settings',
+                action: 'settings',
+                category: 'hideOffMain'
+            }, {
+                xtype: 'button',
+                iconCls: 'user',
+                action: 'navToUsers',
+                category: 'hideOffMain'
+            }, {
+                xtype: 'button',
+                text: 'Vote',
+                action: 'voteForPoll',
+                hidden: true
+            }]
         },
         items: [{
             xtype: 'pollList',

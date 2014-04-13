@@ -15,7 +15,9 @@ Ext.define('PollStar.controller.AddPollController', {
             pollQuestionsFieldset: 'formpanel #pollQuestionsFieldset',
             pollQuestionsOptionsCount: 'sliderfield',
             endPollTimeBtn: 'addPollView segmentedbutton',
-            addPollFriendsList: 'addPollFriendsList'
+            addPollFriendsList: 'addPollFriendsList',
+            pollList: 'pollList',
+            tBarSpinner: 'tbarspinner'
         },
         control: {
             'addPollView titlebar': {
@@ -51,19 +53,39 @@ Ext.define('PollStar.controller.AddPollController', {
                     var pollForm = me.getPollForm();
                     var addPollFriendsList = me.getAddPollFriendsList();
                     var addPollViewImage = me.getAddPollViewImage();
+                    var pollList = me.getPollList();
+                    var tBarSpinner = me.getTBarSpinner();
                     //var pollDataHelper = PollStar.util.PollData;
                     postCompleted = {
                         success: function() {
                             console.log('Fiished posting');
-                            addPollView.onAfter('hide', function() {
+                            /*addPollView.onAfter('hide', function() {
                                 console.log('say bye');
                                 Ext.Viewport.remove(addPollView, true);
                             });
-                            addPollView.hide();
+                            addPollView.hide();*/
+                            Ext.getStore('pollsStore').load({
+                                callback: function(records, operation, success){
+                                    console.log('loaded back');
+                                    var pollsVoted = JSON.parse(localStorage.getItem('pollsVoted'));
+
+                                    Ext.Array.forEach(records, function(record, index) {
+                                        var pollId = record.get('objectId');
+                                        //console.log(pollId, pollsVoted);
+                                        if (pollId in pollsVoted) {
+                                            console.log('voted');
+                                            record.set('voted', "voted");
+                                        }
+                                    });
+                                    pollList.findVoted();
+                                }
+                            });
+                            tBarSpinner.setHidden(true);
 
                         },
                         failure: function() {
-                            alert('failed post')
+                            tBarSpinner.setHidden(true);
+                            Ext.Msg.alert('Error', 'failed post', Ext.emptyFn)
                             console.log('Problem posting');
                         }
                     }
@@ -73,6 +95,12 @@ Ext.define('PollStar.controller.AddPollController', {
                     //pollDataHelper.submitPoll(poll_data);
                     PollStar.util.ImageUpload.uploadFile(poll_data,
                         addPollViewImage.getSrc(), "", postCompleted);
+                    addPollView.onAfter('hide', function() {
+                        console.log('say bye');
+                        Ext.Viewport.remove(addPollView, true);
+                        tBarSpinner.setHidden(false);
+                    });
+                    addPollView.hide();
                 }
             },
             addPollView: {
@@ -143,14 +171,6 @@ Ext.define('PollStar.controller.AddPollController', {
                 //capture the orientation change event
                 orientationchange: 'onOrientationchange'
             }
-        },
-        onOrientationchange: function(viewport, orientation, width, height){
-            console.log(viewport, orientation, width, height);
-            var me = this;
-            var pollView = me.getAddPollView;
-            pollView.getNavigationBar().setHidden(true);
-            pollView.element.dom.style.setProperty('-webkit-transform', "rotate(90deg)");
-
         }
     }
 })

@@ -63,6 +63,7 @@ $list-label-colors:
 //@include icon('add');
 
 .pollList-div {
+		position: relative;
 		//padding-left: 1em;
 		//height: 40px;
     //background: white;
@@ -80,6 +81,66 @@ $list-label-colors:
     	background-clip: padding-box; /* prevents bg color from leaking outside the border */
     	background-color: #939fab; /* layer fill content */
     	border-color: white;
+    	width: 32px;
+    	margin: auto;
+  	  position: absolute;
+  	  top: 0; left: 0; bottom: 0;
+    }
+    .time {
+    	position: absolute;
+    	right: 0px;
+    	top: 0px;
+    	font-size: small;
+    	&:before {
+    		font-family: 'Pictos';
+    		content: 't';
+    		-webkit-font-smoothing: antialiased;
+    		position: relative;
+    		right: 2px;
+    		top: -1px;
+    	}
+    }
+    .over {
+    	position: absolute;
+    	right: 0px;
+    	top: 0px;
+    	font-size: small;
+    	&:before {
+    		font-family: 'Pictos';
+    		content: '^';
+    		-webkit-font-smoothing: antialiased;
+    		position: relative;
+    		right: 2px;
+    		top: -1px;
+    	}
+    }
+    .name {
+    	font-size: 0.8em;
+    	margin-top: 5px;
+    	//text-transform: uppercase;
+    	font-style: italic;
+    	&:first-letter {
+    		font-size: normal;
+    	}
+    }
+
+    .question {
+    	//font-size: 0.8em;
+    	//text-transform: uppercase;
+    }
+
+    .text {
+    	margin-right: 3.5em;
+    	margin-left: 29px;
+    }
+
+    .image {
+    	//float: left;
+    	//margin-right: 5px;
+    	margin: auto;
+    	position: absolute;
+    	top: 0; left: 0; bottom: 0; right: 0;
+    	margin-left: -10px;
     }
 }
 
@@ -122,7 +183,7 @@ $list-label-colors:
 	//background: orange;
 }
 
-.pollList-div, .userList-div, .friendsList-div {
+.userList-div, .friendsList-div {
 	@include flex;
 
 	img {
@@ -407,21 +468,41 @@ $list-label-colors:
 }
 
 .addPollForm {
+	margin: 0 10px;
+
 	.add-options-label, .add-options-slider, .poll-end-label, .poll-end-button {
 		border-left: solid 3px $list-color-9;
 	}
-
+	
 	.poll-end-label {
 		margin-top: 5px;
+		color: white;
+		text-transform: uppercase;
 	}
-
+	.add-options-label {
+		color: white;
+		text-transform: uppercase;
+	}
 	.question {
 		border-left: solid 3px $list-color-6;
+	}
+
+	.x-toolbar .x-segmentedbutton .x-button.x-button-pressed, .x-segmentedbutton .x-button.x-button-pressed {
+		background-color: $universalBlue;
+	}
+
+	.x-field-input .x-clear-icon {
+		background: url('../images/X Icon.png') no-repeat center;
+		background-size: 55%;
 	}
 }
 
 .addPollForm .x-form-fieldset .x-form-fieldset-inner {
 	border: 0;
+	background: none;
+	.x-input-text {
+		color: white;
+	}
 }
 
 .poll-detail-question {
@@ -559,9 +640,6 @@ $list-label-colors:
 	//margin: 2em auto 1em;
 }
 
-.animated .rotateIn {
-	transform: translate3d(0,0,0);
-	-webkit-transform: translate3d(0,0,0);
-	-webkit-backface-visibility: hidden;
-	-webkit-perspective: 1000;
+.add-poll-container {
+	background: url('../images/micro_carbon.png');
 }

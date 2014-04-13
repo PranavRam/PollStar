@@ -74,7 +74,6 @@
       <div class="dot2"></div>
     </div>
 </body>
-<script type="text/javascript" src="resources/js/move.js"></script>
 </html>
 
 
@@ -98,11 +97,13 @@
 <!-- Poll List TPL Info -->
 <script type="text/template" id="tpl_poll_list">
     <div class="pollList-div {voted}">
-    <div>
-        <img src="resources/images/sencha-avatar-64x64.png" alt=""/></div>
-        <div>
-            <p>{question:ellipsis(30, true)}</p>
-            <p><small><i>{owner.username}</i></small></p>
-        </div>
+      <div class="image">
+          <img src="resources/images/sencha-avatar-64x64.png" alt=""/>
+      </div>
+      <div class="text">
+          <p class="question">{question}</p>
+          <p class="name">@{owner.username}</p>
+      </div>
+      {endTime.iso:this.timeLeft}
     </div>
 </script>

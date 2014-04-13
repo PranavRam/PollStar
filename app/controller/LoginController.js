@@ -62,23 +62,26 @@ Ext.define('PollStar.controller.LoginController', {
         var me = this;
         var pollListStore = Ext.create('PollStar.store.Polls', {
             listeners: {
-                load: function(store, records, successful, operation, eOpts) {
-                    //console.log(records);
-                    var pollsVoted = JSON.parse(localStorage.getItem('pollsVoted'));
+                load: {
+                    single: true,
+                    fn: function(store, records, successful, operation, eOpts) {
+                        //console.log(records);
+                        var pollsVoted = JSON.parse(localStorage.getItem('pollsVoted'));
 
-                    Ext.Array.forEach(records, function(record, index) {
-                        var pollId = record.get('objectId');
-                        //console.log(pollId, pollsVoted);
-                        if (pollId in pollsVoted) {
-                            console.log('voted');
-                            record.set('voted', "voted");
+                        Ext.Array.forEach(records, function(record, index) {
+                            var pollId = record.get('objectId');
+                            //console.log(pollId, pollsVoted);
+                            if (pollId in pollsVoted) {
+                                console.log('voted');
+                                record.set('voted', "voted");
+                            }
+                        });
+                        //me.setCount(me.getCount + 1);
+
+                        if (me.getFirstLoad() !== 3) {
+                            me.setFirstLoad(me.getFirstLoad() + 1);
+                            me.addMainViews();
                         }
-                    });
-                    //me.setCount(me.getCount + 1);
-
-                    if (me.getFirstLoad() !== 3) {
-                        me.setFirstLoad(me.getFirstLoad() + 1);
-                        me.addMainViews();
                     }
                 }
             }
@@ -151,14 +154,23 @@ Ext.define('PollStar.controller.LoginController', {
     },
     logInUser: function() {
         var me = this;
-        Parse.User.logIn("Pranav Ram", "12345", {
+        var logInFieldSet = Ext.ComponentQuery.query('formpanel[baseCls=login-panel]')[0];
+        var logInValues = logInFieldSet.getValues();
+        Parse.User.logIn(logInValues.userNameTextField, logInValues.passwordTextField, {
             success: function(user) {
                 // Do stuff after successful login.
+                var pollsVoted = Parse.User.current().get('pollsVoted');
+                localStorage.setItem('pollsVoted', JSON.stringify(pollsVoted));
                 Ext.ux.parse.data.ParseConnector._sessionToken = user.getSessionToken();
                 me.addStores();
             },
             error: function(user, error) {
                 // The login failed. Check error to see why.
+                console.log(user, error);
+                Ext.Viewport.setMasked(false);
+                setTimeout(function(){
+                    Ext.Msg.alert("Login Error", error.message, Ext.emptyFn);
+                },1);
             }
         });
     }

@@ -32,13 +32,40 @@ Ext.define('PollStar.view.PollList', {
                     me.findVoted();
                 }
             }
-        }
+        },
+        loadingText: false
     },
     initialize: function() {
         //console.log(PollStar.util.Templates.pollList());
+        function dhm(t){
+            var cd = 24 * 60 * 60 * 1000,
+                ch = 60 * 60 * 1000,
+                d = Math.floor(t / cd),
+                h = '0' + Math.floor( (t - d * cd) / ch),
+                m = '0' + Math.round( (t - d * cd - h * ch) / 60000);
+            return [h.substr(-2), m.substr(-2)].join(':');
+        }
         console.log('init');
         var me = this;
-        me.setItemTpl(Ext.select('#tpl_poll_list').elements[0].innerHTML);
+        var tpl = new Ext.XTemplate(
+            Ext.select('#tpl_poll_list').elements[0].innerHTML, {
+                timeLeft: function(time) {
+                    var timeDiff = new Date(time) - new Date();
+                    var time = dhm(timeDiff);
+                    if(timeDiff >= 0){
+                        /*hours = Ext.Date.format(
+                            new Date(timeDiff), 
+                            "G");*/
+
+                        return '<div class="time">'+time+'</div>';
+                    }
+                    else {
+                        return '<div class="over"></div>';
+                    }
+                }
+            });
+        //console.log(tpl);
+        me.setItemTpl(tpl);
         me.setStore('pollsStore');
         //global_var = me.down('searchfield');
         /*me.down('searchfield').innerElement.onBefore('focus', function(button) {
@@ -59,11 +86,16 @@ Ext.define('PollStar.view.PollList', {
     },
     findVoted: function() {
         var me = this;
+        var votedParents = Ext.DomQuery.select('.votedParent');
+        Ext.Array.forEach(votedParents, function(votes, index) {
+            votes.classList.remove('votedParent');
+        });
         var votedItems = Ext.DomQuery.select('.voted');
         Ext.Array.forEach(votedItems, function(votes, index) {
             var xListItem = Ext.get(votes).up('.x-list-item');
-            if(!xListItem.hasCls('votedParent'))
-                xListItem.addCls('votedParent');
+            /*if(!xListItem.hasCls('votedParent'))
+                xListItem.addCls('votedParent');*/
+            xListItem.dom.classList.add('votedParent');
         });
     }
 });

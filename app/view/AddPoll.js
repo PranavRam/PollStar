@@ -48,15 +48,16 @@ Ext.define('PollStar.view.AddPoll', {
         },
         items: [{
             // layout: 'vbox',
+            cls: 'add-poll-container',
             scrollable: 'vertical',
-            cls: 'flexboxDiv',
+            //cls: 'flexboxDiv',
             items: [{
                 xtype: 'pollimage',
                 // flex: 1,
                 height: 240,
                 itemId: 'addPollImage',
                 cls: 'pollImage',
-                style: 'background-color: RGB(234, 244, 246)',
+                //style: 'background-color: RGB(234, 244, 246)',
                 listeners: {
                     load: function(cmp) {
                         var img = Ext.get(cmp.element).down('img').dom;
@@ -100,7 +101,7 @@ Ext.define('PollStar.view.AddPoll', {
                         //align: 'center',
                         //margin: '5px auto 0 auto',
                         height: '30px',
-                        style: 'text-align: center; padding: 0.5em; background-color: RGB(234, 244, 246)',
+                        style: 'text-align: center; padding: 0.5em;',
                         cls: 'add-options-label'
                     }, {
                         xtype: 'sliderfield',
@@ -108,7 +109,7 @@ Ext.define('PollStar.view.AddPoll', {
                         minValue: 2,
                         maxValue: 5,
                         value: 2,
-                        style: 'background-color: RGB(234, 244, 246)',
+                        //style: 'background-color: RGB(234, 244, 246)',
                         cls: 'add-options-slider'
                     }, {
                         xtype: 'textfield',
@@ -128,7 +129,7 @@ Ext.define('PollStar.view.AddPoll', {
                         xtype: 'segmentedbutton',
                         docked: 'bottom',
                         cls: 'poll-end-button',
-                        style: 'background-color: RGB(234, 244, 246); padding-bottom: 1em;',
+                        style: 'padding-bottom: 1em;',
                         layout: {
                             pack: 'center'
                         },
@@ -153,7 +154,7 @@ Ext.define('PollStar.view.AddPoll', {
                         //align: 'center',
                         //margin: '5px auto 0 auto',
                         height: '30px',
-                        style: 'text-align: center; padding: 0.5em; background-color: RGB(234, 244, 246)',
+                        style: 'text-align: center; padding: 0.5em;',
                         cls: 'poll-end-label'
                     }]
                 }

@@ -35,7 +35,7 @@ Ext.define('PollStar.util.PollData', {
         poll.set('owner', poll_data.owner);
         poll.set('participants', poll_data.participants);
         poll.set('endTime', poll_data.endTime);
-        poll.set('friendVoted', []);
+        poll.set('friendsVoted', []);
         poll.set('results', []);
         //relation.add(poll_data.participants);
         poll.save().then(function() {
