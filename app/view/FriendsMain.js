@@ -25,7 +25,7 @@ Ext.define('PollStar.view.FriendsMain', {
                 category: 'hideOffMain'
             }, {
                 xtype: 'button',
-                iconCls: 'table',
+                iconCls: 'flag',
                 action: 'navToPolls'
             }]
         }, {

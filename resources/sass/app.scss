@@ -60,7 +60,7 @@ $list-label-colors:
 @include icon('heart');
 @include icon('table');
 @include icon('delete');
-//@include icon('add');
+@include icon('flag');
 
 .pollList-div {
 		position: relative;
@@ -87,17 +87,24 @@ $list-label-colors:
   	  top: 0; left: 0; bottom: 0;
     }
     .time {
+    	//width: 2em;
+    	text-align: center;
     	position: absolute;
-    	right: 0px;
-    	top: 0px;
+    	right: -0.5em;
+    	top: 5%;
     	font-size: small;
     	&:before {
     		font-family: 'Pictos';
     		content: 't';
     		-webkit-font-smoothing: antialiased;
-    		position: relative;
-    		right: 2px;
-    		top: -1px;
+    		position: absolute;
+    		//right: 2px;
+    		// top: -1px;
+    		right: 2.2em;
+    		top: 0.8em;
+    	}
+    	.hour {
+    		border-bottom: solid;
     	}
     }
     .over {
@@ -130,7 +137,7 @@ $list-label-colors:
     }
 
     .text {
-    	margin-right: 3.5em;
+    	margin-right: 3em;
     	margin-left: 29px;
     }
 
@@ -485,6 +492,7 @@ $list-label-colors:
 	}
 	.question {
 		border-left: solid 3px $list-color-6;
+		//color: white;
 	}
 
 	.x-toolbar .x-segmentedbutton .x-button.x-button-pressed, .x-segmentedbutton .x-button.x-button-pressed {

@@ -37,13 +37,17 @@ Ext.define('PollStar.view.PollList', {
     },
     initialize: function() {
         //console.log(PollStar.util.Templates.pollList());
-        function dhm(t){
+        function dhm(t) {
             var cd = 24 * 60 * 60 * 1000,
                 ch = 60 * 60 * 1000,
                 d = Math.floor(t / cd),
-                h = '0' + Math.floor( (t - d * cd) / ch),
-                m = '0' + Math.round( (t - d * cd - h * ch) / 60000);
-            return [h.substr(-2), m.substr(-2)].join(':');
+                h = '0' + Math.floor((t - d * cd) / ch),
+                m = '0' + Math.round((t - d * cd - h * ch) / 60000);
+            //return [h.substr(-2), m.substr(-2)].join(':');
+            var time = {};
+            time.hours = h.substr(-2);
+            time.minutes = m.substr(-2);
+            return time;
         }
         console.log('init');
         var me = this;
@@ -51,15 +55,15 @@ Ext.define('PollStar.view.PollList', {
             Ext.select('#tpl_poll_list').elements[0].innerHTML, {
                 timeLeft: function(time) {
                     var timeDiff = new Date(time) - new Date();
-                    var time = dhm(timeDiff);
-                    if(timeDiff >= 0){
+                    if (timeDiff >= 0) {
+                        var time = dhm(timeDiff);
+
                         /*hours = Ext.Date.format(
                             new Date(timeDiff), 
                             "G");*/
-
-                        return '<div class="time">'+time+'</div>';
-                    }
-                    else {
+                        return '<div class="time"><div class="hour">'+time.hours+'h</div><div class="minutes">'+time.minutes+'m</div></div>';
+                        // return '<div class="time">'+time+'</div>';
+                    } else {
                         return '<div class="over"></div>';
                     }
                 }

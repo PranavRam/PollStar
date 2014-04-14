@@ -114,14 +114,14 @@ Ext.define('PollStar.view.AddPoll', {
                     }, {
                         xtype: 'textfield',
                         name: 'options',
-                        // label: 'Option 1',
+                        data: 1,
                         placeHolder: 'Option 1',
                         action: 'optionsSlider',
                         cls: 'options-input'
                     }, {
                         xtype: 'textfield',
                         name: 'options',
-                        //label: 'Option 2',
+                        data: 2,
                         placeHolder: 'Option 2',
                         action: 'optionsSlider',
                         cls: 'options-input'

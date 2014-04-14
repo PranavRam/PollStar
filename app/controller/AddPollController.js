@@ -2,7 +2,8 @@ Ext.define('PollStar.controller.AddPollController', {
     extend: 'Ext.app.Controller',
     requires: [
         'PollStar.util.PollData',
-        'PollStar.view.AddPollFriendsList'
+        'PollStar.view.AddPollFriendsList',
+        'PollStar.view.components.FriendsList'
     ],
     config: {
         refs: {
@@ -17,7 +18,9 @@ Ext.define('PollStar.controller.AddPollController', {
             endPollTimeBtn: 'addPollView segmentedbutton',
             addPollFriendsList: 'addPollFriendsList',
             pollList: 'pollList',
-            tBarSpinner: 'tbarspinner'
+            tBarSpinner: 'tbarspinner',
+            optionsField: 'textfield[action=optionsSlider]',
+            addFriendsListModal: 'addfriendslist'
         },
         control: {
             'addPollView titlebar': {
@@ -65,7 +68,7 @@ Ext.define('PollStar.controller.AddPollController', {
                             });
                             addPollView.hide();*/
                             Ext.getStore('pollsStore').load({
-                                callback: function(records, operation, success){
+                                callback: function(records, operation, success) {
                                     console.log('loaded back');
                                     var pollsVoted = JSON.parse(localStorage.getItem('pollsVoted'));
 
@@ -147,7 +150,8 @@ Ext.define('PollStar.controller.AddPollController', {
                                 name: 'options',
                                 placeHolder: 'Option ' + (i + oldValue + 1),
                                 action: 'optionsSlider',
-                                cls: 'options-input'
+                                cls: 'options-input',
+                                data: (i + oldValue + 1)
                             }
                             optionsArr.push(options);
                         }
@@ -170,6 +174,46 @@ Ext.define('PollStar.controller.AddPollController', {
             'viewport': {
                 //capture the orientation change event
                 orientationchange: 'onOrientationchange'
+            },
+            optionsField: {
+                keyup: function(textfield, e, eOpts) {
+                    var friendsList = Ext.Viewport.down('addfriendslist');
+                    if (Ext.isEmpty(friendsList)) {
+                        friendsList = Ext.create('PollStar.view.components.FriendsList');
+                    }
+                    friendsList.setTextfield(textfield);
+                    friendsList.showBy(textfield, "br-tr?");
+                    /*var rx = /(^@|,$)/;
+                    var value = textfield.getValue();
+                    if (rx.test(value)) {
+                        var name = value.substring(1);
+                        var regex = new RegExp(name, "i");
+                        var model = Ext.getStore('friendsStore')
+                            .findRecord('username', regex);
+                        if (!Ext.isEmpty(model)) {
+                            var username = model.get('username');
+                            textfield.setValue('@' + username);
+                        }
+
+                    }
+                    console.log(rx.test(textfield.getValue()));
+                    console.log(textfield.getValue());*/
+
+
+                },
+                clearicontap: function(textfield, e, eOpts) {
+                    var myList = Ext.Viewport.down('addfriendslist');
+                    myList.setHidden(true);
+                }
+            },
+            addFriendsListModal: {
+                itemtap: function(list, index, target, record, event) {
+                    var focusedField = list.getTextfield();
+                    //console.log(focusedField);
+                    focusedField.setValue('@'+record.get('username'));
+                    list.hide();
+                    return false;
+                }
             }
         }
     }
