@@ -306,9 +306,12 @@ $list-label-colors:
 	opacity: 0.3;
 }
 
-.pollImage img {
-	display: block;
-	margin: auto;
+.pollImage {
+	margin-bottom: 10px;
+	img {
+		display: block;
+		margin: auto;
+	}
 }
 
 .imageFullScreen {

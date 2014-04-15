@@ -95,9 +95,11 @@ Ext.define('PollStar.controller.AddPollController', {
                     var poll_data = PollStar.util.PollData.preparePollData(pollForm.getValues(),
                         timeToAdd,
                         addPollFriendsList.getSelection());
+
                     //pollDataHelper.submitPoll(poll_data);
                     PollStar.util.ImageUpload.uploadFile(poll_data,
                         addPollViewImage.getSrc(), "", postCompleted);
+
                     addPollView.onAfter('hide', function() {
                         console.log('say bye');
                         Ext.Viewport.remove(addPollView, true);
@@ -177,40 +179,43 @@ Ext.define('PollStar.controller.AddPollController', {
             },
             optionsField: {
                 keyup: function(textfield, e, eOpts) {
-                    var friendsList = Ext.Viewport.down('addfriendslist');
-                    if (Ext.isEmpty(friendsList)) {
-                        friendsList = Ext.create('PollStar.view.components.FriendsList');
-                    }
-                    friendsList.setTextfield(textfield);
-                    friendsList.showBy(textfield, "br-tr?");
-                    /*var rx = /(^@|,$)/;
+                    var rx = /(^@|,$)/;
                     var value = textfield.getValue();
                     if (rx.test(value)) {
                         var name = value.substring(1);
-                        var regex = new RegExp(name, "i");
-                        var model = Ext.getStore('friendsStore')
-                            .findRecord('username', regex);
-                        if (!Ext.isEmpty(model)) {
-                            var username = model.get('username');
-                            textfield.setValue('@' + username);
+                        var friendsList = Ext.Viewport.down('addfriendslist');
+                        if (Ext.isEmpty(friendsList)) {
+                            friendsList = Ext.create('PollStar.view.components.FriendsList');
                         }
-
+                        friendsList.setTextfield(textfield);
+                        friendsList.showBy(textfield, "br-tr?");
                     }
-                    console.log(rx.test(textfield.getValue()));
-                    console.log(textfield.getValue());*/
+                    //console.log(rx.test(textfield.getValue()));
+                    //console.log(textfield.getValue());
 
 
                 },
                 clearicontap: function(textfield, e, eOpts) {
-                    var myList = Ext.Viewport.down('addfriendslist');
-                    myList.setHidden(true);
+                    var friendsList = Ext.Viewport.down('addfriendslist');
+                    if (!Ext.isEmpty(friendsList)) {
+                        friendsList.setHidden(true);
+                    }
+                },
+                blur: function(textfield, e, eOpts){
+                   /* var friendsList = Ext.Viewport.down('addfriendslist');
+                    if (!Ext.isEmpty(friendsList)) {
+                        friendsList.setHidden(true);
+                    }*/
                 }
             },
             addFriendsListModal: {
                 itemtap: function(list, index, target, record, event) {
                     var focusedField = list.getTextfield();
+                    var data = focusedField.getData();
+                    var hiddenField = focusedField.up().down('hiddenfield[data='+data+']');
                     //console.log(focusedField);
                     focusedField.setValue('@'+record.get('username'));
+                    hiddenField.setValue(record.get('objectId'));
                     list.hide();
                     return false;
                 }

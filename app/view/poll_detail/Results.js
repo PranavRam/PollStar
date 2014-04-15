@@ -3,7 +3,8 @@ Ext.define('PollStar.view.poll_detail.Results', {
     xtype: 'polldetailresults',
     requires: [
         'PollStar.view.PollImage',
-        'PollStar.view.poll_detail.PollDetails'
+        'PollStar.view.poll_detail.PollDetails',
+        'PollStar.view.PieChart'
     ],
     config: {
         imageUrl: null,
@@ -12,9 +13,9 @@ Ext.define('PollStar.view.poll_detail.Results', {
         participants: null,
         record: null,
         cls: 'poll-detail-container',
-        items: [{
+        /*items: [{
             xtype: 'piechart'
-        }],
+        }],*/
         //scrollable: 'vertical'
     },
     initialize: function() {
@@ -22,6 +23,10 @@ Ext.define('PollStar.view.poll_detail.Results', {
         //me.populateConfig();
         //me.addItems();
         me.callParent(arguments);
+        var piechart = Ext.create('PollStar.view.PieChart', {
+            chartData: me.getRecord().get('results')
+        });
+        me.add(piechart);
         var pollDetails = Ext.create('PollStar.view.poll_detail.PollDetails', {
             record: me.getRecord()
         });

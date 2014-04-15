@@ -100,3 +100,11 @@ curl -X GET \
   --data-urlencode 'where={"participants":{"$inQuery":{"where":{"objectId":"fBSxRaBSHA"},"className":"_User"}}}' \
   --data-urlencode 'include=participants,owner' \
   https://api.parse.com/1/classes/Poll
+
+Get all users except for current user
+curl -X GET \
+  -H "X-Parse-Application-Id: TiXE1VVZv2QrUJTyJsXlZQ4MhnoygRXJRIxTjk26" \
+  -H "X-Parse-REST-API-Key: MQGUH1VVnC4aTIaVCxs9fYGfjkni9fKhwizJ8CbR" \
+  -G \
+  --data-urlencode 'where={"objectId":{"$ne":"qVB299wmq4"}}' \
+  https://api.parse.com/1/users

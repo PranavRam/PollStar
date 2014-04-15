@@ -143,12 +143,12 @@ Ext.define('PollStar.view.poll_detail.PollDetails', {
                 name: 'vote',
                 labelWidth: '85%',
                 labelWrap: true,
-                value: item,
-                label: item,
+                value: index,
+                label: item.name,
                 checked: function(){
                     //console.log('checked here');
                     if(pollsVoted && pollsVoted[pollId])
-                        return pollsVoted[pollId] == item;
+                        return pollsVoted[pollId].index == index;
                     else{
                         return (index == 0);
                     }

@@ -7,7 +7,8 @@ Ext.define('PollStar.view.AddPoll', {
         'Ext.field.Slider',
         'Ext.Img',
         'Ext.SegmentedButton',
-        'PollStar.view.PollImage'
+        'PollStar.view.PollImage',
+        'Ext.field.Hidden'
     ],
     config: {
         // layout: 'vbox',
@@ -63,14 +64,13 @@ Ext.define('PollStar.view.AddPoll', {
                         var img = Ext.get(cmp.element).down('img').dom;
                         //console.log(img.dom.naturalHeight, img.dom.naturalWidth);
                         var screenWidth = window.screen.width;
-                        var screenHeight= window.screen.height;
+                        var screenHeight = window.screen.height;
                         var imgH = img.naturalHeight;
                         var imgW = img.naturalWidth;
 
-                        if(imgW < imgH){
-                            cmp.setHeight((screenHeight/2)-24);
-                        }
-                        else {
+                        if (imgW < imgH) {
+                            cmp.setHeight((screenHeight / 2) - 24);
+                        } else {
                             var height = screenWidth * (img.naturalHeight / img.naturalWidth);
                             cmp.setHeight(height);
                         }
@@ -119,12 +119,22 @@ Ext.define('PollStar.view.AddPoll', {
                         action: 'optionsSlider',
                         cls: 'options-input'
                     }, {
+                        xtype: 'hiddenfield',
+                        name: 'id',
+                        value: 1,
+                        data: 1
+                    }, {
                         xtype: 'textfield',
                         name: 'options',
                         data: 2,
                         placeHolder: 'Option 2',
                         action: 'optionsSlider',
                         cls: 'options-input'
+                    }, {
+                        xtype: 'hiddenfield',
+                        name: 'id',
+                        value: 2,
+                        data: 2
                     }, {
                         xtype: 'segmentedbutton',
                         docked: 'bottom',

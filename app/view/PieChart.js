@@ -16,47 +16,6 @@ Ext.define('PollStar.view.PieChart', {
         var me = this;
         me.callParent(arguments);
         me.on('painted', function() {
-            /*var p = Snap(".nv-pieWrap");
-            var bbox = p.getBBox();
-            p.attr({
-                transform: "r160," + bbox.cx + ',' + bbox.cy,
-            });
-            p.animate({
-                    transform: "r360," + bbox.cx + ',' + bbox.cy,
-                    opacity: 1
-                },
-                800);*/
-            /*var rectDim = Ext.DomQuery.select('.nv-pieWrap')[0].getBBox();
-            var width = rectDim.width;
-            var x = rectDim.x;
-            var y = rectDim.y;
-            var height = rectDim.height;
-            var centerX = (width/2) + x;
-            var centerY = (height/2) + y;
-            console.log('painted');
-            if (me.chart) {
-                //me.chart.update();
-                move('.nv-pieWrap')
-                    .rotate(-200)
-                    .duration(0)
-                    .end(function(){
-                        move('.nv-pieWrap')
-                            .set('opacity', 1)
-                            .rotate(0)
-                            .duration('1s')
-                            .end();
-                    });
-                d3.select('.nv-pieWrap')
-                    .transition()
-                    .duration(2000)
-                    .style('opacity', 1)
-                    .attr("transform", "rotate(40,"+centerY+","+centerX+")");
-            }*/
-            //console.log(me.getHeight(), me.getWidth());
-            /*d3.select('.nv-pieWrap')
-                .classed('animated rotateIn', true);*/
-            /*var p = Snap(".nv-pieWrap");
-            var bbox = p.getBBox();*/
             var rectDim = Ext.DomQuery.select('.nv-pieWrap')[0].getBBox();
             var width = rectDim.width;
             var x = rectDim.x;
@@ -107,7 +66,8 @@ Ext.define('PollStar.view.PieChart', {
             var me = this;
             var chart = nv.models.pieChart()
                 .x(function(d) {
-                    return d.label
+                    //return d.label
+                    return d.option
                 })
                 .y(function(d) {
                     return d.value
@@ -121,7 +81,8 @@ Ext.define('PollStar.view.PieChart', {
                 me.chart.dispatch.tooltipHide();
             })
                 .attr('class', 'pie-chart-svg')
-                .datum(exampleData())
+                //.datum(exampleData())
+                .datum(me.getChartData())
             //.transition().duration(350)
             .call(chart);
             console.log('done');

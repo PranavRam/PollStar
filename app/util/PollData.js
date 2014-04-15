@@ -11,14 +11,26 @@ Ext.define('PollStar.util.PollData', {
     },
     preparePollData: function(poll_data, timeToAdd, friendsSelection) {
         var me = this;
-        var friends = [];
+        var friends = [],
+            options = [];
+
         friends = Ext.Array.map(friendsSelection, function(record, index) {
             var friend = Parse.Object("User");
             friend.id = record.get('objectId');
             return friend;
         });
+
+        var optionId = poll_data.id;
+        options = Ext.Array.map(poll_data.options, function(opts, i){
+            var option = {
+                name: opts,
+                id: optionId[i]
+            };
+            return option;
+        });
         /*var owner = Parse.Object("User");
         owner.id = "UO2sjYOKjp";*/
+        poll_data.options = options;
         poll_data.owner = Parse.User.current();
         poll_data.participants = friends;
         poll_data.endTime = me._getEndTime(timeToAdd);

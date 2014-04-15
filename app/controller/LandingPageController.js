@@ -48,7 +48,7 @@ Ext.define('PollStar.controller.LandingPageController', {
                             button.show();
                         });
                     Ext.ComponentQuery.
-                        query('button[action=voteForPoll]')[0].setHidden(true);
+                    query('button[action=voteForPoll]')[0].setHidden(true);
                 }
             },
             addPollBtn: {
@@ -139,8 +139,10 @@ Ext.define('PollStar.controller.LandingPageController', {
 
         function success(image_uri) {
             //console.log('image data',image_uri);
-            console.log('before image blb');
-            me.getImageBlob(image_uri);
+            var imageData = "data:image/jpeg;base64," + image_uri;
+            me.switchToAddPollView(imageData);
+            //console.log('before image blb');
+            //me.getImageBlob(image_uri);
         }
 
         function fail(message) {
@@ -156,10 +158,13 @@ Ext.define('PollStar.controller.LandingPageController', {
             Ext.device.Camera.capture({
                 success: success,
                 failure: fail,
-                quality: 100,
-                destination: 'file',
+                quality: 15,
+                destination: 'data',
                 source: source,
-                encoding: 'jpg'
+                encoding: 'jpg',
+                width: 640,
+                height: 640,
+                //correctOrientation: true
             });
         }
         //console.log(Ext.ux.parse.data.ParseConnector.getRequiredHeaders());
@@ -181,7 +186,7 @@ Ext.define('PollStar.controller.LandingPageController', {
         //console.log(image_uri);
         //addPollViewImage.setSrc("data:image/jpeg;base64," + image_data);
         addPollViewImage.setSrc(image_uri);
-        addPollViewImage.setImageOrientation(orientation);
+        //addPollViewImage.setImageOrientation(orientation);
         //console.log('in switching');
         addPollView.show();
     },
@@ -244,7 +249,7 @@ Ext.define('PollStar.controller.LandingPageController', {
     },
     showVoteView: function(record) {
         Ext.ComponentQuery.
-            query('button[action=voteForPoll]')[0].setHidden(false);
+        query('button[action=voteForPoll]')[0].setHidden(false);
         return Ext.create('PollStar.view.poll_detail.PollDetails', {
             record: record,
             title: Ext.util.Format.ellipsis(record.get('question'), 15),

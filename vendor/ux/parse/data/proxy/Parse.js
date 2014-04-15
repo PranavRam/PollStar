@@ -49,6 +49,7 @@ Ext.define('Ext.ux.parse.data.proxy.Parse', {
      * @override
      */
     getParams: function(operation) {
+        //console.log(operation);
         var me = this,
             params = {},
             sorters = operation.getSorters(),
@@ -96,7 +97,7 @@ Ext.define('Ext.ux.parse.data.proxy.Parse', {
             var includeKeyArray = Ext.Array.from(includeKeys);
             params[includeParam] = includeKeyArray.join(',');
         }
-
+        //console.log(params);
         return params;
     },
 

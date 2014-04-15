@@ -33,7 +33,8 @@ Ext.define('PollStar.view.PollList', {
                 }
             }
         },
-        loadingText: false
+        loadingText: false,
+        emptyText: '<div> No Participating Polls. Create One!</div>'
     },
     initialize: function() {
         //console.log(PollStar.util.Templates.pollList());

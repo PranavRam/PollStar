@@ -21,6 +21,7 @@ Ext.define('PollStar.store.Friends', {
     },
     initialize: function() {
         var me = this;
+        me.callParent(arguments);
         me.setProxy({
             type: 'parse',
             url: 'https://api.parse.com/1/users' + me.friendsQuery()
@@ -33,7 +34,7 @@ Ext.define('PollStar.store.Friends', {
                 object: {
                     __type: "Pointer",
                     className: "_User",
-                    objectId: "UO2sjYOKjp"
+                    objectId: Parse.User.current().id
                 },
                 key: "friends"
             }

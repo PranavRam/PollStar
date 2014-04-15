@@ -90,9 +90,9 @@ Ext.define('PollStar.controller.LoginController', {
             listeners: {
                 load: function(store, records, successful, operation, eOpts) {
                     me.setCount(me.getCount() + 1);
-
                     //console.log(me.getCount());
                     if (me.getFirstLoad() !== 3) {
+                        me.setCount(me.getCount() + 1);
                         me.setFirstLoad(me.getFirstLoad() + 1);
                         me.addFriendsMainView();
                     }
@@ -103,9 +103,22 @@ Ext.define('PollStar.controller.LoginController', {
             listeners: {
                 load: function(store, records, successful, operation, eOpts) {
                     me.setCount(me.getCount() + 1);
+                    //console.log(records);
+                    Ext.Array.forEach(records, function(record, index) {
+                        //var user = record.get('objectId');
+                        //console.log(pollId, pollsVoted);
+                        //record.set('isFriend', '+');
+                        console.log(record.get('isFriend'));
+
+                        if (record.get('objectId') === Parse.User.current().id) {
+                            store.remove(record);
+                            //store.sync();
+                        }
+                    });
                     //me.setFirstLoad(me.getFirstLoad() + 1);
                     //console.log(me.getCount());
                     if (me.getFirstLoad() !== 3) {
+                        me.setCount(me.getCount() + 1);
                         me.setFirstLoad(me.getFirstLoad() + 1);
                         me.addFriendsMainView();
                     }
@@ -117,6 +130,7 @@ Ext.define('PollStar.controller.LoginController', {
         var me = this;
         //console.log('Count', me);
         if (me.getCount() != 2) return;
+        console.log('here');
         var friendsMainView = Ext.create('PollStar.view.FriendsMain');
         Ext.Viewport.add(friendsMainView);
     },
@@ -159,7 +173,7 @@ Ext.define('PollStar.controller.LoginController', {
         Parse.User.logIn(logInValues.userNameTextField, logInValues.passwordTextField, {
             success: function(user) {
                 // Do stuff after successful login.
-                var pollsVoted = Parse.User.current().get('pollsVoted');
+                var pollsVoted = user.get('pollsVoted');
                 localStorage.setItem('pollsVoted', JSON.stringify(pollsVoted));
                 Ext.ux.parse.data.ParseConnector._sessionToken = user.getSessionToken();
                 me.addStores();
@@ -168,9 +182,9 @@ Ext.define('PollStar.controller.LoginController', {
                 // The login failed. Check error to see why.
                 console.log(user, error);
                 Ext.Viewport.setMasked(false);
-                setTimeout(function(){
+                setTimeout(function() {
                     Ext.Msg.alert("Login Error", error.message, Ext.emptyFn);
-                },1);
+                }, 1);
             }
         });
     }

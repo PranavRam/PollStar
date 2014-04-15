@@ -19,6 +19,7 @@ Ext.define('PollStar.controller.VoteController', {
                     var pollVoteView = me.getPollVoteView();
                     var pollList = me.getPollList();
                     var pollId = pollVoteView.getRecord().get('objectId');
+                    var optionsRec = pollVoteView.getRecord().get('options');
                     var voteDetails = {
                         pollId: pollId,
                         vote: options.getValues().vote
@@ -29,7 +30,10 @@ Ext.define('PollStar.controller.VoteController', {
                             console.log(result);
                             pollVoteView.getRecord().set('voted', "voted");
                             var pollsVoted = JSON.parse(localStorage.getItem('pollsVoted'));
-                            pollsVoted[pollId] = options.getValues().vote;
+                            pollsVoted[pollId] = {
+                                index: options.getValues().vote,
+                                option: optionsRec[options.getValues().vote].name
+                            };
                             localStorage.setItem('pollsVoted', JSON.stringify(pollsVoted));
                             pollList.findVoted();
 

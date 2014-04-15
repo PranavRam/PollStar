@@ -5,6 +5,10 @@ Ext.define('PollStar.model.User', {
             name: 'username',
             type: 'string',
             persist: 'false'
+        },{
+            name: 'isFriend',
+            type: 'string',
+            defaultValue: '+'
         }, {
             name: 'email',
             type: 'string'

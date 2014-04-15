@@ -7,16 +7,30 @@ Ext.define('PollStar.store.Users', {
     config: {
         storeId: 'usersStore',
         model: 'PollStar.model.User',
-        autoLoad: true,
+        //autoLoad: true,
         sorters: 'username',
-        proxy: {
-            type: 'parse',
-            url: 'https://api.parse.com/1/users'
-        },
+        //pageSize: 30,
         grouper: {
             groupFn: function(record) {
                 return record.get('username')[0];
             }
         }
+    },
+    initialize: function(){
+        var me = this;
+        me.callParent(arguments);
+        me.setProxy({
+            type: 'parse',
+            url: 'https://api.parse.com/1/users' + me.usersQuery(),
+        });
+        me.load();
+    },
+    usersQuery: function() {
+        var usersQuery = JSON.stringify({
+            objectId: {
+                $ne: Parse.User.current().id
+            }
+        });
+        return '?where=' + usersQuery;
     }
 });
