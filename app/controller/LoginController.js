@@ -41,29 +41,6 @@ Ext.define('PollStar.controller.LoginController', {
                     //var friendsMainView = Ext.create('PollStar.view.FriendsMain');
 
                 }
-            },
-            pollList: {
-                polllistpainted: function(list) {
-                    /* var me = this;
-                    //debugger;
-                    //Ext.fly('spinner').destroy();
-
-                    var mainView = Ext.Viewport.down('main');
-                    var loginView = me.getLoginView();
-                    console.log(mainView);
-                    //mainView.show();
-                    console.log('shown');
-                    if (!Ext.isEmpty(loginView)) {
-                        Ext.Viewport.animateActiveItem(mainView,
-                            me.getAnims().right
-                        );
-                        Ext.Viewport.setMasked(false);
-
-                    } else {
-                        Ext.fly('spinner').destroy();
-                    }
-                    console.log('after votes found', list);*/
-                }
             }
         }
     },
