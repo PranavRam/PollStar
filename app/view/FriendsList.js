@@ -41,7 +41,8 @@ Ext.define('PollStar.view.FriendsList', {
                         }
                     });
                 }
-            }
+            },
+            loadingText: false
         }]
     },
     initialize: function() {

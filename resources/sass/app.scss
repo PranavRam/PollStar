@@ -445,7 +445,12 @@ $list-label-colors:
 	position: absolute;
 	right: 0;
 	line-height: 1em;
-	color: $universalBlue;
+	&[data-icon='+'] {
+		color: $universalBlue;
+	}
+	&[data-icon='2'] {
+		color: $list-color-4;
+	}
 	&:before {
 		font-size: 2em;
 	}
@@ -653,4 +658,8 @@ $list-label-colors:
 
 .add-poll-container {
 	background: url('../images/micro_carbon.png');
+}
+
+.add-polls-friends-list {
+	border-radius: 10px;
 }

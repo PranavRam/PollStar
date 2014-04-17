@@ -40,7 +40,8 @@ Ext.application({
         'LandingPageController',
         'AddPollController',
         'FriendsPageController',
-        'VoteController'
+        'VoteController',
+        'UsersController'
     ],
 
     icon: {

@@ -3,7 +3,8 @@ Ext.define('PollStar.view.FriendsMain', {
     xtype: 'friendsMain',
     requires: [
         'PollStar.view.FriendsList',
-        'PollStar.view.UsersList'
+        'PollStar.view.UsersList',
+        'PollStar.view.components.ToolbarSpinner'
     ],
     config: {
         tabBarPosition: 'bottom',
@@ -16,6 +17,11 @@ Ext.define('PollStar.view.FriendsMain', {
                 xtype: 'button',
                 iconCls: 'add',
                 action: 'activateImageSelect'
+            }, {
+                xtype: 'tbarspinner',
+                //align: 'right',
+                action: 'friends',
+                hidden: true
             }, {
                 xtype: 'spacer'
             }, {

@@ -28,6 +28,7 @@ Ext.define('PollStar.view.Main', {
             }, {
                 xtype: 'tbarspinner',
                 //align: 'right',
+                action: "main",
                 hidden: true
             }, {
                 xtype: 'spacer'

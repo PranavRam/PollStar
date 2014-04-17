@@ -14,6 +14,7 @@ Ext.define('PollStar.controller.VoteController', {
         control: {
             voteBtn: {
                 tap: function(self, e, eOpts) {
+                    //self.setHidden(true);
                     var me = this;
                     var options = me.getPollVoteOptions();
                     var pollVoteView = me.getPollVoteView();

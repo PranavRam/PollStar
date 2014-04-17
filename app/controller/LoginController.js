@@ -8,8 +8,6 @@ Ext.define('PollStar.controller.LoginController', {
         'PollStar.store.Users',
     ],
     config: {
-        count: 0,
-        firstLoad: 0,
         anims: {
             right: {
                 type: 'slide',
@@ -78,50 +76,20 @@ Ext.define('PollStar.controller.LoginController', {
                         });
                         //me.setCount(me.getCount + 1);
 
-                        if (me.getFirstLoad() !== 3) {
-                            me.setFirstLoad(me.getFirstLoad() + 1);
+                        //if (me.getFirstLoad() !== 3) {
+                           // me.setFirstLoad(me.getFirstLoad() + 1);
                             me.addMainViews();
-                        }
+                        //}
                     }
                 }
             }
         });
         var friendsStore = Ext.create('PollStar.store.Friends', {
             listeners: {
-                load: function(store, records, successful, operation, eOpts) {
-                    me.setCount(me.getCount() + 1);
-                    //console.log(me.getCount());
-                    if (me.getFirstLoad() !== 3) {
-                        me.setCount(me.getCount() + 1);
-                        me.setFirstLoad(me.getFirstLoad() + 1);
-                        me.addFriendsMainView();
-                    }
-                }
-            }
-        });
-        var usersStore = Ext.create('PollStar.store.Users', {
-            listeners: {
-                load: function(store, records, successful, operation, eOpts) {
-                    me.setCount(me.getCount() + 1);
-                    //console.log(records);
-                    Ext.Array.forEach(records, function(record, index) {
-                        //var user = record.get('objectId');
-                        //console.log(pollId, pollsVoted);
-                        //record.set('isFriend', '+');
-                        console.log(record.get('isFriend'));
-
-                        if (record.get('objectId') === Parse.User.current().id) {
-                            store.remove(record);
-                            //store.sync();
-                        }
-                    });
-                    //me.setFirstLoad(me.getFirstLoad() + 1);
-                    //console.log(me.getCount());
-                    if (me.getFirstLoad() !== 3) {
-                        me.setCount(me.getCount() + 1);
-                        me.setFirstLoad(me.getFirstLoad() + 1);
-                        me.addFriendsMainView();
-                    }
+                load: {
+                    single: true,
+                    scope: me,
+                    fn: me.loadFriendsStore
                 }
             }
         });
@@ -129,7 +97,7 @@ Ext.define('PollStar.controller.LoginController', {
     addFriendsMainView: function() {
         var me = this;
         //console.log('Count', me);
-        if (me.getCount() != 2) return;
+        //if (me.getCount() != 2) return;
         console.log('here');
         var friendsMainView = Ext.create('PollStar.view.FriendsMain');
         Ext.Viewport.add(friendsMainView);
@@ -187,5 +155,38 @@ Ext.define('PollStar.controller.LoginController', {
                 }, 1);
             }
         });
+    },
+    loadFriendsStore: function(store, records, successful, operation, eOpts) {
+        var me = this;
+        //console.log(me);
+        var usersStore = Ext.create('PollStar.store.Users', {
+            listeners: {
+                load: {
+                    single: true,
+                    scope: me,
+                    fn: me.loadUsersStore
+                }
+            }
+        });
+    },
+    loadUsersStore: function(store, records, successful, operation, eOpts) {
+        var me = this;
+        var friendsStore = Ext.getStore('friendsStore');
+        //console.log('here in users store');
+        Ext.Array.forEach(records, function(record, index) {
+            //var user = record.get('objectId');
+            //console.log(pollId, pollsVoted);
+            //record.set('isFriend', '+');
+            console.log(record.get('isFriend'), record);
+
+            if (friendsStore.find('objectId', record.get('objectId')) > -1) {
+                record.set('isFriend', '2');
+                //store.sync();
+            }
+            else {
+                record.set('isFriend', '+');
+            }
+        });
+        me.addFriendsMainView();
     }
 });

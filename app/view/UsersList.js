@@ -8,6 +8,7 @@ Ext.define('PollStar.view.UsersList', {
     config: {
         //store: 'usersStore',
         grouped: true,
+        loadingText: false,
         //onItemDisclosure: true,
         cls: 'user-list',
         items: [{
@@ -17,20 +18,10 @@ Ext.define('PollStar.view.UsersList', {
             placeHolder: 'Search'
         }],
         listeners: {
-            disclose: function(list, record, target, index, e, eOpts) {
+            /*disclose: function(list, record, target, index, e, eOpts) {
                 hello_div = e;
                 console.log(index, record, e.target);
-            },
-            itemtap: function(list, index, target, record, e, eOpts) {
-                //console.log(index, record, e.target, target);
-                //targetGlobal = target;
-                //e.preventDefault();
-                console.log(target);
-                if (e.getTarget('[data-icon="+"]')) {
-                    //console.log("Add record");
-                    return false;
-                }
-            },
+            },*/
             itemtouchstart: function(list, index, target, record, e, eOpts) {
                 //console.log('itemtap start');
                 var target = e.getTarget('[data-icon="+"]');

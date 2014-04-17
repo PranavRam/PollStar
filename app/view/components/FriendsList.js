@@ -15,7 +15,7 @@ Ext.define('PollStar.view.components.FriendsList', {
         hideOnMaskTap: true,
         width: '90%',
         height: 100,
-        cls: 'myClass',
+        cls: 'add-polls-friends-list',
         textfield: null,
         itemTpl: '<div class="myContent">' + '<div><b>{username}</b> ({email})</div>' + '</div>',
 

@@ -23,10 +23,14 @@ Ext.define('PollStar.view.poll_detail.Results', {
         //me.populateConfig();
         //me.addItems();
         me.callParent(arguments);
-        var piechart = Ext.create('PollStar.view.PieChart', {
-            chartData: me.getRecord().get('results')
-        });
-        me.add(piechart);
+        var results = me.getRecord().get('results');
+        if (!Ext.isEmpty(results)) {
+            var piechart = Ext.create('PollStar.view.PieChart', {
+                chartData: results
+            });
+            me.add(piechart);
+        }
+        
         var pollDetails = Ext.create('PollStar.view.poll_detail.PollDetails', {
             record: me.getRecord()
         });
