@@ -7,13 +7,6 @@ Ext.define('PollStar.view.Main', {
         'PollStar.view.components.ToolbarSpinner'
     ],
     config: {
-        autoDestroy: true,
-        hidden: true,
-        showAnimation: {
-            type: 'fade',
-            duration: 300,
-            delay: 100
-        },
         defaultBackButtonText: 'Polls',
         navigationBar: {
             docked: 'top',
@@ -52,6 +45,14 @@ Ext.define('PollStar.view.Main', {
         items: [{
             xtype: 'pollList',
             title: 'PollStar'
-        }]
+        }],
+        listeners: {
+            painted: function(){
+                console.log('main painted');
+            },
+            show: function(){
+                console.log('main show');
+            }
+        }
     }
 });

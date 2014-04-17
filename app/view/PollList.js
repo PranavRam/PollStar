@@ -7,9 +7,16 @@ Ext.define('PollStar.view.PollList', {
     ],
     xtype: 'pollList',
     config: {
-        /*masked: {
+        style: 'opacity: 0;',
+        masked: {
             xtype: 'loadmask',
             message: 'loading',
+        },
+        /*hidden: true,
+        showAnimation: {
+            type: 'fade',
+            duration: 300,
+            delay: 100
         },*/
         cls: 'poll-list',
         plugins: [{
@@ -24,7 +31,7 @@ Ext.define('PollStar.view.PollList', {
         }],*/
         listeners: {
             painted: {
-                order: 'before',
+                order: 'after',
                 single: true,
                 fn: function(cmp) {
                     //console.log(Ext.DomQuery.select('.voted'));
@@ -34,7 +41,7 @@ Ext.define('PollStar.view.PollList', {
             }
         },
         loadingText: false,
-        emptyText: '<div> No Participating Polls. Create One!</div>'
+        emptyText: '<div> No Participating Polls. Create One!</div>',
     },
     initialize: function() {
         //console.log(PollStar.util.Templates.pollList());
@@ -50,7 +57,7 @@ Ext.define('PollStar.view.PollList', {
             time.minutes = m.substr(-2);
             return time;
         }
-        console.log('init');
+        //console.log('init');
         var me = this;
         var tpl = new Ext.XTemplate(
             Ext.select('#tpl_poll_list').elements[0].innerHTML, {
@@ -102,5 +109,10 @@ Ext.define('PollStar.view.PollList', {
                 xListItem.addCls('votedParent');*/
             xListItem.dom.classList.add('votedParent');
         });
+        // Ext.fly('spinner').destroy();
+        me.setMasked(false);
+        Ext.Viewport.setMasked(false);
+        me.setStyle('opacity: 1;')
+        // me.fireEvent('polllistpainted', me);
     }
 });

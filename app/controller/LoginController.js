@@ -26,6 +26,7 @@ Ext.define('PollStar.controller.LoginController', {
         refs: {
             loginView: 'loginView',
             loginButton: 'button[itemId=loginButton]',
+            pollList: 'pollList'
         },
         control: {
             loginButton: {
@@ -40,6 +41,29 @@ Ext.define('PollStar.controller.LoginController', {
                     //var friendsMainView = Ext.create('PollStar.view.FriendsMain');
 
                 }
+            },
+            pollList: {
+                polllistpainted: function(list) {
+                    /* var me = this;
+                    //debugger;
+                    //Ext.fly('spinner').destroy();
+
+                    var mainView = Ext.Viewport.down('main');
+                    var loginView = me.getLoginView();
+                    console.log(mainView);
+                    //mainView.show();
+                    console.log('shown');
+                    if (!Ext.isEmpty(loginView)) {
+                        Ext.Viewport.animateActiveItem(mainView,
+                            me.getAnims().right
+                        );
+                        Ext.Viewport.setMasked(false);
+
+                    } else {
+                        Ext.fly('spinner').destroy();
+                    }
+                    console.log('after votes found', list);*/
+                }
             }
         }
     },
@@ -52,9 +76,9 @@ Ext.define('PollStar.controller.LoginController', {
         });
     },
     onAfterAnimate: function(itemToDestroy) {
-        console.log('destroy login', itemToDestroy);
+        //console.log('destroy login', itemToDestroy);
+        //Ext.Viewport.setMasked(false);
         Ext.Viewport.remove(itemToDestroy, true);
-        Ext.Viewport.setMasked(false);
     },
     addStores: function() {
         var me = this;
@@ -77,8 +101,8 @@ Ext.define('PollStar.controller.LoginController', {
                         //me.setCount(me.getCount + 1);
 
                         //if (me.getFirstLoad() !== 3) {
-                           // me.setFirstLoad(me.getFirstLoad() + 1);
-                            me.addMainViews();
+                        // me.setFirstLoad(me.getFirstLoad() + 1);
+                        me.addMainViews();
                         //}
                     }
                 }
@@ -100,7 +124,7 @@ Ext.define('PollStar.controller.LoginController', {
         //if (me.getCount() != 2) return;
         console.log('here');
         var friendsMainView = Ext.create('PollStar.view.FriendsMain');
-        Ext.Viewport.add(friendsMainView);
+        Ext.Viewport.insert(1, friendsMainView);
     },
     addMainViews: function() {
         var me = this;
@@ -108,11 +132,6 @@ Ext.define('PollStar.controller.LoginController', {
 
         var loginView = me.getLoginView();
         var mainView = Ext.create('PollStar.view.Main');
-        Ext.Viewport.add([
-            mainView,
-            //friendsMainView
-        ]);
-
         if (loginView) {
             Ext.Viewport.on({
                 activeitemchange: 'onAfterAnimate',
@@ -121,17 +140,20 @@ Ext.define('PollStar.controller.LoginController', {
                 order: 'after',
                 args: [loginView]
             });
+            console.log('addMainViews');
             mainView.setShowAnimation(null);
-            mainView.show();
+            //mainView.show();
+            Ext.Viewport.add(mainView);
             Ext.Viewport.animateActiveItem(mainView,
                 me.getAnims().right
             );
         } else {
-            Ext.Viewport.add(mainView);
-            Ext.Viewport.setActiveItem(mainView);
             Ext.fly('spinner').destroy();
-            mainView.show();
+            Ext.Viewport.add(mainView);
+            // Ext.Viewport.setActiveItem(mainView);
         }
+        //Ext.Viewport.add(mainView);
+        //mainView.show();
         console.log('done');
     },
     logInUser: function() {
@@ -182,8 +204,7 @@ Ext.define('PollStar.controller.LoginController', {
             if (friendsStore.find('objectId', record.get('objectId')) > -1) {
                 record.set('isFriend', '2');
                 //store.sync();
-            }
-            else {
+            } else {
                 record.set('isFriend', '+');
             }
         });

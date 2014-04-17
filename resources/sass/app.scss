@@ -151,6 +151,10 @@ $list-label-colors:
     }
 }
 
+.poll-list {
+	-webkit-transition : opacity 1000ms ease-in;
+}
+
 @for $i from 1 through length($list-label-colors) {
     /* .x-label:nth-child(#{$i}) {
         background-color: nth($list-label-colors, $i);
