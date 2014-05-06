@@ -103,6 +103,7 @@
 /Users/pranavram/Programming/Sencha/poll_star/phonegap/platforms/android/assets/www/resources/images \
 /Users/pranavram/Programming/Sencha/poll_star/phonegap/platforms/android/assets/www/resources/js \
 /Users/pranavram/Programming/Sencha/poll_star/phonegap/platforms/android/assets/www/resources/startup \
+/Users/pranavram/Programming/Sencha/poll_star/phonegap/platforms/android/assets/www/resources/css/animate.css \
 /Users/pranavram/Programming/Sencha/poll_star/phonegap/platforms/android/assets/www/resources/css/app.css \
 /Users/pranavram/Programming/Sencha/poll_star/phonegap/platforms/android/assets/www/resources/css/nv.d3.min.css \
 /Users/pranavram/Programming/Sencha/poll_star/phonegap/platforms/android/assets/www/resources/icons/icon-spot~ipad.png \
@@ -115,9 +116,29 @@
 /Users/pranavram/Programming/Sencha/poll_star/phonegap/platforms/android/assets/www/resources/icons/iTunesArtwork.png \
 /Users/pranavram/Programming/Sencha/poll_star/phonegap/platforms/android/assets/www/resources/images/1.JPG \
 /Users/pranavram/Programming/Sencha/poll_star/phonegap/platforms/android/assets/www/resources/images/2.JPG \
+/Users/pranavram/Programming/Sencha/poll_star/phonegap/platforms/android/assets/www/resources/images/black_linen_v2 \
+/Users/pranavram/Programming/Sencha/poll_star/phonegap/platforms/android/assets/www/resources/images/black_linen_v2_@2X.png \
+/Users/pranavram/Programming/Sencha/poll_star/phonegap/platforms/android/assets/www/resources/images/blurred.png \
+/Users/pranavram/Programming/Sencha/poll_star/phonegap/platforms/android/assets/www/resources/images/CameraIcon.png \
+/Users/pranavram/Programming/Sencha/poll_star/phonegap/platforms/android/assets/www/resources/images/Circle.png \
+/Users/pranavram/Programming/Sencha/poll_star/phonegap/platforms/android/assets/www/resources/images/email_icon.png \
+/Users/pranavram/Programming/Sencha/poll_star/phonegap/platforms/android/assets/www/resources/images/escheresque_ste_@2X.png \
+/Users/pranavram/Programming/Sencha/poll_star/phonegap/platforms/android/assets/www/resources/images/micro_carbon \
+/Users/pranavram/Programming/Sencha/poll_star/phonegap/platforms/android/assets/www/resources/images/micro_carbon.png \
+/Users/pranavram/Programming/Sencha/poll_star/phonegap/platforms/android/assets/www/resources/images/micro_carbon.zip \
+/Users/pranavram/Programming/Sencha/poll_star/phonegap/platforms/android/assets/www/resources/images/micro_carbon_@2X.png \
 /Users/pranavram/Programming/Sencha/poll_star/phonegap/platforms/android/assets/www/resources/images/Moon.jpg \
 /Users/pranavram/Programming/Sencha/poll_star/phonegap/platforms/android/assets/www/resources/images/none.png \
+/Users/pranavram/Programming/Sencha/poll_star/phonegap/platforms/android/assets/www/resources/images/password_icon.png \
+/Users/pranavram/Programming/Sencha/poll_star/phonegap/platforms/android/assets/www/resources/images/pug_tn.jpg \
 /Users/pranavram/Programming/Sencha/poll_star/phonegap/platforms/android/assets/www/resources/images/sencha-avatar-64x64.png \
+/Users/pranavram/Programming/Sencha/poll_star/phonegap/platforms/android/assets/www/resources/images/X Icon.png \
+/Users/pranavram/Programming/Sencha/poll_star/phonegap/platforms/android/assets/www/resources/images/black_linen_v2/black_linen_v2.png \
+/Users/pranavram/Programming/Sencha/poll_star/phonegap/platforms/android/assets/www/resources/images/black_linen_v2/black_linen_v2_@2X.png \
+/Users/pranavram/Programming/Sencha/poll_star/phonegap/platforms/android/assets/www/resources/images/black_linen_v2/readme.txt \
+/Users/pranavram/Programming/Sencha/poll_star/phonegap/platforms/android/assets/www/resources/images/micro_carbon/micro_carbon.png \
+/Users/pranavram/Programming/Sencha/poll_star/phonegap/platforms/android/assets/www/resources/images/micro_carbon/micro_carbon_@2X.png \
+/Users/pranavram/Programming/Sencha/poll_star/phonegap/platforms/android/assets/www/resources/images/micro_carbon/readme.txt \
 /Users/pranavram/Programming/Sencha/poll_star/phonegap/platforms/android/assets/www/resources/js/canvasResize.js \
 /Users/pranavram/Programming/Sencha/poll_star/phonegap/platforms/android/assets/www/resources/js/d3.v3.js \
 /Users/pranavram/Programming/Sencha/poll_star/phonegap/platforms/android/assets/www/resources/js/load-image-exif-map.js \

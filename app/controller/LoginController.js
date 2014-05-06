@@ -131,7 +131,7 @@ Ext.define('PollStar.controller.LoginController', {
         }
         //Ext.Viewport.add(mainView);
         //mainView.show();
-        console.log('done');
+        //console.log('done');
     },
     logInUser: function() {
         var me = this;

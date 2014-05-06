@@ -136,8 +136,17 @@ Ext.define('PollStar.view.AddPoll', {
                         value: 2,
                         data: 2
                     }, {
+                        xtype: 'label',
+                        html: 'Poll End Time',
+                        //docked: 'bottom',
+                        //align: 'center',
+                        //margin: '5px auto 0 auto',
+                        height: '30px',
+                        style: 'text-align: center; padding: 0.5em;',
+                        cls: 'poll-end-label'
+                    }, {
                         xtype: 'segmentedbutton',
-                        docked: 'bottom',
+                        //docked: 'bottom',
                         cls: 'poll-end-button',
                         style: 'padding-bottom: 1em;',
                         layout: {
@@ -157,15 +166,6 @@ Ext.define('PollStar.view.AddPoll', {
                             text: '1 Day',
                             data: 24
                         }]
-                    }, {
-                        xtype: 'label',
-                        html: 'Poll End Time',
-                        docked: 'bottom',
-                        //align: 'center',
-                        //margin: '5px auto 0 auto',
-                        height: '30px',
-                        style: 'text-align: center; padding: 0.5em;',
-                        cls: 'poll-end-label'
                     }]
                 }
             }]

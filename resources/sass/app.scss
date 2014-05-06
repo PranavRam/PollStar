@@ -299,6 +299,9 @@ $list-label-colors:
 		/* -webkit-transform: rotate(-200deg);
 		transform: rotate(-200deg); */
 		opacity: 0;
+		.nv-label text{
+			fill: white !important;
+		}
 	}
 }
 
@@ -369,21 +372,21 @@ $list-label-colors:
 	margin-top: 5px;
 }
 
-.addPollForm .options-input:nth-child(5){
+.addPollForm .options-input:nth-child(6){
 	border-left: solid 3px nth($list-label-colors, 2);
 	margin-top: 5px;
 }
 
-.addPollForm .options-input:nth-child(6){
+.addPollForm .options-input:nth-child(8){
 	border-left: solid 3px nth($list-label-colors, 3);
 	margin-top: 5px;
 }
 
-.addPollForm .options-input:nth-child(7){
+.addPollForm .options-input:nth-child(10){
 	border-left: solid 3px nth($list-label-colors, 4);
 	margin-top: 5px;
 }
-.addPollForm .options-input:nth-child(8){
+.addPollForm .options-input:nth-child(12){
 	border-left: solid 3px nth($list-label-colors, 5);
 	margin-top: 5px;
 }
@@ -448,6 +451,7 @@ $list-label-colors:
 .icon-right {
 	position: absolute;
 	right: 0;
+	top: 2px;
 	line-height: 1em;
 	&[data-icon='+'] {
 		color: $universalBlue;
@@ -504,7 +508,10 @@ $list-label-colors:
 	}
 	.question {
 		border-left: solid 3px $list-color-6;
-		//color: white;
+		-webkit-transition : all  400ms;
+		&.x-field-focused {
+			border-left-width: 10px;
+		}
 	}
 
 	.x-toolbar .x-segmentedbutton .x-button.x-button-pressed, .x-segmentedbutton .x-button.x-button-pressed {
@@ -514,6 +521,13 @@ $list-label-colors:
 	.x-field-input .x-clear-icon {
 		background: url('../images/X Icon.png') no-repeat center;
 		background-size: 55%;
+	}
+
+	.options-input {
+		-webkit-transition : all 400ms;
+		&.x-field-focused  {
+			border-left-width: 10px;
+		}
 	}
 }
 
@@ -666,4 +680,7 @@ $list-label-colors:
 
 .add-polls-friends-list {
 	border-radius: 10px;
+	.myContent {
+		text-align: center;
+	}
 }

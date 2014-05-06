@@ -43,8 +43,11 @@ Ext.define('PollStar.controller.AddPollController', {
             nextPollDataBtn: {
                 tap: function(self, e, eOpts) {
                     var me = this;
-                    me.getAddPollView().push(Ext.create("PollStar.view.AddPollFriendsList"));
-                    me.getCancelAddPollBtn().hide();
+                    var pollForm = me.getPollForm();
+                    if(me.validateInputs(pollForm.getValues())){
+                        me.getAddPollView().push(Ext.create("PollStar.view.AddPollFriendsList"));
+                        me.getCancelAddPollBtn().hide();
+                    }
                 }
             },
             addPollBtn: {
@@ -155,7 +158,14 @@ Ext.define('PollStar.controller.AddPollController', {
                                 cls: 'options-input',
                                 data: (i + oldValue + 1)
                             }
+                            var hidden = {
+                                xtype: 'hiddenfield',
+                                name: 'id',
+                                data: (i + oldValue + 1),
+                                value: (i + oldValue + 1)
+                            }
                             optionsArr.push(options);
+                            optionsArr.push(hidden);
                         }
                         pollQuestionsFS.add(optionsArr);
                         console.log('Need to add a few');
@@ -163,10 +173,13 @@ Ext.define('PollStar.controller.AddPollController', {
                         //console.log('Need to remove a few');
                         //console.log(Ext.ComponentQuery.query('textfield[action=optionsSlider]'));
                         var optionsSliderArray = Ext.ComponentQuery.query('textfield[action=optionsSlider]');
+                        var hiddenArray = Ext.ComponentQuery.query('hiddenfield[name=id]');
                         var optionsSliderArrayLength = optionsSliderArray.length;
                         var numToRemove = oldValue - newValue;
                         for (var i = 0; i < numToRemove; i++) {
                             var optionsSliderToRemove = optionsSliderArray[optionsSliderArrayLength - 1 - i];
+                            var hiddenSliderToRemove = hiddenArray[optionsSliderArrayLength - 1 - i];
+                            pollQuestionsFS.remove(hiddenSliderToRemove, true);
                             pollQuestionsFS.remove(optionsSliderToRemove, true);
                         }
                         //console.log(Ext.ComponentQuery.query('textfield[action=optionsSlider]'));
@@ -188,6 +201,19 @@ Ext.define('PollStar.controller.AddPollController', {
                             friendsList = Ext.create('PollStar.view.components.FriendsList');
                         }
                         friendsList.setTextfield(textfield);
+                        var store = Ext.getStore('friendsStore');
+                        store.clearFilter();
+                        if (name.length > 0) {
+                            var thisRegEx = new RegExp(name, "i");
+                            store.filterBy(function(record) {
+                                if (thisRegEx.test(record.get('username')) ||
+                                    thisRegEx.test(record.get('emil'))) {
+                                    return true;
+                                }
+                                return false;
+                            });
+                        }
+
                         friendsList.showBy(textfield, "br-tr?");
                     }
                     //console.log(rx.test(textfield.getValue()));
@@ -196,30 +222,50 @@ Ext.define('PollStar.controller.AddPollController', {
 
                 },
                 clearicontap: function(textfield, e, eOpts) {
+                    /*var friendsList = Ext.Viewport.down('addfriendslist');
+                    if (!Ext.isEmpty(friendsList)) {
+                        friendsList.setHidden(true);
+                        var store = Ext.getStore('friendsStore');
+                        store.clearFilter();
+                    }*/
+                },
+                /*blur: function(textfield, e, eOpts) {
                     var friendsList = Ext.Viewport.down('addfriendslist');
                     if (!Ext.isEmpty(friendsList)) {
-                        friendsList.setHidden(true);
+                        console.log(friendsList.getTextfield() != textfield);
+                        if(friendsList.getTextfield() != textfield){
+                            friendsList.setHidden(true);
+                            var store = Ext.getStore('friendsStore');
+                            store.clearFilter();
+                        }
                     }
-                },
-                blur: function(textfield, e, eOpts){
-                   /* var friendsList = Ext.Viewport.down('addfriendslist');
-                    if (!Ext.isEmpty(friendsList)) {
-                        friendsList.setHidden(true);
-                    }*/
-                }
+                }*/
             },
             addFriendsListModal: {
                 itemtap: function(list, index, target, record, event) {
                     var focusedField = list.getTextfield();
                     var data = focusedField.getData();
-                    var hiddenField = focusedField.up().down('hiddenfield[data='+data+']');
+                    var hiddenField = focusedField.up().down('hiddenfield[data=' + data + ']');
                     //console.log(focusedField);
-                    focusedField.setValue('@'+record.get('username'));
+                    focusedField.setValue('@' + record.get('username'));
                     hiddenField.setValue(record.get('objectId'));
                     list.hide();
+                    var store = Ext.getStore('friendsStore');
+                    store.clearFilter();
                     return false;
                 }
             }
         }
+    },
+    validateInputs: function(values){
+        if(Ext.isEmpty(values.question) || Ext.isEmpty(values.options))
+            return false;
+
+        Ext.Array.forEach(values.options, function(option, i){
+            if(Ext.isEmpty(option))
+                return false;
+        });
+
+        return true;
     }
 })

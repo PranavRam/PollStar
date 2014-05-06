@@ -45,14 +45,6 @@ Ext.define('PollStar.view.Main', {
         items: [{
             xtype: 'pollList',
             title: 'PollStar'
-        }],
-        listeners: {
-            painted: function(){
-                console.log('main painted');
-            },
-            show: function(){
-                console.log('main show');
-            }
-        }
+        }]
     }
 });

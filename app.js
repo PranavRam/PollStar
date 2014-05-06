@@ -21,19 +21,18 @@ Ext.application({
         'Ext.ux.parse.app.Application',
         'Ext.MessageBox',
         'PollStar.util.ImageUpload',
-        'Ext.Anim'
+        //'Ext.Anim'
     ],
     models: [
         'Poll',
-        'User'
+        'User',
+        'Contact'
     ],
-
+    stores: [
+        'Contacts'
+    ],
     views: [
-        'Main',
         'Login',
-        'AddPoll',
-        'FriendsMain',
-        'AddPoll'
     ],
     controllers: [
         'LoginController',
@@ -41,7 +40,8 @@ Ext.application({
         'AddPollController',
         'FriendsPageController',
         'VoteController',
-        'UsersController'
+        'UsersController',
+        'LogoutController'
     ],
 
     icon: {
@@ -67,6 +67,10 @@ Ext.application({
     },
 
     launch: function() {
+        /*navigator.globalization.getLocaleName(
+            function (locale) {alert('locale: ' + locale.value + '\n');},
+            function () {alert('Error getting locale\n');}
+        );*/
         //Ext.Msg.alert("Orientation");
         // Destroy the #appLoadingIndicator element
         //console.log(Ext.app.parseConfig().applicationId);

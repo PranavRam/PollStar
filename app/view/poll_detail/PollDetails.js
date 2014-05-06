@@ -192,7 +192,7 @@ Ext.define('PollStar.view.poll_detail.PollDetails', {
         Ext.Array.forEach(options, function(item, index) {
             var radio = {
                 xtype: 'label',
-                html: (index + 1) + '. ' + item,
+                html: (index + 1) + '. ' + item.name,
                 cls: 'options-label'
             }
             innerItems.push(radio);

@@ -59,6 +59,9 @@
         {
             "path": "resources/js/parse-1.2.17.min.js",
             "update": "delta"
+        },{
+            "path": "resources/js/PhoneFormat.js",
+            "update": "delta"
         },
         {
             "path": "resources/js/load-image.js",
